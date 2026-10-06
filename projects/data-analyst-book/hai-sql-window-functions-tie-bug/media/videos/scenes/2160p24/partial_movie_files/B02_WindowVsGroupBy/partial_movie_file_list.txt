@@ -1,0 +1,10 @@
+# This file is used internally by FFMPEG.
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/data-analyst-book/hai-sql-window-functions-tie-bug/media/videos/scenes/2160p24/partial_movie_files/B02_WindowVsGroupBy/995426775_3835097244_223132457.mp4'
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/data-analyst-book/hai-sql-window-functions-tie-bug/media/videos/scenes/2160p24/partial_movie_files/B02_WindowVsGroupBy/2443530592_2970397201_956271745.mp4'
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/data-analyst-book/hai-sql-window-functions-tie-bug/media/videos/scenes/2160p24/partial_movie_files/B02_WindowVsGroupBy/2443530592_366820665_2712006459.mp4'
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/data-analyst-book/hai-sql-window-functions-tie-bug/media/videos/scenes/2160p24/partial_movie_files/B02_WindowVsGroupBy/2443530592_344827807_4113526506.mp4'
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/data-analyst-book/hai-sql-window-functions-tie-bug/media/videos/scenes/2160p24/partial_movie_files/B02_WindowVsGroupBy/2443530592_1018492264_230412546.mp4'
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/data-analyst-book/hai-sql-window-functions-tie-bug/media/videos/scenes/2160p24/partial_movie_files/B02_WindowVsGroupBy/2443530592_173547719_3724580681.mp4'
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/data-analyst-book/hai-sql-window-functions-tie-bug/media/videos/scenes/2160p24/partial_movie_files/B02_WindowVsGroupBy/2443530592_2229954608_1601623381.mp4'
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/data-analyst-book/hai-sql-window-functions-tie-bug/media/videos/scenes/2160p24/partial_movie_files/B02_WindowVsGroupBy/2443530592_256184075_3876456763.mp4'
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/data-analyst-book/hai-sql-window-functions-tie-bug/media/videos/scenes/2160p24/partial_movie_files/B02_WindowVsGroupBy/2443530592_3279100200_2993785995.mp4'
