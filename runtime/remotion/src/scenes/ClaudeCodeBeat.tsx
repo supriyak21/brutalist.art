@@ -15,8 +15,56 @@ export const claudeCodeBeatSchema = z.object({
   title:     z.string().default('script.py'),
   code:      z.string().default('# code here'),
   sparkLine: z.string().default('The code speaks.'),
+  /** Language chip + comment syntax. Optional: unset keeps each component's
+   *  original literal chip ('python' here, 'sql' in the 916) and comment rule,
+   *  so existing beat sheets re-render unchanged. */
+  lang:      z.string().optional(),
+  /** Author/channel handle as a lower-right corner chip (LOGO LAW).
+   *  Empty = no chip (the original look). */
+  handle:    z.string().optional(),
+  /** FILL-THE-CANVAS: size the code font to the longest line and the card height
+   *  (capped at 0.04·h, never below the legacy 0.022·h). Unset = legacy fixed size. */
+  fit:       z.boolean().optional(),
 });
 export type ClaudeCodeBeatProps = z.infer<typeof claudeCodeBeatSchema>;
+
+const COMMENT_PREFIXES: Record<string, string[]> = {
+  python: ['#'], py: ['#'], bash: ['#'], sh: ['#'], yaml: ['#'],
+  sql: ['--'],
+  ts: ['//'], tsx: ['//'], js: ['//'], jsx: ['//'], css: ['/*'],
+};
+
+/** Comment test: per-lang prefixes when `lang` is set, else the caller's legacy rule. */
+export const isCommentLine = (line: string, lang: string | undefined, legacy: string[]) => {
+  const t = line.trimStart();
+  const prefixes = lang ? (COMMENT_PREFIXES[lang.toLowerCase()] ?? legacy) : legacy;
+  return prefixes.some((p) => t.startsWith(p));
+};
+
+/** Lower-right handle chip, aligned to the spark line's baseline. Renders nothing when empty. */
+export const HandleChip: React.FC<{
+  handle?: string; fontSize: number; right: number; bottom: number; opacity: number;
+}> = ({ handle, fontSize, right, bottom, opacity }) =>
+  handle ? (
+    <div style={{
+      position: 'absolute',
+      right,
+      bottom,
+      padding: `${fontSize * 0.35}px ${fontSize * 0.8}px`,
+      borderRadius: 999,
+      border: `1px solid ${CLAUDE.BORDER}`,
+      background: CLAUDE.CARD,
+      fontFamily: CLAUDE_FONT.ui,
+      fontSize,
+      fontWeight: 600,
+      letterSpacing: '0.02em',
+      color: CLAUDE.INK_SOFT,
+      whiteSpace: 'nowrap',
+      opacity,
+    }}>
+      {handle}
+    </div>
+  ) : null;
 
 const SERIF = CLAUDE_FONT.serif;
 const SANS  = CLAUDE_FONT.ui;
@@ -35,7 +83,7 @@ const Spark: React.FC<{ size?: number }> = ({ size = 16 }) => (
   </svg>
 );
 
-export const ClaudeCodeBeat: React.FC<ClaudeCodeBeatProps> = ({ title, code, sparkLine }) => {
+export const ClaudeCodeBeat: React.FC<ClaudeCodeBeatProps> = ({ title, code, sparkLine, lang, handle, fit }) => {
   const frame = useCurrentFrame();
   const { fps, width, height } = useVideoConfig();
 
@@ -48,6 +96,24 @@ export const ClaudeCodeBeat: React.FC<ClaudeCodeBeatProps> = ({ title, code, spa
 
   // Extract the filename from the title (everything before " — " or the whole title)
   const filename = title.includes(' — ') ? title.split(' — ')[0].trim() : title;
+
+  // Code font. Legacy: fixed 0.022·h. With `fit`: largest size where the longest line
+  // fits the card width (PT Mono advance ≈ 0.6em) and all lines fit its height.
+  const LEGACY_FONT = height * 0.022;
+  const LINE_H = 1.72;
+  const cardW = width * 0.86 - 52;                   // card minus 26px side padding ×2
+  const cardH = height * (1 - 0.08 - 0.18) - (fit ? height * 0.056 : 46) - 40; // minus title bar and 20px pad ×2
+  const longest = Math.max(1, ...lines.map((l) => l.length));
+  const codeFont = fit
+    ? clamp(Math.min(cardW / (longest * 0.6), cardH / (lines.length * LINE_H)), LEGACY_FONT, height * 0.04)
+    : LEGACY_FONT;
+  // With `fit`, the chrome scales too — the legacy 13/11/22px sizes sit under the
+  // 24px legibility floor (CLAUDE-CODE-VISUAL-QC-CHECK.md #6).
+  const TITLE_FONT = fit ? height * 0.024 : 13;
+  const LANG_FONT  = fit ? height * 0.022 : 11;
+  const SPARK_FONT = fit ? height * 0.034 : 22;
+  const SPARK_ICON = fit ? height * 0.03 : 18;
+  const BAR_PAD    = fit ? `${height * 0.016}px 20px` : '12px 20px';
 
   return (
     <AbsoluteFill style={{ background: CLAUDE.PAGE }}>
@@ -73,7 +139,7 @@ export const ClaudeCodeBeat: React.FC<ClaudeCodeBeatProps> = ({ title, code, spa
           display: 'flex',
           alignItems: 'center',
           gap: 8,
-          padding: '12px 20px',
+          padding: BAR_PAD,
           background: CLAUDE.PAGE,
           borderBottom: `1px solid ${CLAUDE.BORDER}`,
         }}>
@@ -86,7 +152,7 @@ export const ClaudeCodeBeat: React.FC<ClaudeCodeBeatProps> = ({ title, code, spa
           <span style={{
             marginLeft: 10,
             fontFamily: MONO,
-            fontSize: 13,
+            fontSize: TITLE_FONT,
             color: CLAUDE.INK_SOFT,
             letterSpacing: '0.02em',
           }}>
@@ -95,13 +161,13 @@ export const ClaudeCodeBeat: React.FC<ClaudeCodeBeatProps> = ({ title, code, spa
           <span style={{
             marginLeft: 'auto',
             fontFamily: SANS,
-            fontSize: 11,
+            fontSize: LANG_FONT,
             fontWeight: 600,
             color: CLAUDE.SPARK,
             letterSpacing: 2,
             textTransform: 'uppercase' as const,
           }}>
-            python
+            {lang ?? 'python'}
           </span>
         </div>
 
@@ -110,8 +176,8 @@ export const ClaudeCodeBeat: React.FC<ClaudeCodeBeatProps> = ({ title, code, spa
           margin: 0,
           padding: '20px 26px',
           fontFamily: MONO,
-          fontSize: height * 0.022,
-          lineHeight: 1.72,
+          fontSize: codeFont,
+          lineHeight: LINE_H,
           textAlign: 'left',
           overflow: 'hidden',
         }}>
@@ -121,7 +187,7 @@ export const ClaudeCodeBeat: React.FC<ClaudeCodeBeatProps> = ({ title, code, spa
             const ty = interpolate(frame, [start, start + 7], [6, 0], {
               extrapolateLeft: 'clamp', extrapolateRight: 'clamp',
             });
-            const isComment = line.trimStart().startsWith('#');
+            const isComment = isCommentLine(line, lang, ['#']);
             const color = isComment ? COMMENT_CLR : CLAUDE.INK;
             return (
               <div key={i} style={{
@@ -148,16 +214,20 @@ export const ClaudeCodeBeat: React.FC<ClaudeCodeBeatProps> = ({ title, code, spa
         opacity: clamp(sparkIn, 0, 1),
         transform: `translateY(${(1 - clamp(sparkIn, 0, 1)) * 8}px)`,
       }}>
-        <Spark size={18} />
+        <Spark size={SPARK_ICON} />
         <span style={{
           fontFamily: SERIF,
-          fontSize: 22,
+          fontSize: SPARK_FONT,
           fontStyle: 'italic',
           color: CLAUDE.INK,
         }}>
           {sparkLine}
         </span>
       </div>
+
+      {/* Handle chip, lower-right inside the safe area. 0.024·h ≈ 26px at 1080, over the 24px floor. */}
+      <HandleChip handle={handle} fontSize={height * 0.024} right={width * 0.07}
+        bottom={height * 0.055} opacity={clamp(sparkIn, 0, 1) * 0.9} />
 
     </AbsoluteFill>
   );

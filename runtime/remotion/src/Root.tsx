@@ -30,8 +30,27 @@ import {MusiniqueArsenal, musiniqueArsenalSchema} from './scenes/MusiniqueArsena
 import {ClaudeVerdictArtifact, claudeVerdictArtifactSchema} from './scenes/ClaudeVerdictArtifact';
 import {ClaudeVerdictArtifact916, claudeVerdictArtifact916Schema} from './scenes/ClaudeVerdictArtifact916';
 import {ClaudeTitleOutro, claudeTitleOutroSchema} from './scenes/ClaudeTitleOutro';
+// hai / humanitarians body-illustration components (claude-hai channel)
+import {StateCardPair, stateCardPairSchema} from './scenes/StateCardPair';
+import {LabelChip, labelChipSchema} from './scenes/LabelChip';
+import {QuoteCard, quoteCardSchema} from './scenes/QuoteCard';
 // claude-liam — adaptive-therapy-revolution
 import {ClaudeCodeBeat, claudeCodeBeatSchema} from './scenes/ClaudeCodeBeat';
+// claude-hai — fellows/supriya-k/2026-09-16-sql-query-optimization-for-analytics
+// Reel-local scenes; source of truth is that reel's remotion-src/ (symlinked in).
+import {SqlPlanBeat, sqlPlanBeatSchema} from './scenes/SqlPlanBeat';
+import {SqlPredictCard, sqlPredictCardSchema} from './scenes/SqlPredictCard';
+import {SqlAttritionChain, sqlAttritionChainSchema} from './scenes/SqlAttritionChain';
+import {SqlScaleComparison, sqlScaleComparisonSchema} from './scenes/SqlScaleComparison';
+import {SqlDivergentFates, sqlDivergentFatesSchema} from './scenes/SqlDivergentFates';
+// …and their 9:16 portrait variants (the vertical companion). No library 916
+// exists for any deck pattern, so these are reel-local portrait authors.
+import {SqlAttritionChain916, sqlAttritionChain916Schema} from './scenes/SqlAttritionChain916';
+import {SqlPlanBeat916, sqlPlanBeat916Schema} from './scenes/SqlPlanBeat916';
+import {SqlScaleComparison916, sqlScaleComparison916Schema} from './scenes/SqlScaleComparison916';
+import {SqlPredictCard916, sqlPredictCard916Schema} from './scenes/SqlPredictCard916';
+import {SqlDivergentFates916, sqlDivergentFates916Schema} from './scenes/SqlDivergentFates916';
+import {SqlComposerAsk916, sqlComposerAsk916Schema} from './scenes/SqlComposerAsk916';
 import {ClaudeWindow, claudeWindowSchema} from './scenes/ClaudeWindow';
 // claude-liam — 1hr-cowork
 import {CoworkHourClock, coworkHourClockSchema} from './scenes/CoworkHourClock';
@@ -189,6 +208,10 @@ import {ValuesSplitScreen916, valuesSplitScreen916Schema} from './scenes/ValuesS
 // ── portrait 916 wrappers for shared components ──
 import {ClaudeTitleOutro916, claudeTitleOutro916Schema} from './scenes/ClaudeTitleOutro916';
 import {ClaudeWindow916, claudeWindow916Schema} from './scenes/ClaudeWindow916';
+import {ClaudeCodeBeat916, claudeCodeBeat916Schema} from './scenes/ClaudeCodeBeat916';
+import {ClaudeComposerAsk916, claudeComposerAsk916Schema} from './scenes/ClaudeComposerAsk916';
+import {ClaudeTitleOutroFilled, claudeTitleOutroFilledSchema} from './scenes/ClaudeTitleOutroFilled';
+import {ClaudeTitleOutroFilled916, claudeTitleOutroFilled916Schema} from './scenes/ClaudeTitleOutroFilled916';
 // ── claude-liam — coding-agents-social-sciences figures ──
 import {CodingAgentsFig1Loop, codingAgentsFig1LoopSchema} from './scenes/CodingAgentsFig1Loop';
 import {CodingAgentsFig2Gradient, codingAgentsFig2GradientSchema} from './scenes/CodingAgentsFig2Gradient';
@@ -1084,14 +1107,281 @@ export const RemotionRoot: React.FC = () => {
           placeholder: 'Type / for skills',
         }}
       />
+      {/* claude-hai — fellows/supriya-k/2026-09-16-sql-query-optimization-for-analytics
+          "SQL, Read Fewer Rows." B03 + B05. defaultProps are Studio previews only;
+          the reel passes real props via remotion_scenes.py --props. */}
+      <Composition
+        id="SqlPlanBeat"
+        component={SqlPlanBeat}
+        durationInFrames={630}
+        fps={30}
+        width={1920}
+        height={1080}
+        schema={sqlPlanBeatSchema}
+        defaultProps={{
+          title: 'demo/explain_a_non_sargable.txt  \u2192  demo/explain_b_sargable.txt',
+          lang: 'sql',
+          left: {
+            heading: 'A \u2014 non-sargable',
+            code: '-- see beat_sheet.json',
+            verdict: 'SCAN \u00b7 400,000 rows read',
+            tone: 'warn' as const,
+          },
+          right: {
+            heading: 'B \u2014 sargable',
+            code: '-- see beat_sheet.json',
+            verdict: 'SEARCH \u00b7 11,369 rows read',
+            tone: 'good' as const,
+          },
+          sparkLine: 'SCAN means every row.',
+          citation: 'Captured from SQLite 3.45.3 \u2014 demo/RESULTS.md',
+          highlightLeft: 'SCAN',
+          highlightRight: 'SEARCH',
+        }}
+      />
+      <Composition
+        id="SqlPredictCard"
+        component={SqlPredictCard}
+        durationInFrames={390}
+        fps={30}
+        width={1920}
+        height={1080}
+        schema={sqlPredictCardSchema}
+        defaultProps={{
+          sparkLine: 'Commit before the reveal.',
+          question: "Both filter the same indexed column. What does A's WHERE clause do that costs it the index?",
+          commit: 'commit \u2014 the answer is one beat away',
+        }}
+      />
+      {/* Reel-local FORKS of three library deck patterns, fixing the BLOCKER/MAJOR
+          defects in _qc/REPORT.md. durationInFrames matches each beat's MEASURED
+          audio so remotion_scenes.py has no tail to truncate; registered at
+          1920x1080 (pixels scaled by sc(H)) so --scale=2 yields a true 4K.
+          Shared library components are deliberately untouched. */}
+      <Composition
+        id="SqlAttritionChain"
+        component={SqlAttritionChain}
+        durationInFrames={620}
+        fps={30}
+        width={1920}
+        height={1080}
+        schema={sqlAttritionChainSchema}
+        defaultProps={{
+          data: {
+            title: 'One month out of three years',
+            slideMeta: 'POSTINGS \u00b7 400,000 ROWS',
+            scaleNote: 'ISOTYPE: 1 DOT = 1,000 ROWS',
+            total: 400,
+            startLabel: 'postings',
+            stages: [
+              {label: 'WHERE January 2026', survival: 0.028423},
+              {label: 'GROUP BY account_id', survival: 0.392207},
+            ],
+          },
+        }}
+      />
+      <Composition
+        id="SqlScaleComparison"
+        component={SqlScaleComparison}
+        durationInFrames={555}
+        fps={30}
+        width={1920}
+        height={1080}
+        schema={sqlScaleComparisonSchema}
+        defaultProps={{
+          data: {
+            slideMeta: 'ROWS READ TO ANSWER ONE QUESTION \u00b7 SQLITE 3.45.3',
+            axis: {min: 1000, max: 1000000, unit: 'rows'},
+            band: {from: 4459, to: 11369, label: 'rows the answer actually needs'},
+            axisLabel: 'rows read',
+            items: [
+              {label: 'Plan A \u2014 SCAN postings', value: 400000, hot: true},
+              {label: 'Plan B \u2014 SEARCH via idx_postings_posted_at', value: 11369},
+              {label: 'The answer itself \u2014 4,459 groups', value: 4459},
+            ],
+          },
+        }}
+      />
+      <Composition
+        id="SqlDivergentFates"
+        component={SqlDivergentFates}
+        durationInFrames={640}
+        fps={30}
+        width={1920}
+        height={1080}
+        schema={sqlDivergentFatesSchema}
+        defaultProps={{
+          data: {
+            slideMeta: 'SAME SELECT \u00b7 SAME 4,459 ROWS OUT \u00b7 ONE WHERE CLAUSE APART',
+            startLabel: 'one indexed column',
+            splitLabel: 'the WHERE clause',
+            tracks: [
+              {
+                label: "strftime('%Y-%m', posted_at) = '2026-01'",
+                outcome: 'SCAN \u2014 400,000 rows',
+                tone: 'warn' as const,
+                path: 'down' as const,
+                notes: ['column wrapped in a function', 'index unusable', '~60 ms'],
+              },
+              {
+                label: "posted_at >= '2026-01-01' AND < '2026-02-01'",
+                outcome: 'SEARCH \u2014 11,369 rows',
+                tone: 'good' as const,
+                path: 'up' as const,
+                notes: ['bare column, range predicate', 'index seek', '~15 ms'],
+              },
+            ],
+          },
+        }}
+      />
+      {/* ── 9:16 PORTRAIT VARIANTS — the vertical companion ──────────────────
+          Registered 1080x1920 so --scale=2 renders 2160x3840 native.
+          durationInFrames matches each beat's MEASURED audio (identical
+          narration to the 16:9 master) so nothing is truncated. Portrait
+          layouts RE-BAND top-to-bottom per explainer/SKILL.md; they are not
+          scaled-down landscape. */}
+      <Composition
+        id="SqlAttritionChain916"
+        component={SqlAttritionChain916}
+        durationInFrames={620}
+        fps={30}
+        width={1080}
+        height={1920}
+        schema={sqlAttritionChain916Schema}
+        defaultProps={{
+          data: {
+            title: 'One month out of three years',
+            slideMeta: 'POSTINGS \u00b7 400,000 ROWS',
+            scaleNote: 'ISOTYPE: 1 DOT = 1,000 ROWS',
+            total: 400,
+            startLabel: 'postings',
+            stages: [
+              {label: 'WHERE January 2026', survival: 0.028423},
+              {label: 'GROUP BY account_id', survival: 0.392207},
+            ],
+          },
+        }}
+      />
+      <Composition
+        id="SqlPlanBeat916"
+        component={SqlPlanBeat916}
+        durationInFrames={610}
+        fps={30}
+        width={1080}
+        height={1920}
+        schema={sqlPlanBeat916Schema}
+        defaultProps={{
+          title: 'demo/explain_a_non_sargable.txt \u2192 explain_b_sargable.txt',
+          lang: 'sql',
+          left: {
+            heading: 'A \u2014 non-sargable', code: '-- see beat_sheet.json',
+            verdict: 'SCAN \u00b7 400,000 rows read', tone: 'warn' as const,
+          },
+          right: {
+            heading: 'B \u2014 sargable', code: '-- see beat_sheet.json',
+            verdict: 'SEARCH \u00b7 11,369 rows read', tone: 'good' as const,
+          },
+          sparkLine: 'SCAN means every row.',
+          citation: 'Captured from SQLite 3.45.3 \u2014 demo/RESULTS.md',
+          highlightLeft: 'SCAN',
+          highlightRight: 'SEARCH',
+        }}
+      />
+      <Composition
+        id="SqlScaleComparison916"
+        component={SqlScaleComparison916}
+        durationInFrames={555}
+        fps={30}
+        width={1080}
+        height={1920}
+        schema={sqlScaleComparison916Schema}
+        defaultProps={{
+          data: {
+            slideMeta: 'ROWS READ TO ANSWER ONE QUESTION \u00b7 SQLITE 3.45.3',
+            axis: {min: 1000, max: 1000000, unit: 'rows'},
+            band: {from: 4459, to: 11369, label: 'rows the answer actually needs'},
+            axisLabel: 'rows read',
+            items: [
+              {label: 'Plan A \u2014 SCAN postings', value: 400000, hot: true},
+              {label: 'Plan B \u2014 SEARCH via idx_postings_posted_at', value: 11369},
+              {label: 'The answer itself \u2014 4,459 groups', value: 4459},
+            ],
+          },
+        }}
+      />
+      <Composition
+        id="SqlPredictCard916"
+        component={SqlPredictCard916}
+        durationInFrames={305}
+        fps={30}
+        width={1080}
+        height={1920}
+        schema={sqlPredictCard916Schema}
+        defaultProps={{
+          sparkLine: 'Commit before the reveal.',
+          question: "Both filter the same indexed column. What does A's WHERE clause do that costs it the index?",
+          commit: 'commit \u2014 the answer is one beat away',
+        }}
+      />
+      <Composition
+        id="SqlDivergentFates916"
+        component={SqlDivergentFates916}
+        durationInFrames={640}
+        fps={30}
+        width={1080}
+        height={1920}
+        schema={sqlDivergentFates916Schema}
+        defaultProps={{
+          data: {
+            slideMeta: 'SAME SELECT \u00b7 SAME 4,459 ROWS OUT \u00b7 ONE WHERE CLAUSE APART',
+            startLabel: 'one indexed column',
+            splitLabel: 'the WHERE clause',
+            tracks: [
+              {
+                label: "strftime('%Y-%m', posted_at) = '2026-01'",
+                outcome: 'SCAN \u2014 400,000 rows',
+                tone: 'warn' as const, path: 'down' as const,
+                notes: ['column wrapped in a function', 'index unusable', '~60 ms'],
+              },
+              {
+                label: "posted_at >= '2026-01-01' AND < '2026-02-01'",
+                outcome: 'SEARCH \u2014 11,369 rows',
+                tone: 'good' as const, path: 'up' as const,
+                notes: ['bare column, range predicate', 'index seek', '~15 ms'],
+              },
+            ],
+          },
+        }}
+      />
+      <Composition
+        id="SqlComposerAsk916"
+        component={SqlComposerAsk916}
+        durationInFrames={680}
+        fps={30}
+        width={1080}
+        height={1920}
+        schema={sqlComposerAsk916Schema}
+        defaultProps={{
+          command: 'Run EXPLAIN QUERY PLAN on both queries and show me the two plans side by side.',
+          topic: 'SQL \u00b7 QUERY PLANS \u00b7 ANALYTICS',
+          segment: 'Read Fewer Rows',
+          greeting: 'Hi, Supriya',
+          runningText: 'reading the plan\u2026',
+          output: [],   // never default-inject RESULT lines — see beat props
+          folderLabel: '@HumanitariansAI',
+          modelLabel: 'Fable 5',
+          effortLabel: 'High',
+          placeholder: 'Type / for skills',
+        }}
+      />
       <Composition
         id="ClaudeComposerAsk916"
-        component={ClaudeComposerAsk}
+        component={ClaudeComposerAsk916}
         durationInFrames={450}
         fps={30}
         width={1080}
         height={1920}
-        schema={claudeComposerAskSchema}
+        schema={claudeComposerAsk916Schema}
         defaultProps={{
           command: 'claude "write a Manim scene: photoelectric effect"',
           topic: 'CLAUDE CODE \u00b7 MANIM',
@@ -1102,6 +1392,20 @@ export const RemotionRoot: React.FC = () => {
           modelLabel: 'Fable 5',
           effortLabel: 'High',
           placeholder: 'Type / for skills',
+        }}
+      />
+      <Composition
+        id="ClaudeCodeBeat916"
+        component={ClaudeCodeBeat916}
+        durationInFrames={300}
+        fps={30}
+        width={1080}
+        height={1920}
+        schema={claudeCodeBeat916Schema}
+        defaultProps={{
+          title: 'script.py',
+          code: '# code here',
+          sparkLine: 'The code speaks.',
         }}
       />
       <Composition
@@ -1302,6 +1606,52 @@ export const RemotionRoot: React.FC = () => {
           title: 'Claude, In Your Corner.',
           handle: '@Musinique',
           subline: 'bot vs bot, season one',
+        }} />
+      {/* banking-domain-interview-end-to-end-v2 — project-scoped fill fix, not a shared-infra edit */}
+      <Composition id="ClaudeTitleOutroFilled" component={ClaudeTitleOutroFilled}
+        durationInFrames={180} fps={30} width={1920} height={1080}
+        schema={claudeTitleOutroFilledSchema}
+        defaultProps={{
+          title: 'Banking Domain Data Analyst Interview Prep — the SQL Banks Actually Ask.',
+          handle: 'Supriya',
+          subline: 'Built with Claude.',
+        }} />
+      <Composition id="ClaudeTitleOutroFilled916" component={ClaudeTitleOutroFilled916}
+        durationInFrames={180} fps={30} width={1080} height={1920}
+        schema={claudeTitleOutroFilled916Schema}
+        defaultProps={{
+          title: 'Banking Domain Data Analyst Interview Prep — the SQL Banks Actually Ask.',
+          handle: 'Supriya',
+          subline: 'Built with Claude.',
+        }} />
+      {/* hai / humanitarians body-illustration components */}
+      <Composition id="StateCardPair" component={StateCardPair}
+        durationInFrames={600} fps={30} width={1920} height={1080}
+        schema={stateCardPairSchema}
+        defaultProps={{
+          sparkLine: 'One structure, four parts.',
+          cards: [
+            { label: 'Situation', detail: 'the scenario, brief', accent: 'SLATE' },
+            { label: 'Task', detail: 'your objective', accent: 'SLATE' },
+            { label: 'Action', detail: 'what YOU did', accent: 'SLATE' },
+            { label: 'Result', detail: 'outcome, quantified', accent: 'TEAL' },
+          ],
+        }} />
+      <Composition id="LabelChip" component={LabelChip}
+        durationInFrames={600} fps={30} width={1920} height={1080}
+        schema={labelChipSchema}
+        defaultProps={{
+          sparkLine: '"Tell me about a time..."',
+          chips: ['conflict', 'deadline crunch', 'ambiguous task', 'a failure', 'a disagreement'],
+        }} />
+      <Composition id="QuoteCard" component={QuoteCard}
+        durationInFrames={600} fps={30} width={1920} height={1080}
+        schema={quoteCardSchema}
+        defaultProps={{
+          sparkLine: 'The weak version.',
+          eyebrow: 'Q: "Tell me about a time you disagreed with a teammate."',
+          quote: 'We disagreed about a chart once but it worked out fine.',
+          accent: 'CRIMSON',
         }} />
       {/* claude-liam — adaptive-therapy-revolution */}
       <Composition id="ClaudeCodeBeat" component={ClaudeCodeBeat}

@@ -1,0 +1,540 @@
+{
+ "AttritionChain": [
+  {
+   "beat": "B01",
+   "video": "2026-09-16-sql-query-optimization-for-analytics"
+  }
+ ],
+ "ClaudeCodeBeat": [
+  {
+   "beat": "B04",
+   "video": "hai-sql-window-functions-tie-bug"
+  },
+  {
+   "beat": "B07",
+   "video": "hai-sql-window-functions-tie-bug"
+  },
+  {
+   "beat": "B04",
+   "video": "banking-domain-interview-end-to-end-v2"
+  },
+  {
+   "beat": "B07",
+   "video": "banking-domain-interview-end-to-end-v2"
+  },
+  {
+   "beat": "B04",
+   "video": "claude-code-explained"
+  },
+  {
+   "beat": "B07",
+   "video": "claude-code-explained"
+  },
+  {
+   "beat": "B03",
+   "video": "correlation-is-not-causation"
+  },
+  {
+   "beat": "B06",
+   "video": "correlation-is-not-causation"
+  }
+ ],
+ "ClaudeCodeBeat916": [
+  {
+   "beat": "B04",
+   "video": "banking-domain-interview-end-to-end-v2-short"
+  },
+  {
+   "beat": "B04",
+   "video": "claude-code-explained-short"
+  },
+  {
+   "beat": "B07",
+   "video": "claude-code-explained-short"
+  },
+  {
+   "beat": "B03",
+   "video": "correlation-is-not-causation-short"
+  },
+  {
+   "beat": "B06",
+   "video": "correlation-is-not-causation-short"
+  }
+ ],
+ "ClaudeComposerAsk": [
+  {
+   "beat": "B00",
+   "video": "hai-star-method-behavioral"
+  },
+  {
+   "beat": "B10",
+   "video": "hai-star-method-behavioral"
+  },
+  {
+   "beat": "B00",
+   "video": "hai-interview-end-to-end"
+  },
+  {
+   "beat": "B_YOURTURN",
+   "video": "hai-interview-end-to-end"
+  },
+  {
+   "beat": "B00",
+   "video": "hai-sql-window-functions-tie-bug"
+  },
+  {
+   "beat": "B03",
+   "video": "hai-sql-window-functions-tie-bug"
+  },
+  {
+   "beat": "B06",
+   "video": "hai-sql-window-functions-tie-bug"
+  },
+  {
+   "beat": "B10",
+   "video": "hai-sql-window-functions-tie-bug"
+  },
+  {
+   "beat": "B10",
+   "video": "banking-sql-running-total-bug"
+  },
+  {
+   "beat": "B06",
+   "video": "banking-sql-running-total-bug"
+  },
+  {
+   "beat": "B00",
+   "video": "banking-sql-running-total-bug"
+  },
+  {
+   "beat": "B03",
+   "video": "banking-sql-running-total-bug"
+  },
+  {
+   "beat": "B00",
+   "video": "banking-domain-star-method-behavioral"
+  },
+  {
+   "beat": "B_YOURTURN",
+   "video": "banking-domain-star-method-behavioral"
+  },
+  {
+   "beat": "B00",
+   "video": "banking-domain-interview-end-to-end-v2"
+  },
+  {
+   "beat": "B03",
+   "video": "banking-domain-interview-end-to-end-v2"
+  },
+  {
+   "beat": "B06",
+   "video": "banking-domain-interview-end-to-end-v2"
+  },
+  {
+   "beat": "B10",
+   "video": "banking-domain-interview-end-to-end-v2"
+  },
+  {
+   "beat": "B00",
+   "video": "2026-09-16-sql-query-optimization-for-analytics"
+  },
+  {
+   "beat": "B02",
+   "video": "2026-09-16-sql-query-optimization-for-analytics"
+  },
+  {
+   "beat": "B08",
+   "video": "2026-09-16-sql-query-optimization-for-analytics"
+  },
+  {
+   "beat": "B00",
+   "video": "claude-code-explained"
+  },
+  {
+   "beat": "B03",
+   "video": "claude-code-explained"
+  },
+  {
+   "beat": "B06",
+   "video": "claude-code-explained"
+  },
+  {
+   "beat": "B10",
+   "video": "claude-code-explained"
+  },
+  {
+   "beat": "B00",
+   "video": "correlation-is-not-causation"
+  },
+  {
+   "beat": "B02",
+   "video": "correlation-is-not-causation"
+  },
+  {
+   "beat": "B05",
+   "video": "correlation-is-not-causation"
+  },
+  {
+   "beat": "B10",
+   "video": "correlation-is-not-causation"
+  }
+ ],
+ "ClaudeComposerAsk916": [
+  {
+   "beat": "B00",
+   "video": "banking-domain-interview-end-to-end-v2-short"
+  },
+  {
+   "beat": "B03",
+   "video": "banking-domain-interview-end-to-end-v2-short"
+  },
+  {
+   "beat": "B10",
+   "video": "banking-domain-interview-end-to-end-v2-short"
+  },
+  {
+   "beat": "B00",
+   "video": "2026-09-16-sql-query-optimization-for-analytics-vertical"
+  },
+  {
+   "beat": "B02",
+   "video": "2026-09-16-sql-query-optimization-for-analytics-vertical"
+  },
+  {
+   "beat": "B08",
+   "video": "2026-09-16-sql-query-optimization-for-analytics-vertical"
+  },
+  {
+   "beat": "B00",
+   "video": "claude-code-explained-short"
+  },
+  {
+   "beat": "B03",
+   "video": "claude-code-explained-short"
+  },
+  {
+   "beat": "B06",
+   "video": "claude-code-explained-short"
+  },
+  {
+   "beat": "B10",
+   "video": "claude-code-explained-short"
+  },
+  {
+   "beat": "B00",
+   "video": "correlation-is-not-causation-short"
+  },
+  {
+   "beat": "B02",
+   "video": "correlation-is-not-causation-short"
+  },
+  {
+   "beat": "B05",
+   "video": "correlation-is-not-causation-short"
+  },
+  {
+   "beat": "B10",
+   "video": "correlation-is-not-causation-short"
+  }
+ ],
+ "ClaudeTitleOutro": [
+  {
+   "beat": "B11",
+   "video": "hai-star-method-behavioral"
+  },
+  {
+   "beat": "B_OUTRO",
+   "video": "hai-interview-end-to-end"
+  },
+  {
+   "beat": "B11",
+   "video": "hai-sql-window-functions-tie-bug"
+  },
+  {
+   "beat": "B11",
+   "video": "banking-sql-running-total-bug"
+  },
+  {
+   "beat": "B_OUTRO",
+   "video": "banking-domain-star-method-behavioral"
+  },
+  {
+   "beat": "B11",
+   "video": "banking-domain-interview-end-to-end-v2"
+  },
+  {
+   "beat": "B09",
+   "video": "2026-09-16-sql-query-optimization-for-analytics"
+  }
+ ],
+ "ClaudeTitleOutro916": [
+  {
+   "beat": "B09",
+   "video": "2026-09-16-sql-query-optimization-for-analytics-vertical"
+  }
+ ],
+ "ClaudeTitleOutroFilled": [
+  {
+   "beat": "B11",
+   "video": "banking-domain-interview-end-to-end-v2"
+  },
+  {
+   "beat": "B11",
+   "video": "banking-domain-interview-end-to-end-v2-short"
+  },
+  {
+   "beat": "B11",
+   "video": "claude-code-explained"
+  },
+  {
+   "beat": "B11",
+   "video": "correlation-is-not-causation"
+  }
+ ],
+ "ClaudeTitleOutroFilled916": [
+  {
+   "beat": "B11",
+   "video": "banking-domain-interview-end-to-end-v2-short"
+  },
+  {
+   "beat": "B11",
+   "video": "claude-code-explained-short"
+  },
+  {
+   "beat": "B11",
+   "video": "correlation-is-not-causation-short"
+  }
+ ],
+ "ClaudeVerdictArtifact": [
+  {
+   "beat": "B09",
+   "video": "hai-star-method-behavioral"
+  },
+  {
+   "beat": "B_VERDICT",
+   "video": "hai-interview-end-to-end"
+  },
+  {
+   "beat": "B_VERDICT",
+   "video": "banking-domain-star-method-behavioral"
+  },
+  {
+   "beat": "B07",
+   "video": "2026-09-16-sql-query-optimization-for-analytics"
+  }
+ ],
+ "ClaudeVerdictArtifact916": [
+  {
+   "beat": "B07",
+   "video": "2026-09-16-sql-query-optimization-for-analytics-vertical"
+  }
+ ],
+ "DivergentFates": [
+  {
+   "beat": "B06",
+   "video": "2026-09-16-sql-query-optimization-for-analytics"
+  }
+ ],
+ "LabelChip": [
+  {
+   "beat": "B02",
+   "video": "hai-star-method-behavioral"
+  },
+  {
+   "beat": "B07",
+   "video": "hai-star-method-behavioral"
+  },
+  {
+   "beat": "B12",
+   "video": "hai-interview-end-to-end"
+  },
+  {
+   "beat": "B14",
+   "video": "hai-interview-end-to-end"
+  },
+  {
+   "beat": "B06",
+   "video": "banking-domain-star-method-behavioral"
+  }
+ ],
+ "QuoteCard": [
+  {
+   "beat": "B04",
+   "video": "hai-star-method-behavioral"
+  },
+  {
+   "beat": "B08",
+   "video": "hai-star-method-behavioral"
+  },
+  {
+   "beat": "B04",
+   "video": "hai-interview-end-to-end"
+  },
+  {
+   "beat": "B09",
+   "video": "hai-interview-end-to-end"
+  },
+  {
+   "beat": "B10",
+   "video": "hai-interview-end-to-end"
+  },
+  {
+   "beat": "B16",
+   "video": "hai-interview-end-to-end"
+  },
+  {
+   "beat": "B03",
+   "video": "banking-domain-star-method-behavioral"
+  },
+  {
+   "beat": "B07",
+   "video": "banking-domain-star-method-behavioral"
+  },
+  {
+   "beat": "B10",
+   "video": "banking-domain-star-method-behavioral"
+  },
+  {
+   "beat": "B15",
+   "video": "banking-domain-star-method-behavioral"
+  },
+  {
+   "beat": "B16",
+   "video": "banking-domain-star-method-behavioral"
+  }
+ ],
+ "ScaleComparison": [
+  {
+   "beat": "B04",
+   "video": "2026-09-16-sql-query-optimization-for-analytics"
+  }
+ ],
+ "SqlAttritionChain": [
+  {
+   "beat": "B01",
+   "video": "2026-09-16-sql-query-optimization-for-analytics"
+  }
+ ],
+ "SqlAttritionChain916": [
+  {
+   "beat": "B01",
+   "video": "2026-09-16-sql-query-optimization-for-analytics-vertical"
+  }
+ ],
+ "SqlComposerAsk916": [
+  {
+   "beat": "B00",
+   "video": "2026-09-16-sql-query-optimization-for-analytics-vertical"
+  },
+  {
+   "beat": "B02",
+   "video": "2026-09-16-sql-query-optimization-for-analytics-vertical"
+  },
+  {
+   "beat": "B08",
+   "video": "2026-09-16-sql-query-optimization-for-analytics-vertical"
+  }
+ ],
+ "SqlDivergentFates": [
+  {
+   "beat": "B06",
+   "video": "2026-09-16-sql-query-optimization-for-analytics"
+  }
+ ],
+ "SqlDivergentFates916": [
+  {
+   "beat": "B06",
+   "video": "2026-09-16-sql-query-optimization-for-analytics-vertical"
+  }
+ ],
+ "SqlPlanBeat": [
+  {
+   "beat": "B03",
+   "video": "2026-09-16-sql-query-optimization-for-analytics"
+  }
+ ],
+ "SqlPlanBeat916": [
+  {
+   "beat": "B03",
+   "video": "2026-09-16-sql-query-optimization-for-analytics-vertical"
+  }
+ ],
+ "SqlPredictCard": [
+  {
+   "beat": "B05",
+   "video": "2026-09-16-sql-query-optimization-for-analytics"
+  }
+ ],
+ "SqlPredictCard916": [
+  {
+   "beat": "B05",
+   "video": "2026-09-16-sql-query-optimization-for-analytics-vertical"
+  }
+ ],
+ "SqlScaleComparison": [
+  {
+   "beat": "B04",
+   "video": "2026-09-16-sql-query-optimization-for-analytics"
+  }
+ ],
+ "SqlScaleComparison916": [
+  {
+   "beat": "B04",
+   "video": "2026-09-16-sql-query-optimization-for-analytics-vertical"
+  }
+ ],
+ "StateCardPair": [
+  {
+   "beat": "B01",
+   "video": "hai-star-method-behavioral"
+  },
+  {
+   "beat": "B03",
+   "video": "hai-star-method-behavioral"
+  },
+  {
+   "beat": "B05",
+   "video": "hai-star-method-behavioral"
+  },
+  {
+   "beat": "B06",
+   "video": "hai-star-method-behavioral"
+  },
+  {
+   "beat": "B01",
+   "video": "hai-interview-end-to-end"
+  },
+  {
+   "beat": "B03",
+   "video": "hai-interview-end-to-end"
+  },
+  {
+   "beat": "B05",
+   "video": "hai-interview-end-to-end"
+  },
+  {
+   "beat": "B11",
+   "video": "hai-interview-end-to-end"
+  },
+  {
+   "beat": "B15",
+   "video": "hai-interview-end-to-end"
+  },
+  {
+   "beat": "B17",
+   "video": "hai-interview-end-to-end"
+  },
+  {
+   "beat": "B19",
+   "video": "hai-interview-end-to-end"
+  },
+  {
+   "beat": "B23",
+   "video": "hai-interview-end-to-end"
+  },
+  {
+   "beat": "B11",
+   "video": "banking-domain-star-method-behavioral"
+  }
+ ]
+}

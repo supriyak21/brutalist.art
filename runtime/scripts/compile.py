@@ -25,7 +25,7 @@ Usage:
 
 Free/local. No API calls. ffmpeg + Pillow + Python stdlib.
 """
-import argparse, hashlib, json, shutil, subprocess, sys
+import argparse, hashlib, json, re, shutil, subprocess, sys
 from collections import Counter
 from pathlib import Path
 
@@ -483,6 +483,12 @@ def main():
                          "a slate in a review cut is information, in a master it's a defect)")
     ap.add_argument("--sheet", default="beat_sheet.json",
                     help="beat sheet filename (default: beat_sheet.json)")
+    ap.add_argument("--vbitrate", default=None,
+                    help="opt-in target video bitrate for the final encode, e.g. 40M or "
+                         "35000k (1-pass ABR, maxrate 1.25x, bufsize 2x; replaces crf 16). "
+                         "Default off. CRF on flat cream frames lands at a few hundred kbps "
+                         "at 4K — correct pixels, unusable bitrate. Average, not a hard floor: "
+                         "ffprobe the master.")
     a = ap.parse_args()
     folder = a.folder.resolve()
     sheet = json.loads((folder / a.sheet).read_text())
@@ -619,7 +625,16 @@ def main():
         cmd += ["-filter_complex", ";".join(fc), "-map", "[vout]", "-map", "1:a"]
     else:
         cmd += ["-map", "0:v", "-map", "1:a"]
-    cmd += ["-c:v", "libx264", "-preset", "slow", "-crf", "16",
+    if a.vbitrate:
+        m = re.fullmatch(r"(\d+(?:\.\d+)?)([kKmM]?)", a.vbitrate.strip())
+        if not m:
+            sys.exit(f"[art] --vbitrate: can't parse {a.vbitrate!r} (want e.g. 40M or 35000k)")
+        bps = int(float(m.group(1)) * {"": 1, "k": 1e3, "m": 1e6}[m.group(2).lower()])
+        rate = ["-b:v", str(bps), "-maxrate", str(int(bps * 1.25)), "-bufsize", str(bps * 2)]
+        print(f"[art] final encode: ABR target {bps / 1e6:.1f} Mbps (--vbitrate)")
+    else:
+        rate = ["-crf", "16"]
+    cmd += ["-c:v", "libx264", "-preset", "slow", *rate,
             "-pix_fmt", "yuv420p", "-c:a", "aac", "-shortest",
             "-t", f"{total:.3f}", str(out)]
     sh(cmd)
