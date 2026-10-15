@@ -1,0 +1,12 @@
+# This file is used internally by FFMPEG.
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/correlation-is-not-causation/short/media/videos/scenes/3840p24/partial_movie_files/B07_TheFlip/1582337396_1954152779_954196473.mp4'
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/correlation-is-not-causation/short/media/videos/scenes/3840p24/partial_movie_files/B07_TheFlip/3171861748_2187934756_3564644289.mp4'
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/correlation-is-not-causation/short/media/videos/scenes/3840p24/partial_movie_files/B07_TheFlip/3171861748_298226209_657591759.mp4'
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/correlation-is-not-causation/short/media/videos/scenes/3840p24/partial_movie_files/B07_TheFlip/3171861748_4099554022_3171711978.mp4'
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/correlation-is-not-causation/short/media/videos/scenes/3840p24/partial_movie_files/B07_TheFlip/3171861748_2154593346_1788795903.mp4'
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/correlation-is-not-causation/short/media/videos/scenes/3840p24/partial_movie_files/B07_TheFlip/3171861748_3470356148_623764270.mp4'
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/correlation-is-not-causation/short/media/videos/scenes/3840p24/partial_movie_files/B07_TheFlip/3171861748_1600661777_346754150.mp4'
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/correlation-is-not-causation/short/media/videos/scenes/3840p24/partial_movie_files/B07_TheFlip/3171861748_1409532376_3780598424.mp4'
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/correlation-is-not-causation/short/media/videos/scenes/3840p24/partial_movie_files/B07_TheFlip/3171861748_3759541724_2111497143.mp4'
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/correlation-is-not-causation/short/media/videos/scenes/3840p24/partial_movie_files/B07_TheFlip/3171861748_2425968985_1462232349.mp4'
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/correlation-is-not-causation/short/media/videos/scenes/3840p24/partial_movie_files/B07_TheFlip/3171861748_3932075976_1911025326.mp4'

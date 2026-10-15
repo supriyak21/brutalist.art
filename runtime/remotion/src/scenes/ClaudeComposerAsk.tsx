@@ -42,6 +42,13 @@ export const claudeComposerAskSchema = z.object({
   effortLabel: z.string().default('High'),
   /** Ghost text shown before typing starts. */
   placeholder: z.string().default('Type / for skills'),
+  /** FILL-THE-CANVAS opt-in: multiplies every type/UI size (eyebrow, title, greeting,
+   *  composer card, footer, output lines) while keeping the vertical anchors, so the
+   *  card grows down into the empty lower half of a 16:9 frame. Omitted → 1, i.e. the
+   *  legacy look — existing beat sheets render unchanged. ~1.5 suits a 2–3 line ask
+   *  plus a few output lines at 1920×1080. ClaudeComposerAsk916 shares this schema and
+   *  ignores it (it has its own portrait layout). */
+  scale:       z.number().optional(),
 });
 export type ClaudeComposerAskProps = z.infer<typeof claudeComposerAskSchema>;
 
@@ -61,14 +68,15 @@ const Spark: React.FC<{size: number}> = ({size}) => (
 
 export const ClaudeComposerAsk: React.FC<ClaudeComposerAskProps> = ({
   command, topic, segment, greeting, runningText, output, folderLabel,
-  modelLabel, effortLabel, placeholder,
+  modelLabel, effortLabel, placeholder, scale,
 }) => {
   const frame = useCurrentFrame();
   const {fps, width, height} = useVideoConfig();
   const portrait = height > width;
 
+  const k = scale ?? 1;                             // opt-in size multiplier (1 = legacy)
   const PAD_X = width * 0.08;
-  const UI = height * (portrait ? 0.016 : 0.022);   // base UI font size
+  const UI = height * (portrait ? 0.016 : 0.022) * k;   // base UI font size
   const CMD = UI * 1.25;                            // typed-command size
 
   const topicIn = spring({frame,            fps, config: SPRING_SMOOTH});
@@ -114,9 +122,9 @@ export const ClaudeComposerAsk: React.FC<ClaudeComposerAskProps> = ({
         left: PAD_X,
         top: height * 0.10,
         fontFamily: FONT.display,
-        fontSize: height * 0.016,
+        fontSize: height * 0.016 * k,
         fontWeight: 700,
-        letterSpacing: 3,
+        letterSpacing: 3 * k,
         textTransform: 'uppercase',
         color: CLAUDE.INK_SOFT,
         opacity: topicIn * 0.75,
@@ -131,7 +139,7 @@ export const ClaudeComposerAsk: React.FC<ClaudeComposerAskProps> = ({
         left: PAD_X,
         top: height * 0.15,
         fontFamily: CLAUDE_FONT.serif,
-        fontSize: height * 0.038,
+        fontSize: height * 0.038 * k,
         fontWeight: 600,
         color: CLAUDE.INK,
         letterSpacing: '-0.01em',
@@ -149,15 +157,15 @@ export const ClaudeComposerAsk: React.FC<ClaudeComposerAskProps> = ({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        gap: height * 0.018,
+        gap: height * 0.018 * k,
         opacity: cardIn,
       }}>
         {greeting !== '' ? (
           <>
-            <Spark size={height * 0.042} />
+            <Spark size={height * 0.042 * k} />
             <span style={{
               fontFamily: CLAUDE_FONT.serif,
-              fontSize: height * 0.05,
+              fontSize: height * 0.05 * k,
               color: CLAUDE.INK,
               letterSpacing: '-0.01em',
               whiteSpace: 'nowrap',
@@ -166,7 +174,7 @@ export const ClaudeComposerAsk: React.FC<ClaudeComposerAskProps> = ({
             </span>
           </>
         ) : (
-          <Spark size={height * 0.045} />
+          <Spark size={height * 0.045 * k} />
         )}
       </div>
 
