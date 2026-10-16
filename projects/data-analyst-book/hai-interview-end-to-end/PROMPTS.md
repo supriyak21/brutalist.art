@@ -1,13 +1,5 @@
-# PROMPTS — hai-interview-end-to-end
+# PROMPTS — hai-interview-end-to-end (v2, 2026-10-15)
 
-GATE F paperwork (required before render when Manim scenes are pending).
-
-**No open AI-image slots in this episode.** Per the same 0%-VOX decision
-logged in `SHOTLIST.md`/`VISUAL-PLAN.md`/`PEDAGOGY.md`, no beat requires a
-generated (gen-AI) still or clip — every beat is either a Manim scene
-(`scenes.py`) or a Remotion pattern (`ClaudeComposerAsk`, `StateCardPair`,
-`LabelChip`, `QuoteCard`, `ClaudeVerdictArtifact`, `ClaudeTitleOutro`), all
-rendered locally with no prompt-based image generation involved.
-
-This file exists to satisfy GATE F's paperwork check, not to log
-image-generation prompts that don't apply here.
+GATE F paperwork. **No open AI-image slots** in either cut: every beat is a Manim scene
+(`scenes.py` / `short/scenes.py`) or a Remotion pattern rendered locally (see `SHOTLIST.md`).
+No prompt-based image or video generation is involved, so there are no prompts to log.

@@ -1,0 +1,7 @@
+# This file is used internally by FFMPEG.
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/data-analyst-book/hai-interview-end-to-end/short/media/videos/scenes/3840p24/partial_movie_files/B20_Week1Block/2043213065_3884463612_3158800710.mp4'
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/data-analyst-book/hai-interview-end-to-end/short/media/videos/scenes/3840p24/partial_movie_files/B20_Week1Block/1318313771_620670407_1012284730.mp4'
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/data-analyst-book/hai-interview-end-to-end/short/media/videos/scenes/3840p24/partial_movie_files/B20_Week1Block/1318313771_1904762836_3880406032.mp4'
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/data-analyst-book/hai-interview-end-to-end/short/media/videos/scenes/3840p24/partial_movie_files/B20_Week1Block/1318313771_1248262622_4088487063.mp4'
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/data-analyst-book/hai-interview-end-to-end/short/media/videos/scenes/3840p24/partial_movie_files/B20_Week1Block/1318313771_1489008253_2313872979.mp4'
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/data-analyst-book/hai-interview-end-to-end/short/media/videos/scenes/3840p24/partial_movie_files/B20_Week1Block/1318313771_891910075_2353591720.mp4'

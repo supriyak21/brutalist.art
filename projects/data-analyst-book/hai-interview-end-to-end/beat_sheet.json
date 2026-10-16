@@ -9,7 +9,7 @@
     "channel": "@HumanitariansAI",
     "channel_title": "@HumanitariansAI",
     "persona": "HAI",
-    "narrator_identity": "Supriya, for Humanitarians AI",
+    "narrator_identity": "Supriya",
     "folderLabel": "@HumanitariansAI",
     "register": "Pragmatist",
     "engine": "kokoro",
@@ -26,7 +26,7 @@
     "aspect": "16:9",
     "resolution_target": "3840x2160 (4K) — render every beat and the final master at this resolution; compile.py needs --height 2160; verify each beat's rendered frame resolution before compiling the master",
     "date": "2026-07-24",
-    "total_estimated_duration_seconds": 322,
+    "total_estimated_duration_seconds": 161,
     "acts": [
       "I — The Six Stages",
       "II — What's Tested Where",
@@ -44,26 +44,63 @@
       "deviation_note": "VOX quota (~20-25%) intentionally NOT met — 0%. This episode's content (an interview-process map, a scoring matrix, a prep-plan schedule) has no archival/photographic referent; stock photos of 'a job interview' would be generic filler that doesn't teach anything the narration isn't already saying, which is exactly what the VOX lane is supposed to avoid. MANIM (structural counts, matrices, timelines) and REMOTION (comparisons, scale, checklists) carry the whole body instead. Logged as a deliberate, documented deviation per the deep-explainer SKILL.md's own allowance to 'use your judgment and document the decision' when the mix would otherwise force irrelevant stock media."
     },
     "gate_status": {
-      "gate_p": "PENDING — see PEDAGOGY.md",
-      "audio": "NOT GENERATED",
-      "render": "NOT RENDERED"
+      "gate_p": "PASS v2 — signed Supriya Kushwaha 2026-10-15 (PEDAGOGY.md)",
+      "audio": "NOT GENERATED (v2)",
+      "render": "NOT RENDERED (v2)"
     },
     "description": "The full data-analyst interview process (six stages), the what's-tested-where matrix, the three 2026 shifts (AI-tool fluency, messy-data take-homes, communication weighting), and a worked lopsided prep plan — from Chapter 1 of the Data Analyst Interview Preparation book.",
+    "revision": "v2 2026-10-15: narration tightened 703→374 words for a full-length 9:16 under the 180s Shorts cap; B10/B16/B19 dropped; intro/outro rebranded (Supriya primary, @HumanitariansAI small secondary). v1 in git 214bbe2.",
     "build": {
-      "at": "2026-07-24T18:08:37",
+      "at": "2026-10-15T23:10:14",
       "cut": "master",
-      "filled": 27,
-      "of": 27,
+      "filled": 24,
+      "of": 24,
       "slates": [],
       "skin_warnings": []
+    },
+    "portrait_overrides": {
+      "B01": {
+        "scale": 2.6
+      },
+      "B05": {
+        "scale": 2.6
+      },
+      "B11": {
+        "scale": 2.6
+      },
+      "B17": {
+        "scale": 2.6
+      },
+      "B12": {
+        "scale": 2.4
+      },
+      "B03": {
+        "scale": 2.2
+      },
+      "B14": {
+        "scale": 2.1
+      },
+      "B15": {
+        "scale": 2.0
+      },
+      "B04": {
+        "scale": 2.4
+      },
+      "B09": {
+        "scale": 2.6
+      },
+      "B_VERDICT": {
+        "scale": 1.6
+      },
+      "_note": "9:16 props scales (StateCardPair916/QuoteCard916 portrait layout). Apply to short/beat_sheet.json after any ./art shorts regeneration."
     }
   },
   "beats": [
     {
       "beat_id": "B00",
       "act": "OPEN",
-      "estimated_duration_s": 18,
-      "narration_text": "Supriya, for Humanitarians AI. Someone asked me a version of this question: what does a data analyst interview actually look like, start to finish? Most candidates prepare by collecting questions — a SQL site here, a stats sheet there. Here's the map instead: six stages, and each one tests something different.",
+      "estimated_duration_s": 13.8,
+      "narration_text": "Hi, I am Supriya and this video is about the data analyst interview, end to end. Don't prep by collecting questions. Prep by stage: there are six, and each tests something different.",
       "new_visual_element": "Cold open — composer ask, answered",
       "shot": {
         "type": "REMOTION",
@@ -72,7 +109,7 @@
         "show": [
           {
             "at": 0.0,
-            "event": "ClaudeComposerAsk: greeting 'Supriya, Humanitarians AI'; ask types itself"
+            "event": "ClaudeComposerAsk: greeting 'Hi, I am Supriya'; ask types itself"
           },
           {
             "at": 0.5,
@@ -86,14 +123,19 @@
         "remotion": {
           "pattern": "ClaudeComposerAsk",
           "props": {
-            "greeting": "Supriya, Humanitarians AI",
+            "greeting": "Hi, I am Supriya",
+            "topic": "DATA ANALYST INTERVIEW · END TO END",
+            "segment": "The Data Analyst Interview",
             "command": "What does a data analyst interview actually look like, end to end?",
             "runningText": "mapping the loop…",
             "output": [
-              "Six stages, roughly in order.",
+              "Six stages, in order.",
               "Each one scores something different.",
-              "2026 added three new wrinkles."
-            ]
+              "2026 added three shifts."
+            ],
+            "folderLabel": "Supriya",
+            "modelLabel": "Claude",
+            "scale": 1.6
           },
           "rendered": {
             "out": "media/B00.mp4",
@@ -102,19 +144,19 @@
         }
       },
       "audio_file": "mp3/beat-B00.mp3",
+      "actual_duration_s": 11.84,
       "build": {
         "status": "VIDEO",
         "src": "media/B00.mp4",
         "filled_by": "media",
-        "at": "2026-07-24T18:08:37"
-      },
-      "actual_duration_s": 21.85
+        "at": "2026-10-15T23:10:14"
+      }
     },
     {
       "beat_id": "B01",
       "act": "I — The Six Stages",
-      "estimated_duration_s": 6,
-      "narration_text": "Act one. The process, start to finish.",
+      "estimated_duration_s": 2.2,
+      "narration_text": "Act one. The six stages.",
       "new_visual_element": "Act card I",
       "shot": {
         "type": "REMOTION",
@@ -136,7 +178,9 @@
                 "detail": "The Six Stages",
                 "accent": "TEAL"
               }
-            ]
+            ],
+            "scale": 2.0,
+            "handle": "Supriya"
           },
           "rendered": {
             "out": "media/B01.mp4",
@@ -145,19 +189,19 @@
         }
       },
       "audio_file": "mp3/beat-B01.mp3",
+      "actual_duration_s": 1.94,
       "build": {
         "status": "VIDEO",
         "src": "media/B01.mp4",
         "filled_by": "media",
-        "at": "2026-07-24T18:08:37"
-      },
-      "actual_duration_s": 2.62
+        "at": "2026-10-15T23:10:14"
+      }
     },
     {
       "beat_id": "B02",
       "act": "I — The Six Stages",
-      "estimated_duration_s": 12,
-      "narration_text": "A typical loop runs about five or six blocks: recruiter screen, hiring-manager chat, technical screen, statistics round, case round, behavioral round — roughly in that order.",
+      "estimated_duration_s": 6.5,
+      "narration_text": "A typical loop, in order: recruiter screen, hiring-manager chat, technical screen, statistics, case, and behavioral.",
       "new_visual_element": "Six stage chips light in sequence",
       "shot": {
         "type": "GRAPHIC",
@@ -184,19 +228,19 @@
         }
       },
       "audio_file": "mp3/beat-B02.mp3",
+      "actual_duration_s": 7.42,
       "build": {
         "status": "MANIM",
         "src": "manim/B02.mp4",
         "filled_by": "manim",
-        "at": "2026-07-24T18:08:37"
-      },
-      "actual_duration_s": 12.48
+        "at": "2026-10-15T23:10:14"
+      }
     },
     {
       "beat_id": "B03",
       "act": "I — The Six Stages",
-      "estimated_duration_s": 12,
-      "narration_text": "Most processes run three to five rounds over two to six weeks. Startups compress that to two or three rounds; larger, FAANG-adjacent companies often stretch it longer.",
+      "estimated_duration_s": 7.3,
+      "narration_text": "Usually three to five rounds over two to six weeks. Startups compress it; larger companies stretch it.",
       "new_visual_element": "Timeline: compressed vs. stretched",
       "shot": {
         "type": "REMOTION",
@@ -232,7 +276,9 @@
             "highlight": {
               "text": "3-5 rounds · 2-6 weeks typical",
               "color": "GOLD"
-            }
+            },
+            "scale": 1.6,
+            "handle": "Supriya"
           },
           "rendered": {
             "out": "media/B03.mp4",
@@ -241,19 +287,19 @@
         }
       },
       "audio_file": "mp3/beat-B03.mp3",
+      "actual_duration_s": 6.27,
       "build": {
         "status": "VIDEO",
         "src": "media/B03.mp4",
         "filled_by": "media",
-        "at": "2026-07-24T18:08:37"
-      },
-      "actual_duration_s": 11.67
+        "at": "2026-10-15T23:10:14"
+      }
     },
     {
       "beat_id": "B04",
       "act": "I — The Six Stages",
-      "estimated_duration_s": 8,
-      "narration_text": "Here's what separates good prep from hard prep: each stage scores something different. Learn that before you learn anything else.",
+      "estimated_duration_s": 4.7,
+      "narration_text": "So learn what each stage scores before you learn anything else.",
       "new_visual_element": "Bridge kicker: 'each stage scores something different'",
       "shot": {
         "type": "REMOTION",
@@ -263,7 +309,7 @@
         "show": [
           {
             "at": 0.0,
-            "event": "the six chips from B02 shrink and re-arrange into a column, awaiting labels"
+            "event": "quote card: 'Learn what each stage scores, before anything else.'"
           }
         ],
         "remotion": {
@@ -271,8 +317,10 @@
           "props": {
             "sparkLine": "",
             "eyebrow": "",
-            "quote": "Each stage scores something different.",
-            "accent": "SLATE"
+            "quote": "Learn what each stage scores, before anything else.",
+            "accent": "SLATE",
+            "scale": 2.3,
+            "handle": "Supriya"
           },
           "rendered": {
             "out": "media/B04.mp4",
@@ -281,18 +329,18 @@
         }
       },
       "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 3.29,
       "build": {
         "status": "VIDEO",
         "src": "media/B04.mp4",
         "filled_by": "media",
-        "at": "2026-07-24T18:08:37"
-      },
-      "actual_duration_s": 7.72
+        "at": "2026-10-15T23:10:14"
+      }
     },
     {
       "beat_id": "B05",
       "act": "II — What's Tested Where",
-      "estimated_duration_s": 6,
+      "estimated_duration_s": 2.2,
       "narration_text": "Act two. What's tested where.",
       "new_visual_element": "Act card II",
       "shot": {
@@ -315,7 +363,9 @@
                 "detail": "What's Tested Where",
                 "accent": "TEAL"
               }
-            ]
+            ],
+            "scale": 2.0,
+            "handle": "Supriya"
           },
           "rendered": {
             "out": "media/B05.mp4",
@@ -324,19 +374,19 @@
         }
       },
       "audio_file": "mp3/beat-B05.mp3",
+      "actual_duration_s": 1.9,
       "build": {
         "status": "VIDEO",
         "src": "media/B05.mp4",
         "filled_by": "media",
-        "at": "2026-07-24T18:08:37"
-      },
-      "actual_duration_s": 2.11
+        "at": "2026-10-15T23:10:14"
+      }
     },
     {
       "beat_id": "B06",
       "act": "II — What's Tested Where",
-      "estimated_duration_s": 12,
-      "narration_text": "Recruiter screen: basic fit, communication, whether the logistics line up. Hiring-manager chat: relevant experience, and genuine motivation for this role.",
+      "estimated_duration_s": 4.3,
+      "narration_text": "Recruiter: fit and logistics. Hiring manager: relevant experience and motivation.",
       "new_visual_element": "Matrix rows 1-2 fill in",
       "shot": {
         "type": "GRAPHIC",
@@ -359,19 +409,19 @@
         }
       },
       "audio_file": "mp3/beat-B06.mp3",
+      "actual_duration_s": 5.74,
       "build": {
         "status": "MANIM",
         "src": "manim/B06.mp4",
         "filled_by": "manim",
-        "at": "2026-07-24T18:08:37"
-      },
-      "actual_duration_s": 11.75
+        "at": "2026-10-15T23:10:14"
+      }
     },
     {
       "beat_id": "B07",
       "act": "II — What's Tested Where",
-      "estimated_duration_s": 12,
-      "narration_text": "Technical screen: correct SQL or Python, and how clearly you explain your logic. Statistics round: sound reasoning under uncertainty, and stating your assumptions out loud.",
+      "estimated_duration_s": 6.0,
+      "narration_text": "Technical: correct SQL or Python, explained clearly. Statistics: sound reasoning, assumptions stated out loud.",
       "new_visual_element": "Matrix rows 3-4 fill in",
       "shot": {
         "type": "GRAPHIC",
@@ -394,19 +444,19 @@
         }
       },
       "audio_file": "mp3/beat-B07.mp3",
+      "actual_duration_s": 7.85,
       "build": {
         "status": "MANIM",
         "src": "manim/B07.mp4",
         "filled_by": "manim",
-        "at": "2026-07-24T18:08:37"
-      },
-      "actual_duration_s": 13.29
+        "at": "2026-10-15T23:10:14"
+      }
     },
     {
       "beat_id": "B08",
       "act": "II — What's Tested Where",
-      "estimated_duration_s": 12,
-      "narration_text": "Case round: framing, assumptions, and a defensible recommendation — over raw correctness. Behavioral round: collaboration, ownership, and how you handle ambiguity.",
+      "estimated_duration_s": 6.5,
+      "narration_text": "Case: framing and a defensible recommendation, over raw correctness. Behavioral: collaboration, ownership, and handling ambiguity.",
       "new_visual_element": "Matrix rows 5-6 fill in, full table visible",
       "shot": {
         "type": "GRAPHIC",
@@ -429,19 +479,19 @@
         }
       },
       "audio_file": "mp3/beat-B08.mp3",
+      "actual_duration_s": 8.96,
       "build": {
         "status": "MANIM",
         "src": "manim/B08.mp4",
         "filled_by": "manim",
-        "at": "2026-07-24T18:08:37"
-      },
-      "actual_duration_s": 11.93
+        "at": "2026-10-15T23:10:14"
+      }
     },
     {
       "beat_id": "B09",
       "act": "II — What's Tested Where",
-      "estimated_duration_s": 11,
-      "narration_text": "In the technical screen, a query that runs but that you can't explain is a weak answer. Interviewers grade logic and communication — not just whether the code executes.",
+      "estimated_duration_s": 6.5,
+      "narration_text": "Which means a query that runs but that you can't explain is a weak answer.",
       "new_visual_element": "Quote card, sourced",
       "shot": {
         "type": "REMOTION",
@@ -458,9 +508,11 @@
           "pattern": "QuoteCard",
           "props": {
             "sparkLine": "",
-            "eyebrow": "Ch.3 — What's Tested Here",
+            "eyebrow": "Ch.1 — What's Tested Where",
             "quote": "A query that runs but that you can't explain is a weak answer.",
-            "accent": "SLATE"
+            "accent": "SLATE",
+            "scale": 2.3,
+            "handle": "Supriya"
           },
           "rendered": {
             "out": "media/B09.mp4",
@@ -469,58 +521,18 @@
         }
       },
       "audio_file": "mp3/beat-B09.mp3",
+      "actual_duration_s": 4.35,
       "build": {
         "status": "VIDEO",
         "src": "media/B09.mp4",
         "filled_by": "media",
-        "at": "2026-07-24T18:08:37"
-      },
-      "actual_duration_s": 11.48
-    },
-    {
-      "beat_id": "B10",
-      "act": "II — What's Tested Where",
-      "estimated_duration_s": 9,
-      "narration_text": "Prepping without this matrix is exactly how strong candidates give technically correct answers that still don't land.",
-      "new_visual_element": "Bridge kicker",
-      "shot": {
-        "type": "REMOTION",
-        "source": "own",
-        "lane": "card",
-        "scene_type": "structure",
-        "show": [
-          {
-            "at": 0.0,
-            "event": "the six-row matrix dims; a single line surfaces: 'correct ≠ landed'"
-          }
-        ],
-        "remotion": {
-          "pattern": "QuoteCard",
-          "props": {
-            "sparkLine": "",
-            "eyebrow": "",
-            "quote": "Correct isn't the same as landed.",
-            "accent": "CRIMSON"
-          },
-          "rendered": {
-            "out": "media/B10.mp4",
-            "at": ""
-          }
-        }
-      },
-      "audio_file": "mp3/beat-B10.mp3",
-      "build": {
-        "status": "VIDEO",
-        "src": "media/B10.mp4",
-        "filled_by": "media",
-        "at": "2026-07-24T18:08:37"
-      },
-      "actual_duration_s": 7.96
+        "at": "2026-10-15T23:10:14"
+      }
     },
     {
       "beat_id": "B11",
       "act": "III — What Changed by 2026",
-      "estimated_duration_s": 6,
+      "estimated_duration_s": 2.6,
       "narration_text": "Act three. What changed by 2026.",
       "new_visual_element": "Act card III",
       "shot": {
@@ -543,7 +555,9 @@
                 "detail": "What Changed by 2026",
                 "accent": "TEAL"
               }
-            ]
+            ],
+            "scale": 2.0,
+            "handle": "Supriya"
           },
           "rendered": {
             "out": "media/B11.mp4",
@@ -552,19 +566,19 @@
         }
       },
       "audio_file": "mp3/beat-B11.mp3",
+      "actual_duration_s": 3.18,
       "build": {
         "status": "VIDEO",
         "src": "media/B11.mp4",
         "filled_by": "media",
-        "at": "2026-07-24T18:08:37"
-      },
-      "actual_duration_s": 3.5
+        "at": "2026-10-15T23:10:14"
+      }
     },
     {
       "beat_id": "B12",
       "act": "III — What Changed by 2026",
-      "estimated_duration_s": 10,
-      "narration_text": "First shift: AI-tool fluency is now assessed. You may be asked how you use tools like ChatGPT or Cursor responsibly.",
+      "estimated_duration_s": 2.6,
+      "narration_text": "First: AI-tool fluency is now assessed.",
       "new_visual_element": "Shift 1 chip lands",
       "shot": {
         "type": "REMOTION",
@@ -574,16 +588,22 @@
         "show": [
           {
             "at": 0.0,
-            "event": "chip 1 of 3 lands: 'AI-tool fluency, assessed'"
+            "event": "card 1 of 3 lands: 'AI-tool fluency — now assessed'"
           }
         ],
         "remotion": {
-          "pattern": "LabelChip",
+          "pattern": "StateCardPair",
           "props": {
             "sparkLine": "2026 shift 1 of 3",
-            "chips": [
-              "AI-tool fluency"
-            ]
+            "cards": [
+              {
+                "label": "AI-tool fluency",
+                "detail": "now assessed: judgment, not just output",
+                "accent": "TEAL"
+              }
+            ],
+            "scale": 2.0,
+            "handle": "Supriya"
           },
           "rendered": {
             "out": "media/B12.mp4",
@@ -592,19 +612,19 @@
         }
       },
       "audio_file": "mp3/beat-B12.mp3",
+      "actual_duration_s": 2.73,
       "build": {
         "status": "VIDEO",
         "src": "media/B12.mp4",
         "filled_by": "media",
-        "at": "2026-07-24T18:08:37"
-      },
-      "actual_duration_s": 9.47
+        "at": "2026-10-15T23:10:14"
+      }
     },
     {
       "beat_id": "B13",
       "act": "III — What Changed by 2026",
-      "estimated_duration_s": 13,
-      "narration_text": "What they're listening for is judgment: when to lean on the tool, and when to read the generated query line by line — because AI output can look right and still be subtly wrong.",
+      "estimated_duration_s": 9.5,
+      "narration_text": "They want judgment: knowing when to read the generated query line by line, because it can look right and still be wrong.",
       "new_visual_element": "Code lines scanned, one flagged",
       "shot": {
         "type": "GRAPHIC",
@@ -631,19 +651,19 @@
         }
       },
       "audio_file": "mp3/beat-B13.mp3",
+      "actual_duration_s": 7.3,
       "build": {
         "status": "MANIM",
         "src": "manim/B13.mp4",
         "filled_by": "manim",
-        "at": "2026-07-24T18:08:37"
-      },
-      "actual_duration_s": 12.01
+        "at": "2026-10-15T23:10:14"
+      }
     },
     {
       "beat_id": "B14",
       "act": "III — What Changed by 2026",
-      "estimated_duration_s": 12,
-      "narration_text": "Second shift: take-home case studies are common now. Mid-to-large companies send a real-feeling business question on intentionally messy data, with a time cap and a presentation after.",
+      "estimated_duration_s": 6.0,
+      "narration_text": "Second: take-home cases on intentionally messy data, with a time cap and a presentation.",
       "new_visual_element": "Shift 2 chip lands + messy-to-clean sketch",
       "shot": {
         "type": "REMOTION",
@@ -653,21 +673,27 @@
         "show": [
           {
             "at": 0.0,
-            "event": "chip 2 of 3 lands: 'messy-data take-homes'"
-          },
-          {
-            "at": 0.5,
-            "event": "a jumbled data icon resolves toward a clock + a single slide icon"
+            "event": "shift 1 recedes to SLATE; card 2 lands: 'Messy-data take-homes'"
           }
         ],
         "remotion": {
-          "pattern": "LabelChip",
+          "pattern": "StateCardPair",
           "props": {
             "sparkLine": "2026 shift 2 of 3",
-            "chips": [
-              "AI-tool fluency",
-              "messy-data take-homes"
-            ]
+            "cards": [
+              {
+                "label": "AI-tool fluency",
+                "detail": "assessed",
+                "accent": "SLATE"
+              },
+              {
+                "label": "Messy-data take-homes",
+                "detail": "time cap, then a presentation",
+                "accent": "TEAL"
+              }
+            ],
+            "scale": 1.6,
+            "handle": "Supriya"
           },
           "rendered": {
             "out": "media/B14.mp4",
@@ -676,19 +702,19 @@
         }
       },
       "audio_file": "mp3/beat-B14.mp3",
+      "actual_duration_s": 5.95,
       "build": {
         "status": "VIDEO",
         "src": "media/B14.mp4",
         "filled_by": "media",
-        "at": "2026-07-24T18:08:37"
-      },
-      "actual_duration_s": 13.18
+        "at": "2026-10-15T23:10:14"
+      }
     },
     {
       "beat_id": "B15",
       "act": "III — What Changed by 2026",
-      "estimated_duration_s": 12,
-      "narration_text": "Third shift: communication and business framing are weighted heavily. Later rounds reward stakeholder translation and judgment about which question is worth answering — not just the ability to compute.",
+      "estimated_duration_s": 6.5,
+      "narration_text": "Third: communication weighs heavily. Later rounds reward stakeholder translation and picking the question worth answering.",
       "new_visual_element": "Shift 3 chip lands + weight shifts",
       "shot": {
         "type": "REMOTION",
@@ -708,7 +734,7 @@
         "remotion": {
           "pattern": "StateCardPair",
           "props": {
-            "sparkLine": "",
+            "sparkLine": "2026 shift 3 of 3",
             "cards": [
               {
                 "label": "Raw Compute",
@@ -724,7 +750,9 @@
             "highlight": {
               "text": "later rounds tip this way",
               "color": "GOLD"
-            }
+            },
+            "scale": 1.55,
+            "handle": "Supriya"
           },
           "rendered": {
             "out": "media/B15.mp4",
@@ -733,58 +761,18 @@
         }
       },
       "audio_file": "mp3/beat-B15.mp3",
+      "actual_duration_s": 7.74,
       "build": {
         "status": "VIDEO",
         "src": "media/B15.mp4",
         "filled_by": "media",
-        "at": "2026-07-24T18:08:37"
-      },
-      "actual_duration_s": 13.63
-    },
-    {
-      "beat_id": "B16",
-      "act": "III — What Changed by 2026",
-      "estimated_duration_s": 9,
-      "narration_text": "Put the map and the 2026 shifts together, and here's what a real three-week plan looks like.",
-      "new_visual_element": "Bridge kicker to worked example",
-      "shot": {
-        "type": "REMOTION",
-        "source": "own",
-        "lane": "card",
-        "scene_type": "structure",
-        "show": [
-          {
-            "at": 0.0,
-            "event": "the three chips and the six-stage matrix condense into a single calendar icon"
-          }
-        ],
-        "remotion": {
-          "pattern": "QuoteCard",
-          "props": {
-            "sparkLine": "",
-            "eyebrow": "",
-            "quote": "Map + 2026 shifts → a real 3-week plan.",
-            "accent": "SLATE"
-          },
-          "rendered": {
-            "out": "media/B16.mp4",
-            "at": ""
-          }
-        }
-      },
-      "audio_file": "mp3/beat-B16.mp3",
-      "build": {
-        "status": "VIDEO",
-        "src": "media/B16.mp4",
-        "filled_by": "media",
-        "at": "2026-07-24T18:08:37"
-      },
-      "actual_duration_s": 6.34
+        "at": "2026-10-15T23:10:14"
+      }
     },
     {
       "beat_id": "B17",
       "act": "IV — The Worked Plan",
-      "estimated_duration_s": 6,
+      "estimated_duration_s": 2.2,
       "narration_text": "Act four. The worked plan.",
       "new_visual_element": "Act card IV",
       "shot": {
@@ -807,7 +795,9 @@
                 "detail": "The Worked Plan",
                 "accent": "TEAL"
               }
-            ]
+            ],
+            "scale": 2.0,
+            "handle": "Supriya"
           },
           "rendered": {
             "out": "media/B17.mp4",
@@ -816,19 +806,19 @@
         }
       },
       "audio_file": "mp3/beat-B17.mp3",
+      "actual_duration_s": 1.77,
       "build": {
         "status": "VIDEO",
         "src": "media/B17.mp4",
         "filled_by": "media",
-        "at": "2026-07-24T18:08:37"
-      },
-      "actual_duration_s": 1.98
+        "at": "2026-10-15T23:10:14"
+      }
     },
     {
       "beat_id": "B18",
       "act": "IV — The Worked Plan",
-      "estimated_duration_s": 13,
-      "narration_text": "Meet Maya. Economics degree, eight months out. Two statistics courses, one intro-databases course, a three-month analytics bootcamp — and interviews starting in three weeks.",
+      "estimated_duration_s": 12.1,
+      "narration_text": "Meet Maya: economics degree, a bootcamp, interviews in three weeks. She can write a JOIN, but has never done a take-home or told a behavioral story that landed.",
       "new_visual_element": "Maya's profile chips",
       "shot": {
         "type": "GRAPHIC",
@@ -851,72 +841,19 @@
         }
       },
       "audio_file": "mp3/beat-B18.mp3",
+      "actual_duration_s": 10.56,
       "build": {
         "status": "MANIM",
         "src": "manim/B18.mp4",
         "filled_by": "manim",
-        "at": "2026-07-24T18:08:37"
-      },
-      "actual_duration_s": 12.44
-    },
-    {
-      "beat_id": "B19",
-      "act": "IV — The Worked Plan",
-      "estimated_duration_s": 11,
-      "narration_text": "She can write a SELECT with a JOIN, and build a pivot table. She's never done a take-home case, or told a behavioral story that landed.",
-      "new_visual_element": "Can / can't split",
-      "shot": {
-        "type": "REMOTION",
-        "source": "own",
-        "lane": "remotion",
-        "scene_type": "divergence",
-        "show": [
-          {
-            "at": 0.0,
-            "event": "left column TEAL: 'SELECT + JOIN', 'pivot table'"
-          },
-          {
-            "at": 0.5,
-            "event": "right column CRIMSON: 'take-home case', 'behavioral story'"
-          }
-        ],
-        "remotion": {
-          "pattern": "StateCardPair",
-          "props": {
-            "sparkLine": "",
-            "cards": [
-              {
-                "label": "Can Do",
-                "detail": "SELECT + JOIN · pivot table",
-                "accent": "TEAL"
-              },
-              {
-                "label": "Hasn't Done",
-                "detail": "take-home case · behavioral story",
-                "accent": "CRIMSON"
-              }
-            ]
-          },
-          "rendered": {
-            "out": "media/B19.mp4",
-            "at": ""
-          }
-        }
-      },
-      "audio_file": "mp3/beat-B19.mp3",
-      "build": {
-        "status": "VIDEO",
-        "src": "media/B19.mp4",
-        "filled_by": "media",
-        "at": "2026-07-24T18:08:37"
-      },
-      "actual_duration_s": 9.0
+        "at": "2026-10-15T23:10:14"
+      }
     },
     {
       "beat_id": "B20",
       "act": "IV — The Worked Plan",
-      "estimated_duration_s": 12,
-      "narration_text": "Week one shores up the technical floor. SQL is the most-tested skill and she's slow at it, so SQL and the statistics round get ninety minutes a day.",
+      "estimated_duration_s": 6.5,
+      "narration_text": "Week one: SQL, the most-tested skill and her slowest, ninety minutes a day, plus statistics.",
       "new_visual_element": "Week 1 calendar block",
       "shot": {
         "type": "GRAPHIC",
@@ -939,19 +876,19 @@
         }
       },
       "audio_file": "mp3/beat-B20.mp3",
+      "actual_duration_s": 6.19,
       "build": {
         "status": "MANIM",
         "src": "manim/B20.mp4",
         "filled_by": "manim",
-        "at": "2026-07-24T18:08:37"
-      },
-      "actual_duration_s": 11.26
+        "at": "2026-10-15T23:10:14"
+      }
     },
     {
       "beat_id": "B21",
       "act": "IV — The Worked Plan",
-      "estimated_duration_s": 13,
-      "narration_text": "Week two covers what she's never done. Spreadsheets and pandas get light maintenance time — the real investment goes to the case round, including one full timed take-home.",
+      "estimated_duration_s": 5.2,
+      "narration_text": "Week two: the case round she's never seen, including one full take-home.",
       "new_visual_element": "Week 2 calendar block",
       "shot": {
         "type": "GRAPHIC",
@@ -974,19 +911,19 @@
         }
       },
       "audio_file": "mp3/beat-B21.mp3",
+      "actual_duration_s": 4.27,
       "build": {
         "status": "MANIM",
         "src": "manim/B21.mp4",
         "filled_by": "manim",
-        "at": "2026-07-24T18:08:37"
-      },
-      "actual_duration_s": 12.07
+        "at": "2026-10-15T23:10:14"
+      }
     },
     {
       "beat_id": "B22",
       "act": "IV — The Worked Plan",
-      "estimated_duration_s": 12,
-      "narration_text": "Week three integrates it all: behavioral stories, then the full mock loop, twice — self-scoring each stage and re-drilling the two weakest.",
+      "estimated_duration_s": 5.6,
+      "narration_text": "Week three: behavioral stories, then two full mock loops, re-drilling her two weakest.",
       "new_visual_element": "Week 3 calendar block",
       "shot": {
         "type": "GRAPHIC",
@@ -1009,97 +946,59 @@
         }
       },
       "audio_file": "mp3/beat-B22.mp3",
+      "actual_duration_s": 5.27,
       "build": {
         "status": "MANIM",
         "src": "manim/B22.mp4",
         "filled_by": "manim",
-        "at": "2026-07-24T18:08:37"
-      },
-      "actual_duration_s": 9.56
+        "at": "2026-10-15T23:10:14"
+      }
     },
     {
       "beat_id": "B23",
       "act": "IV — The Worked Plan",
-      "estimated_duration_s": 12,
-      "narration_text": "Notice the plan is lopsided on purpose. Most of the hours go to the stages she's weakest at, and that count the most — not spread evenly across all six.",
+      "estimated_duration_s": 6.0,
+      "narration_text": "Lopsided on purpose: most hours go where she's weakest and the stage counts most.",
       "new_visual_element": "Uneven bar chart, the payoff visual",
       "shot": {
-        "type": "REMOTION",
+        "type": "GRAPHIC",
         "source": "own",
-        "lane": "remotion",
-        "scene_type": "scale",
+        "lane": "manim",
         "show": [
           {
             "at": 0.0,
-            "event": "six bars, one per stage, sized by (weight × low-confidence) — case and behavioral tallest, recruiter screen shortest"
+            "event": "six bars, one per stage, grow to illustrative prep-hour heights; case + behavioral tallest, recruiter shortest"
           },
           {
-            "at": 0.7,
-            "event": "'lopsided on purpose' lands, terracotta-equivalent GOLD underline"
+            "at": 0.0,
+            "event": "cue 'lopsided on purpose': GOLD pill lands"
           }
-        ],
-        "remotion": {
-          "pattern": "StateCardPair",
-          "props": {
-            "sparkLine": "Hours by stage — illustrative, not a book-stated figure",
-            "cards": [
-              {
-                "label": "Recruiter",
-                "detail": "least hours",
-                "accent": "SLATE"
-              },
-              {
-                "label": "HM Chat",
-                "detail": "light",
-                "accent": "SLATE"
-              },
-              {
-                "label": "Technical",
-                "detail": "moderate",
-                "accent": "SLATE"
-              },
-              {
-                "label": "Statistics",
-                "detail": "moderate",
-                "accent": "SLATE"
-              },
-              {
-                "label": "Case",
-                "detail": "most hours",
-                "accent": "TEAL"
-              },
-              {
-                "label": "Behavioral",
-                "detail": "most hours",
-                "accent": "TEAL"
-              }
-            ],
-            "highlight": {
-              "text": "lopsided on purpose",
-              "color": "GOLD"
-            }
-          },
-          "rendered": {
-            "out": "media/B23.mp4",
-            "at": ""
-          }
-        }
+        ]
       },
       "audio_file": "mp3/beat-B23.mp3",
-      "build": {
-        "status": "VIDEO",
-        "src": "media/B23.mp4",
-        "filled_by": "media",
-        "at": "2026-07-24T18:08:37"
+      "actual_duration_s": 5.29,
+      "graphic": {
+        "engine": "manim",
+        "manim": "B23_LopsidedHours",
+        "production_viz": {
+          "label": "lopsided on purpose",
+          "mechanic": "uneven bar heights",
+          "note": "heights illustrative, labeled on screen as not a book-stated figure (as in v1)"
+        }
       },
-      "actual_duration_s": 10.9
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B23.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-15T23:10:14"
+      }
     },
     {
       "beat_id": "B_VERDICT",
       "act": "CLOSE",
-      "estimated_duration_s": 26,
+      "estimated_duration_s": 13.8,
       "lead_silence_s": 0.5,
-      "narration_text": "Let's recap. Six stages, and each one scores something different — that matrix beats collecting random questions. Three to five rounds, two to six weeks. 2026 added three shifts: AI-tool judgment, messy-data take-homes, heavier weight on communication. A query you can't explain is a weak answer — screens grade logic, not just execution. And spend your prep time where you're weakest and the stage counts most: lopsided, on purpose.",
+      "narration_text": "Let's recap. Six stages, each scoring something different. A query you can't explain is a weak answer. 2026 added AI-tool judgment, messy take-homes, and heavier communication weight. So prep lopsided, on purpose.",
       "new_visual_element": "VERDICT recap",
       "shot": {
         "type": "REMOTION",
@@ -1116,13 +1015,14 @@
           "props": {
             "artifactTitle": "Prep by stage, not by pile",
             "artifactHeading": "Recap",
+            "handle": "Supriya",
             "artifactLines": [
               "Six stages. Each one scores something different.",
-              "3-5 rounds, 2-6 weeks is typical.",
-              "2026 added AI-tool judgment, messy take-homes, and heavier communication weight.",
               "A query you can't explain is a weak answer.",
-              "Spend hours where you're weakest and the stage counts most."
-            ]
+              "2026 added AI-tool judgment, messy take-homes, and heavier communication weight.",
+              "Prep lopsided, on purpose."
+            ],
+            "scale": 1.45
           },
           "rendered": {
             "out": "media/B_VERDICT.mp4",
@@ -1131,19 +1031,19 @@
         }
       },
       "audio_file": "mp3/beat-B_VERDICT.mp3",
+      "actual_duration_s": 16.0,
       "build": {
         "status": "VIDEO",
         "src": "media/B_VERDICT.mp4",
         "filled_by": "media",
-        "at": "2026-07-24T18:08:37"
-      },
-      "actual_duration_s": 28.82
+        "at": "2026-10-15T23:10:14"
+      }
     },
     {
       "beat_id": "B_YOURTURN",
       "act": "CLOSE",
-      "estimated_duration_s": 30,
-      "narration_text": "Your turn. Try this: I have interviews starting in a few weeks for an entry-level data analyst role. I'm confident with SQL joins and pivot tables, but I've never done a take-home case study or a structured behavioral round. Using the six-stage matrix from this video, help me rank the stages by weight and by my own confidence, and build me a lopsided week-by-week prep plan like Maya's — telling me exactly where my hours should go each week.",
+      "estimated_duration_s": 19.8,
+      "narration_text": "Your turn. Try this: I have data analyst interviews in a few weeks. I'm solid on SQL joins, but I've never done a take-home or a behavioral round. Rank the six stages by weight and my confidence, then build me a lopsided week-by-week plan like Maya's.",
       "new_visual_element": "YOUR TURN",
       "shot": {
         "type": "REMOTION",
@@ -1159,8 +1059,13 @@
           "pattern": "ClaudeComposerAsk",
           "props": {
             "greeting": "Your turn.",
+            "topic": "DATA ANALYST INTERVIEW · END TO END",
+            "segment": "Build Your Own Plan",
+            "command": "I have data analyst interviews in a few weeks. I'm solid on SQL joins, but I've never done a take-home or a behavioral round. Rank the six stages by weight and my confidence, then build me a lopsided week-by-week plan like Maya's.",
             "runningText": "paste this in and build your plan…",
-            "command": "I have interviews starting in a few weeks for an entry-level data analyst role. I'm confident with SQL joins and pivot tables, but I've never done a take-home case study or a structured behavioral round. Using the six-stage matrix — recruiter, hiring-manager, technical, statistics, case, behavioral — help me rank the stages by weight and by my own confidence, then build me a lopsided week-by-week prep plan: exactly where my hours should go each week, and why."
+            "folderLabel": "Supriya",
+            "modelLabel": "Claude",
+            "scale": 1.6
           },
           "rendered": {
             "out": "media/B_YOURTURN.mp4",
@@ -1169,19 +1074,19 @@
         }
       },
       "audio_file": "mp3/beat-B_YOURTURN.mp3",
+      "actual_duration_s": 17.34,
       "build": {
         "status": "VIDEO",
         "src": "media/B_YOURTURN.mp4",
         "filled_by": "media",
-        "at": "2026-07-24T18:08:37"
-      },
-      "actual_duration_s": 27.97
+        "at": "2026-10-15T23:10:14"
+      }
     },
     {
       "beat_id": "B_OUTRO",
       "act": "CLOSE",
-      "estimated_duration_s": 7,
-      "narration_text": "The Data Analyst Interview, End to End. Supriya, for Humanitarians AI.",
+      "estimated_duration_s": 3.0,
+      "narration_text": "The Data Analyst Interview, End to End.",
       "new_visual_element": "Title re-read outro",
       "shot": {
         "type": "REMOTION",
@@ -1194,11 +1099,12 @@
           }
         ],
         "remotion": {
-          "pattern": "ClaudeTitleOutro",
+          "pattern": "ClaudeTitleOutroFilled",
           "props": {
-            "title": "The Data Analyst Interview, End to End",
-            "handle": "@HumanitariansAI",
-            "subline": "Data Analyst Interview Preparation"
+            "title": "The Data Analyst Interview, End to End.",
+            "handle": "Supriya",
+            "subline": "@HumanitariansAI · Data Analyst Interview Preparation",
+            "scale": 1.3
           },
           "rendered": {
             "out": "media/B_OUTRO.mp4",
@@ -1207,13 +1113,13 @@
         }
       },
       "audio_file": "mp3/beat-B_OUTRO.mp3",
+      "actual_duration_s": 2.39,
       "build": {
         "status": "VIDEO",
         "src": "media/B_OUTRO.mp4",
         "filled_by": "media",
-        "at": "2026-07-24T18:08:37"
-      },
-      "actual_duration_s": 5.72
+        "at": "2026-10-15T23:10:14"
+      }
     }
   ]
 }
