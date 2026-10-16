@@ -2,6 +2,7 @@ import React from 'react';
 import { AbsoluteFill, useCurrentFrame, useVideoConfig, spring } from 'remotion';
 import { z } from 'zod';
 import { CLAUDE, CLAUDE_FONT } from '../tokens/claude';
+import { HandleChip } from './ClaudeCodeBeat';
 
 /**
  * ClaudeVerdictArtifact — reusable verdict/artifact page in the Claude fidelity skin.
@@ -23,6 +24,12 @@ export const claudeVerdictArtifactSchema = z.object({
     'Cowork: asynchronous recipes — runs while you rehearse.',
     'Code: the pipeline room — systems you own.',
   ]),
+  /** Lower-right author handle chip (LOGO LAW, e.g. "Supriya"). Omitted → no chip. */
+  handle: z.string().optional(),
+  /** FILL-THE-CANVAS opt-in: grows the card's type + padding (CSS zoom, so text
+   *  re-wraps inside the same on-screen card width). Omitted → 1, the legacy look.
+   *  ClaudeVerdictArtifact916 applies it the same way. */
+  scale: z.number().optional(),
 });
 export type ClaudeVerdictArtifactProps = z.infer<typeof claudeVerdictArtifactSchema>;
 
@@ -47,10 +54,11 @@ const Spark: React.FC<{ size?: number }> = ({ size = 30 }) => (
 );
 
 export const ClaudeVerdictArtifact: React.FC<ClaudeVerdictArtifactProps> = ({
-  artifactTitle, artifactHeading, artifactLines,
+  artifactTitle, artifactHeading, artifactLines, handle, scale,
 }) => {
   const frame = useCurrentFrame();
-  const { fps, width } = useVideoConfig();
+  const { fps, width, height } = useVideoConfig();
+  const k = scale ?? 1;
 
   const cardIn = spring({ frame, fps, config: { damping: 28, stiffness: 140, mass: 0.8 } });
   const headIn = spring({ frame: frame - 8, fps, config: { damping: 28, stiffness: 140, mass: 0.8 } });
@@ -63,7 +71,8 @@ export const ClaudeVerdictArtifact: React.FC<ClaudeVerdictArtifactProps> = ({
     <AbsoluteFill style={{ background: '#F2F0E9', alignItems: 'center', justifyContent: 'center' }}>
       {/* Artifact card */}
       <div style={{
-        width: cardW,
+        width: cardW / k,
+        zoom: k !== 1 ? k : undefined,
         background: CLAUDE.CARD,
         borderRadius: 24,
         boxShadow: '0 20px 72px rgba(61,57,41,0.16)',
@@ -115,6 +124,8 @@ export const ClaudeVerdictArtifact: React.FC<ClaudeVerdictArtifactProps> = ({
           })}
         </div>
       </div>
+      <HandleChip handle={handle} fontSize={height * 0.024} right={width * 0.07}
+        bottom={height * 0.055} opacity={0.9} />
     </AbsoluteFill>
   );
 };

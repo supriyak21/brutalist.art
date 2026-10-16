@@ -34,6 +34,9 @@ import {ClaudeTitleOutro, claudeTitleOutroSchema} from './scenes/ClaudeTitleOutr
 import {StateCardPair, stateCardPairSchema} from './scenes/StateCardPair';
 import {LabelChip, labelChipSchema} from './scenes/LabelChip';
 import {QuoteCard, quoteCardSchema} from './scenes/QuoteCard';
+import {StateCardPair916, stateCardPair916Schema} from './scenes/StateCardPair916';
+import {LabelChip916, labelChip916Schema} from './scenes/LabelChip916';
+import {QuoteCard916, quoteCard916Schema} from './scenes/QuoteCard916';
 // claude-liam — adaptive-therapy-revolution
 import {ClaudeCodeBeat, claudeCodeBeatSchema} from './scenes/ClaudeCodeBeat';
 // claude-hai — fellows/supriya-k/2026-09-16-sql-query-optimization-for-analytics
@@ -1651,6 +1654,39 @@ export const RemotionRoot: React.FC = () => {
           sparkLine: 'The weak version.',
           eyebrow: 'Q: "Tell me about a time you disagreed with a teammate."',
           quote: 'We disagreed about a chart once but it worked out fine.',
+          accent: 'CRIMSON',
+        }} />
+      {/* portrait aliases — the hai cards switch to their 9:16 layout when height > width */}
+      <Composition id="StateCardPair916" component={StateCardPair916}
+        durationInFrames={600} fps={30} width={1080} height={1920}
+        schema={stateCardPair916Schema}
+        defaultProps={{
+          sparkLine: 'One structure, four parts.',
+          cards: [
+            { label: 'Situation', detail: 'the scenario, brief', accent: 'SLATE' },
+            { label: 'Task', detail: 'your objective', accent: 'SLATE' },
+            { label: 'Action', detail: 'what YOU did', accent: 'SLATE' },
+            { label: 'Result', detail: 'outcome, quantified', accent: 'TEAL' },
+          ],
+        }} />
+      <Composition id="LabelChip916" component={LabelChip916}
+        durationInFrames={600} fps={30} width={1080} height={1920}
+        schema={labelChip916Schema}
+        defaultProps={{
+          sparkLine: '"Tell me about a time..."',
+          chips: ['conflict', 'deadline crunch', 'ambiguous task', 'a failure', 'a disagreement'],
+          pairs: [],
+          footer: '',
+        }} />
+      <Composition id="QuoteCard916" component={QuoteCard916}
+        durationInFrames={600} fps={30} width={1080} height={1920}
+        schema={quoteCard916Schema}
+        defaultProps={{
+          sparkLine: 'The weak version.',
+          eyebrow: 'Q: "Tell me about a time you disagreed with a teammate."',
+          quote: 'We disagreed about a chart once but it worked out fine.',
+          before: '',
+          after: '',
           accent: 'CRIMSON',
         }} />
       {/* claude-liam — adaptive-therapy-revolution */}

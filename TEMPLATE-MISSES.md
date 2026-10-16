@@ -431,3 +431,31 @@ and treat `run.sh`'s own Gate V result for a 9:16 as void.
    that it read the review cut.
 
 Reported by supriya-k on 2026-10-01, building the 9:16 companion of `claude-code-explained`.
+
+---
+
+## 2026-10-15 · `projects/data-analyst-book/hai-interview-end-to-end` (v2 + 9:16)
+
+Reel: "The Data Analyst Interview, End to End" (`deep-explainer`, `claude-hai`, af_bella).
+Fixed upstream in this pass (all opt-in; omitted props → legacy render):
+
+- **hai cards had no portrait composition or handle.** `StateCardPair`, `QuoteCard`,
+  `LabelChip` gained `scale` + `handle` and a portrait layout (switches when
+  height > width); `StateCardPair916` / `QuoteCard916` / `LabelChip916` registered as aliases,
+  so `shorts.py`'s ONDA CHECK rewires them instead of flagging.
+- **`ClaudeVerdictArtifact` type stayed tiny on a full-width card.** Added `handle` and a
+  CSS-zoom `scale` (text re-wraps inside the same on-screen card width) to both aspects.
+- **`ClaudeComposerAsk916` overflowed on long asks** (MISS #9 territory — a read-aloud YOUR
+  TURN prompt of ~230 chars pushed the composer footer past the bottom safe edge). The
+  command type now shrinks by `sqrt(110/len)` for asks over 110 chars; shorter asks unchanged.
+
+Still open (not fixed here):
+
+- **Gate V `low-contrast` false positive on card beats.** It averages *all* non-background
+  ink, so a large white (or lightly tinted) card fill on cream (1.18:1) swamps the text
+  (9–14:1 WCAG here) and every card beat fails MAJOR. Fix: measure separation on the darkest
+  ink cluster, or exclude large flat fills before averaging.
+- **`compile.py` channel title in portrait.** Drawn at `H-h-40`, which is outside the 9:16
+  title-safe band and under the Shorts UI; this reel blanked `channel_title` in the short.
+- **`--vbitrate` is a 1-pass ABR average that undershoots ~16× on flat frames**
+  (2M→0.54, 6M→1.02, 12M→1.32, 25M→1.55 Mbps here). Document the curve or offer 2-pass.

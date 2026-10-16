@@ -235,6 +235,14 @@
   {
    "beat": "B10",
    "video": "correlation-is-not-causation-short"
+  },
+  {
+   "beat": "B00",
+   "video": "hai-interview-end-to-end-short"
+  },
+  {
+   "beat": "B_YOURTURN",
+   "video": "hai-interview-end-to-end-short"
   }
  ],
  "ClaudeTitleOutro": [
@@ -289,6 +297,10 @@
   {
    "beat": "B11",
    "video": "correlation-is-not-causation"
+  },
+  {
+   "beat": "B_OUTRO",
+   "video": "hai-interview-end-to-end"
   }
  ],
  "ClaudeTitleOutroFilled916": [
@@ -303,6 +315,10 @@
   {
    "beat": "B11",
    "video": "correlation-is-not-causation-short"
+  },
+  {
+   "beat": "B_OUTRO",
+   "video": "hai-interview-end-to-end-short"
   }
  ],
  "ClaudeVerdictArtifact": [
@@ -327,6 +343,10 @@
   {
    "beat": "B07",
    "video": "2026-09-16-sql-query-optimization-for-analytics-vertical"
+  },
+  {
+   "beat": "B_VERDICT",
+   "video": "hai-interview-end-to-end-short"
   }
  ],
  "DivergentFates": [
@@ -401,6 +421,16 @@
   {
    "beat": "B16",
    "video": "banking-domain-star-method-behavioral"
+  }
+ ],
+ "QuoteCard916": [
+  {
+   "beat": "B04",
+   "video": "hai-interview-end-to-end-short"
+  },
+  {
+   "beat": "B09",
+   "video": "hai-interview-end-to-end-short"
   }
  ],
  "ScaleComparison": [
@@ -535,6 +565,48 @@
   {
    "beat": "B11",
    "video": "banking-domain-star-method-behavioral"
+  },
+  {
+   "beat": "B12",
+   "video": "hai-interview-end-to-end"
+  },
+  {
+   "beat": "B14",
+   "video": "hai-interview-end-to-end"
+  }
+ ],
+ "StateCardPair916": [
+  {
+   "beat": "B01",
+   "video": "hai-interview-end-to-end-short"
+  },
+  {
+   "beat": "B03",
+   "video": "hai-interview-end-to-end-short"
+  },
+  {
+   "beat": "B05",
+   "video": "hai-interview-end-to-end-short"
+  },
+  {
+   "beat": "B11",
+   "video": "hai-interview-end-to-end-short"
+  },
+  {
+   "beat": "B12",
+   "video": "hai-interview-end-to-end-short"
+  },
+  {
+   "beat": "B14",
+   "video": "hai-interview-end-to-end-short"
+  },
+  {
+   "beat": "B15",
+   "video": "hai-interview-end-to-end-short"
+  },
+  {
+   "beat": "B17",
+   "video": "hai-interview-end-to-end-short"
   }
  ]
 }

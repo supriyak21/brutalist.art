@@ -3,6 +3,7 @@ import { AbsoluteFill, useCurrentFrame, useVideoConfig, spring } from 'remotion'
 import { claudeVerdictArtifactSchema } from './ClaudeVerdictArtifact';
 import type { ClaudeVerdictArtifactProps } from './ClaudeVerdictArtifact';
 import { CLAUDE, CLAUDE_FONT } from '../tokens/claude';
+import { HandleChip } from './ClaudeCodeBeat';
 
 /**
  * ClaudeVerdictArtifact916 — portrait 9:16 (1080×1920) version of ClaudeVerdictArtifact.
@@ -33,7 +34,7 @@ const Spark: React.FC<{ size?: number }> = ({ size = 30 }) => (
 );
 
 export const ClaudeVerdictArtifact916: React.FC<ClaudeVerdictArtifact916Props> = ({
-  artifactTitle, artifactHeading, artifactLines,
+  artifactTitle, artifactHeading, artifactLines, handle, scale,
 }) => {
   const frame = useCurrentFrame();
   const { fps, width, height } = useVideoConfig();
@@ -42,7 +43,8 @@ export const ClaudeVerdictArtifact916: React.FC<ClaudeVerdictArtifact916Props> =
   const headIn = spring({ frame: frame - 8, fps, config: { damping: 28, stiffness: 140, mass: 0.8 } });
 
   const lines = (artifactLines ?? []).map(stripLeadNum);
-  const CARD_W = width * 0.90;
+  const k = scale ?? 1;   // opt-in type zoom; the card keeps 90% of the frame width
+  const CARD_W = (width * 0.90) / k;
   const PAD_H = width * 0.055;
   const PAD_V = height * 0.022;
   const FONT_TITLE = height * 0.018;
@@ -54,6 +56,7 @@ export const ClaudeVerdictArtifact916: React.FC<ClaudeVerdictArtifact916Props> =
     <AbsoluteFill style={{ background: '#F2F0E9', alignItems: 'center', justifyContent: 'center' }}>
       <div style={{
         width: CARD_W,
+        zoom: k !== 1 ? k : undefined,
         background: CLAUDE.CARD,
         borderRadius: 20,
         boxShadow: '0 16px 56px rgba(61,57,41,0.16)',
@@ -141,6 +144,8 @@ export const ClaudeVerdictArtifact916: React.FC<ClaudeVerdictArtifact916Props> =
           })}
         </div>
       </div>
+      <HandleChip handle={handle} fontSize={height * 0.016} right={width * 0.07}
+        bottom={height * 0.06} opacity={0.9} />
     </AbsoluteFill>
   );
 };

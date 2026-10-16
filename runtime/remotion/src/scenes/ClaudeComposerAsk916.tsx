@@ -48,7 +48,10 @@ export const ClaudeComposerAsk916: React.FC<ClaudeComposerAsk916Props> = ({
   // point here is a more substantial card, not a smaller one, on a canvas
   // with far more height to fill.
   const UI = height * 0.026;
-  const CMD = UI * 1.25;
+  // Long asks (> ~110 chars, e.g. a read-aloud YOUR TURN prompt) overflowed the card
+  // into the bottom margin (TEMPLATE-MISSES #9). Shrink the command type by
+  // sqrt(110/len) so the wrapped block keeps roughly the same area; short asks are unchanged.
+  const CMD = UI * 1.25 * Math.min(1, Math.sqrt(110 / Math.max(command.length, 1)));
 
   const topicIn = spring({ frame, fps, config: SPRING_SMOOTH });
   const segIn = spring({ frame: frame - 4, fps, config: SPRING_SMOOTH });
