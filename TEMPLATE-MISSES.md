@@ -434,7 +434,7 @@ Reported by supriya-k on 2026-10-01, building the 9:16 companion of `claude-code
 
 ---
 
-## 2026-10-15 · `projects/data-analyst-book/hai-interview-end-to-end` (v2 + 9:16)
+## 2026-10-15 · `projects/data-analyst-interview-prep-end-to-end/hai-interview-end-to-end` (v2 + 9:16; moved from `projects/data-analyst-book/` 2026-10-16)
 
 Reel: "The Data Analyst Interview, End to End" (`deep-explainer`, `claude-hai`, af_bella).
 Fixed upstream in this pass (all opt-in; omitted props → legacy render):
@@ -459,3 +459,24 @@ Still open (not fixed here):
   title-safe band and under the Shorts UI; this reel blanked `channel_title` in the short.
 - **`--vbitrate` is a 1-pass ABR average that undershoots ~16× on flat frames**
   (2M→0.54, 6M→1.02, 12M→1.32, 25M→1.55 Mbps here). Document the curve or offer 2-pass.
+
+---
+
+## 2026-10-16 · `projects/data-analyst-interview-prep-end-to-end/hai-star-method-behavioral` (v2 + 9:16)
+
+Reel: "The STAR Method" (`ai-explainer`, `claude-hai`, af_bella, all Remotion).
+
+- **MISS — Root.tsx `defaultProps` leak into beats that leave a field unset.** Remotion merges
+  a beat's props over the composition's `defaultProps`, so a `QuoteCard` beat in before/after
+  mode that omits `quote` inherits the sample quote ("We disagreed about a chart once…") and
+  silently renders in QUOTE mode. v1's B08 shipped showing the wrong card. Worked around by
+  setting `quote: ""` and `eyebrow: ""` explicitly. Proposed fix: empty-string sample props for
+  mode-selecting fields, or have `remotion_scenes.py` pass the schema's own defaults.
+- **Fixed (opt-in):** `StateCardPair` landscape guard narrows a scaled 3–4 card row instead of
+  pushing it off-frame; `LabelChip` honors `scale` in landscape and stacks story/competency in
+  portrait; `QuoteCard` before/after text wraps in portrait.
+- **MISS — `run.sh` refuses a short with no `scenes.py`** even when every beat is Remotion (the
+  silent endcard counts as a CARD beat). Compiled with `compile.py` directly and ran Gate V by
+  hand. Proposed fix: skip the scenes.py check when no beat needs Manim.
+- **`--vbitrate` saturates on near-static reels:** here 25M→0.79 and 60M→0.82 Mbps (CRF 0.41).
+  Reaching a fixed Mbps floor on such content would require CBR filler, i.e. padding.

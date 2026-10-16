@@ -243,6 +243,14 @@
   {
    "beat": "B_YOURTURN",
    "video": "hai-interview-end-to-end-short"
+  },
+  {
+   "beat": "B00",
+   "video": "hai-star-method-behavioral-short"
+  },
+  {
+   "beat": "B10",
+   "video": "hai-star-method-behavioral-short"
   }
  ],
  "ClaudeTitleOutro": [
@@ -301,6 +309,10 @@
   {
    "beat": "B_OUTRO",
    "video": "hai-interview-end-to-end"
+  },
+  {
+   "beat": "B11",
+   "video": "hai-star-method-behavioral"
   }
  ],
  "ClaudeTitleOutroFilled916": [
@@ -319,6 +331,10 @@
   {
    "beat": "B_OUTRO",
    "video": "hai-interview-end-to-end-short"
+  },
+  {
+   "beat": "B11",
+   "video": "hai-star-method-behavioral-short"
   }
  ],
  "ClaudeVerdictArtifact": [
@@ -347,6 +363,10 @@
   {
    "beat": "B_VERDICT",
    "video": "hai-interview-end-to-end-short"
+  },
+  {
+   "beat": "B09",
+   "video": "hai-star-method-behavioral-short"
   }
  ],
  "DivergentFates": [
@@ -375,6 +395,16 @@
   {
    "beat": "B06",
    "video": "banking-domain-star-method-behavioral"
+  }
+ ],
+ "LabelChip916": [
+  {
+   "beat": "B02",
+   "video": "hai-star-method-behavioral-short"
+  },
+  {
+   "beat": "B07",
+   "video": "hai-star-method-behavioral-short"
   }
  ],
  "QuoteCard": [
@@ -431,6 +461,14 @@
   {
    "beat": "B09",
    "video": "hai-interview-end-to-end-short"
+  },
+  {
+   "beat": "B04",
+   "video": "hai-star-method-behavioral-short"
+  },
+  {
+   "beat": "B08",
+   "video": "hai-star-method-behavioral-short"
   }
  ],
  "ScaleComparison": [
@@ -607,6 +645,22 @@
   {
    "beat": "B17",
    "video": "hai-interview-end-to-end-short"
+  },
+  {
+   "beat": "B01",
+   "video": "hai-star-method-behavioral-short"
+  },
+  {
+   "beat": "B03",
+   "video": "hai-star-method-behavioral-short"
+  },
+  {
+   "beat": "B05",
+   "video": "hai-star-method-behavioral-short"
+  },
+  {
+   "beat": "B06",
+   "video": "hai-star-method-behavioral-short"
   }
  ]
 }

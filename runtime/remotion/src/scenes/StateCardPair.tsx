@@ -64,7 +64,13 @@ export const StateCardPair: React.FC<StateCardPairProps> = ({ sparkLine, cards, 
   const n = Math.max(cards.length, 1);
   // Portrait: cards always span 90% of the 9:16 safe width on screen (the zoom is
   // divided back out), so `scale` grows only the type and card height.
-  const cardW = portrait ? (SAFE916.w * 0.9) / k : n === 1 ? 720 : Math.min(SAFE.w / n - 32, 420);
+  const baseW = portrait ? (SAFE916.w * 0.9) / k : n === 1 ? 720 : Math.min(SAFE.w / n - 32, 420);
+  // Landscape guard: a scaled row that would cross SAFE narrows its cards (the type
+  // still grows by k and wraps), so `scale` can never push a 3–4 card row off-frame.
+  const rowW = n * baseW + (n - 1) * 32;
+  const cardW = !portrait && n > 1 && rowW * k > SAFE.w * 0.98
+    ? (SAFE.w * 0.98 / k - (n - 1) * 32) / n
+    : baseW;
   const cardH = portrait ? (n === 1 ? 340 : 220) : n === 1 ? 260 : 380;
   // A scaled single card is a title card: center its text so the enlarged card
   // doesn't read as a label marooned in the top-left of an empty box.

@@ -124,6 +124,9 @@ export const QuoteCard: React.FC<QuoteCardProps> = ({ sparkLine, eyebrow, quote,
               textDecoration: 'line-through',
               textDecorationThickness: '3px',
               opacity: op1,
+              // portrait: wrap inside the safe column instead of running off-frame
+              maxWidth: portrait ? (safe.w * 0.9) / k : undefined,
+              textAlign: portrait ? 'center' : undefined,
             }}
           >
             {before}
@@ -142,6 +145,8 @@ export const QuoteCard: React.FC<QuoteCardProps> = ({ sparkLine, eyebrow, quote,
                   padding: '18px 40px',
                   borderRadius: 16,
                   opacity: op2,
+                  maxWidth: portrait ? (safe.w * 0.9) / k : undefined,
+                  textAlign: portrait ? 'center' : undefined,
                 }}
               >
                 {after}

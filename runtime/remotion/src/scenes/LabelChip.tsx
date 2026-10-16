@@ -73,7 +73,7 @@ export const LabelChip: React.FC<LabelChipProps> = ({ sparkLine, chips, pairs, f
               flexWrap: 'wrap',
               gap: 24,
               justifyContent: 'center',
-              maxWidth: portrait ? (safe.w * 0.92) / k : SAFE.w,
+              maxWidth: portrait ? (safe.w * 0.92) / k : scale !== undefined ? (SAFE.w * 0.92) / k : SAFE.w,
             }}
           >
             {chips.map((c, i) => {
@@ -125,7 +125,7 @@ export const LabelChip: React.FC<LabelChipProps> = ({ sparkLine, chips, pairs, f
         </div>
       ) : (
         <div style={{ display: 'flex', flexDirection: 'column', gap: 22, transform: zoom,
-                      width: portrait ? (safe.w * 0.92) / k : SAFE.w * 0.86 }}>
+                      width: portrait ? (safe.w * 0.92) / k : scale !== undefined ? (SAFE.w * 0.9) / k : SAFE.w * 0.86 }}>
           {pairs.map((p, i) => {
             const s = spring({ frame: frame - i * 7, fps, config: { damping: 26, stiffness: 150, mass: 0.8 } });
             const op = clamp(s, 0, 1);
@@ -133,12 +133,15 @@ export const LabelChip: React.FC<LabelChipProps> = ({ sparkLine, chips, pairs, f
             return (
               <div
                 key={i}
-                style={{ display: 'flex', alignItems: 'center', gap: 24, opacity: op, transform: `translateX(${tx}px)` }}
+                // portrait: story card on top, competency pill beneath (no room side by side)
+                style={{ display: 'flex', flexDirection: portrait ? 'column' : 'row',
+                         alignItems: portrait ? 'stretch' : 'center', gap: portrait ? 8 : 24,
+                         opacity: op, transform: `translateX(${tx}px)` }}
               >
                 <div
                   style={{
                     flex: '0 0 auto',
-                    minWidth: 380,
+                    minWidth: portrait ? 0 : 380,
                     background: HUMANITARIANS.SLATE,
                     color: '#FFFFFF',
                     fontFamily: FONT.serif,
@@ -149,7 +152,7 @@ export const LabelChip: React.FC<LabelChipProps> = ({ sparkLine, chips, pairs, f
                 >
                   {p.story}
                 </div>
-                <div style={{ width: 48, height: 2, background: HUMANITARIANS.INK, opacity: 0.4 }} />
+                {portrait ? null : <div style={{ width: 48, height: 2, background: HUMANITARIANS.INK, opacity: 0.4 }} />}
                 <div
                   style={{
                     flex: 1,
