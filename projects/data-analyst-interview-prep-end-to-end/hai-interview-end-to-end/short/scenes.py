@@ -22,7 +22,7 @@ config.frame_height = 8.0
 
 # Import the landscape module for data/timing. run.sh's Gate A/W pre-flights run an
 # ISOLATED COPY of this file in a temp dir, so fall back to the reel's real location.
-_REEL = Path("/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/data-analyst-book/hai-interview-end-to-end")
+_REEL = Path("/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/data-analyst-interview-prep-end-to-end/hai-interview-end-to-end")
 _parent = Path(__file__).resolve().parent.parent / "scenes.py"
 if not _parent.is_file() or not (_parent.parent / "beat_sheet.json").is_file():
     _parent = _REEL / "scenes.py"
