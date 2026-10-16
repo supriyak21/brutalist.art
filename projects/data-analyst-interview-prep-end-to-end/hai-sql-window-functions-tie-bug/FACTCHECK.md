@@ -47,3 +47,27 @@ question bank, coding-interview site, or company-specific source.
 No external APIs, stock imagery, or paid generation used or required
 anywhere in this package's plan — all visuals are planned as Manim or
 Remotion, per the toolkit's no-paid-services rule.
+
+---
+
+## v2 corrections (2026-10-16)
+
+**The receipt is now real.** `sql/plays.sql` is a 33-row Loopr fixture (three users; user 101
+ties T-ECHO and T-NOVA at 5 plays). The B04/B07 queries are saved verbatim as
+`sql/top_track_buggy.sql` / `sql/top_track_fixed.sql` and run in SQLite 3.51, which handles CTEs
+and window functions the same way as MySQL 8 (the book's assumed engine). Outputs are saved as
+`sql/*.out`, and the Manim scenes read their rows from those files.
+
+| Beat | v1 | Real run / Ch.4 | v2 |
+|---|---|---|---|
+| B02 (screen) | GROUP BY panel: "user 101: 3 plays" | `group_by_collapse.out`: user 101 = **12** plays | shows the real 12 |
+| B05 | (hand-typed rows; drawn INK on INK, so invisible) | `top_track_buggy.out`: 4 rows for 3 users; 101 twice at 5 | rows parsed from the .out and drawn visibly |
+| B08 | (hand-typed) | `top_track_fixed.out`: 3 rows; 101 → T-ECHO | parsed from the .out |
+| B07 | "One line changes … one column added, one function swapped" | the diff changes the function, adds an ORDER BY key, and renames the alias and its filter | "Two changes … the alias follows" |
+| B05/B08 | users named Jon / Priya / Maya (not in the book; not on screen) | screen shows user ids 101/102/103 | ids only (Supriya, 2026-10-16) |
+| B10 | prompt paraphrased in narration | HANDOFF LAW: read verbatim | read verbatim |
+
+Still true from v1: the premise is Ch.4 Exercise 3; RANK = "position with gaps for ties",
+ROW_NUMBER = "sequential number per partition" (Ch.4 table); "surface smell test" (Ch.7). The
+`track_id ASC` tiebreaker goes one step beyond the book's own worked example (which uses
+ROW_NUMBER with no tiebreaker, so its winner on a tie is arbitrary).

@@ -1,10 +1,5 @@
-# PROMPTS — hai-sql-window-functions-tie-bug
+# PROMPTS — hai-sql-window-functions-tie-bug (v2, 2026-10-16)
 
-GATE F paperwork (required before render when Manim scenes are pending).
-
-**No open AI-image slots in this episode.** Every beat renders locally via
-an existing Remotion pattern or a Manim scene in `scenes.py` — no
-prompt-based image generation is involved anywhere in this reel.
-
-This file exists to satisfy GATE F's paperwork check, not to log
-image-generation prompts that don't apply here.
+GATE F paperwork. **No open AI-image slots.** Every beat is a Manim scene or a locally rendered
+Remotion pattern (see `SHOTLIST.md`). The composer `command` props are the reel's on-screen
+Claude prompts, not image-generation prompts.

@@ -1,0 +1,7 @@
+# This file is used internally by FFMPEG.
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/data-analyst-interview-prep-end-to-end/hai-sql-window-functions-tie-bug/short/media/videos/scenes/3840p24/partial_movie_files/B09_Lesson/2043213065_1664916478_3158800710.mp4'
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/data-analyst-interview-prep-end-to-end/hai-sql-window-functions-tie-bug/short/media/videos/scenes/3840p24/partial_movie_files/B09_Lesson/1318313771_2871455118_4292455858.mp4'
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/data-analyst-interview-prep-end-to-end/hai-sql-window-functions-tie-bug/short/media/videos/scenes/3840p24/partial_movie_files/B09_Lesson/1318313771_2177099548_1510618986.mp4'
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/data-analyst-interview-prep-end-to-end/hai-sql-window-functions-tie-bug/short/media/videos/scenes/3840p24/partial_movie_files/B09_Lesson/1318313771_4231285282_1693867850.mp4'
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/data-analyst-interview-prep-end-to-end/hai-sql-window-functions-tie-bug/short/media/videos/scenes/3840p24/partial_movie_files/B09_Lesson/1318313771_139720487_4050345711.mp4'
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/data-analyst-interview-prep-end-to-end/hai-sql-window-functions-tie-bug/short/media/videos/scenes/3840p24/partial_movie_files/B09_Lesson/1318313771_1730262188_3714249712.mp4'

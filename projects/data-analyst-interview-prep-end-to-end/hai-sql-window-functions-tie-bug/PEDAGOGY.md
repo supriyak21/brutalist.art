@@ -1,68 +1,55 @@
-# PEDAGOGY AUDIT (GATE P) — hai-sql-window-functions-tie-bug
-# "The SQL Interview Bug Even a Correct-Looking Query Can Hide"
-# Prepared by: Claude (agent) | 2026-07-24 | Awaiting human review
+# PEDAGOGY — The SQL Interview Bug Even a Correct-Looking Query Can Hide (hai cli-explainer) — v2
 
-GATE P: a human reviews narration (on an animated slate, once beats are
-built) and signs VERDICT before any audio is generated. This is a QUALITY
-gate, not a cost gate — Kokoro audio is free. **No audio has been
-generated for this reel.**
+GATE P review of the **v2 narration** (2026-10-16). v1 passed GATE P on 2026-07-24
+(signature in git history). v2 changes every beat, so it needs a fresh signature before
+any audio is generated.
 
-## Checklist
+## Why v2 exists
+- PM rules (2026-10-01): exact intro, "Supriya" on every beat, real 4K bitrate, and a
+  full-length 9:16 that fills every frame. v1 measured 234.9s; v2 targets ~157s (450 words),
+  so with the 4.5s endcard the vertical stays full-length under the 180s cap, with margin.
+- Fidelity: the receipt is now a real SQLite run (`sql/`). The v1 screen showed a wrong
+  GROUP BY total, B07 over-simplified the diff, and B10 paraphrased its prompt (see
+  `FACTCHECK.md`, "v2 corrections").
 
-### 1. Required cli-explainer spine present
-INTRO (B00) → PROBLEM (B01) → MECHANISM (B02) → CLI/CODE/OUTPUT cycle 1
-(B03–B05) → CLI/CODE/OUTPUT cycle 2 = the revision (B06–B08) → SUMMARY (B09)
-→ NEXT STEPS/HANDOFF (B10) → OUTRO (B11). All mandatory elements present.
-**CHECK: complete.**
+## Branding / identity
+- B00 opens "Hi, I am Supriya and this video is about a SQL interview bug that even a
+  correct-looking query can hide." ✓ The "for Humanitarians AI" wording is gone from the
+  open and outro. "Supriya" is primary on screen; `@HumanitariansAI` stays small. ✓
 
-### 2. Revision Law
-One full revision cycle present: check the buggy output (B06 narration
-opens on "check the output before you trust it") → revised ask → revised
-code → better, verified output (B08). **CHECK: satisfied.**
+## Spine check (cli-explainer)
+- INTRO B00 → PROBLEM B01–B02 → cycle 1 (CLI B03 → CODE B04 → OUTPUT B05) → cycle 2
+  revision (CLI B06 → CODE B07 → better OUTPUT B08) → SUMMARY B09 → HANDOFF B10 → OUTRO B11. ✓
+- The 9:16 keeps both cycles (no beats cut; the revision is the fix itself), as in
+  correlation-is-not-causation.
+- HANDOFF LAW: the prompt is read aloud verbatim, then discussed ("test the fix yourself on a
+  real tie"); that line also carries the HAI "verify the AI" spine. ✓
 
-### 3. Actual-Code Law
-Both CODE beats (B04, B07) show complete, real, runnable MySQL — no
-pseudocode. The diff between them is exactly one function swap plus one
-added tiebreaker column, discussed explicitly in B07's narration.
-**CHECK: satisfied.**
+## What changed for the viewer
+- Lost: the names Jon/Priya/Maya (now user ids, matching the screen); "top product per city";
+  the v1 closer "Check the case the happy path skips"; some re-statement in B05 and B09.
+- Kept: the trap, top-N stakes, why a window function, both build cycles, the four-rows-
+  for-three-users failure, the ROW_NUMBER + tiebreaker fix, and the lesson.
 
-### 4. Moving output, never a still
-Both OUTPUT beats (B05, B08) are specified as Manim animations with rows
-flying in and a live row-count ticker — not static tables.
-**CHECK: satisfied at planning stage** (actual Manim scene code not yet
-written — that's a build-phase task, not a planning-phase gap).
+## For your review
+1. [x] The v2 script in `NARRATION-SCRIPT.md` reads naturally aloud (~157s est.).
+2. [x] The corrections and cuts above are acceptable.
+3. [x] The YOUR TURN prompt and its spoken discussion are what you want.
 
-### 5. No fabrication / original-questions rule
-Every claim traces to Chapter 4 or Chapter 7 of the signed, fact-checked
-manuscript (see `SOURCES-FACTCHECK.md`). The one new element — sample
-`plays` rows for the tie scenario — is illustrative data for the book's
-own already-invented company, not a new real-world claim, and its query
-results are hand-verified in `VISUAL-PLAN.md`.
-**CHECK: satisfied.**
+**VERDICT: PASS**
 
-### 6. Handoff quality
-B10's suggested prompt is directly runnable, specific to this episode's
-lesson (ties in top-N-per-group queries), and is read aloud in full per
-HANDOFF LAW rather than only shown on screen.
-**CHECK: satisfied.**
+Signed: Supriya Kushwaha (human, author)  Date: 2026-10-16  Evidence: "PASS" given in chat on the v2 script, with one requested edit applied: B10's on-screen prompt drops the "[paste it]" cue so it reads identically spoken and on screen; the paste instruction moved into the spoken discussion ("Paste your query under it, then test the fix yourself on a real tie.").
 
-### 7. No paid services
-All visuals planned as Manim/Remotion; no stock media, no gen-AI clips,
-no external API calls anywhere in the plan.
-**CHECK: satisfied.**
+## Addendum — length trim after audio (2026-10-16)
 
-## Outstanding for the human reviewer
+Measured audio was 175.57s (Kokoro reads "101" as "one hundred and one"), about 2s over the
+173.5s narration budget for a full-length 9:16 with the endcard. Supriya chose to trim ~15 words:
 
-- [x] Confirm the narration register (Pragmatist/HAI) reads naturally when
-  read aloud — this review was done on the page, not on an animated slate
-  (no audio/render exists yet to build one from).
-- [x] Confirm the narrator-identity line ("Supriya, for Humanitarians AI," in
-  B00 and B11) matches intent — this replaces the toolkit's default
-  world-language-hello / "Hello, Bella" greeting pattern per explicit
-  instruction.
-- [x] Confirm the sample data and worked query results in `VISUAL-PLAN.md`
-  before any Manim scene is built from them.
+- B01: "Top-N per group is one of the most common SQL interview patterns: top track per user, top order per customer." → "Top-N per group, like top track per user, is one of the most common SQL interview patterns."
+- B03: drop "In an interview you'd narrate that plan as you type."
 
-## VERDICT: PASS
+Only B01 and B03 audio is regenerated. Estimated new total: see the build log.
 
-Signed: Supriya Kushwaha (human, author)  Date: 2026-07-24  Evidence: approval given in chat ("Approve Gate P for all three existing video packages").
+**ADDENDUM VERDICT: PASS**
+
+Signed: Supriya Kushwaha (human, author)  Date: 2026-10-16  Evidence: "PASS" given in chat on the two edits as presented.
