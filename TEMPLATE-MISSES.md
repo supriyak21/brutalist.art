@@ -480,3 +480,21 @@ Reel: "The STAR Method" (`ai-explainer`, `claude-hai`, af_bella, all Remotion).
   hand. Proposed fix: skip the scenes.py check when no beat needs Manim.
 - **`--vbitrate` saturates on near-static reels:** here 25M→0.79 and 60M→0.82 Mbps (CRF 0.41).
   Reaching a fixed Mbps floor on such content would require CBR filler, i.e. padding.
+
+---
+
+## 2026-10-16 · `projects/data-analyst-interview-prep-end-to-end/hai-sql-window-functions-tie-bug` (v2 + 9:16)
+
+Reel: "The SQL Interview Bug Even a Correct-Looking Query Can Hide" (`cli-explainer`, `claude-hai`).
+
+- **MISS — `ClaudeComposerAsk916` decorative rule collides with output lines.** The terracotta
+  rule under the output block sits at a fixed height, so a long ask (4–5 wrapped lines) plus two
+  or more `output` lines pushes the last line onto the rule (it reads as strikethrough or
+  underline). Worked around in this reel's 9:16 by trimming B00 to one output line
+  (`portrait_overrides`). Proposed fix: position the rule from the output block's bottom.
+- **Pipeline gotcha — `git rm` on modified clips.** When a reel's `manim/*.mp4` differ from the
+  committed copies, `git rm` refuses and leaves them in place, `run.sh` then treats those beats as
+  filled, and the cut silently compiles stale renders. Check `ls manim/` before re-running.
+- **Kokoro reads ids long:** "101" is spoken as "one hundred and one", so a script heavy in ids ran
+  about 12% over a words-per-second estimate. Budget id-heavy narration conservatively.
+- **`--vbitrate` saturation, again:** 25M → 0.90 and 60M → 0.93 Mbps here.

@@ -59,6 +59,14 @@
   {
    "beat": "B06",
    "video": "correlation-is-not-causation-short"
+  },
+  {
+   "beat": "B04",
+   "video": "hai-sql-window-functions-tie-bug-short"
+  },
+  {
+   "beat": "B07",
+   "video": "hai-sql-window-functions-tie-bug-short"
   }
  ],
  "ClaudeComposerAsk": [
@@ -251,6 +259,22 @@
   {
    "beat": "B10",
    "video": "hai-star-method-behavioral-short"
+  },
+  {
+   "beat": "B00",
+   "video": "hai-sql-window-functions-tie-bug-short"
+  },
+  {
+   "beat": "B03",
+   "video": "hai-sql-window-functions-tie-bug-short"
+  },
+  {
+   "beat": "B06",
+   "video": "hai-sql-window-functions-tie-bug-short"
+  },
+  {
+   "beat": "B10",
+   "video": "hai-sql-window-functions-tie-bug-short"
   }
  ],
  "ClaudeTitleOutro": [
@@ -313,6 +337,10 @@
   {
    "beat": "B11",
    "video": "hai-star-method-behavioral"
+  },
+  {
+   "beat": "B11",
+   "video": "hai-sql-window-functions-tie-bug"
   }
  ],
  "ClaudeTitleOutroFilled916": [
@@ -335,6 +363,10 @@
   {
    "beat": "B11",
    "video": "hai-star-method-behavioral-short"
+  },
+  {
+   "beat": "B11",
+   "video": "hai-sql-window-functions-tie-bug-short"
   }
  ],
  "ClaudeVerdictArtifact": [
