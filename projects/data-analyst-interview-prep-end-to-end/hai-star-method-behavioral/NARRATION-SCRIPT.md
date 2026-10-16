@@ -1,59 +1,35 @@
-# Narration Script — The STAR Method (~3:09 estimated)
+# Narration Script — "The STAR Method: How to Actually Answer a Behavioral Interview Question"
 
-Voice: Kokoro `af_bella` ("Bella"). Narrator introduces herself as **Supriya, for Humanitarians AI**. Register: Pragmatist (method → when to use it → when it fails → worked example → delivery habit).
+ai-explainer · v2 (2026-10-16) · 12 beats · 470 words · ~165s estimated at v1's measured per-beat pace · Voice: Kokoro `af_bella` ("Bella") · Register: Pragmatist · Narrator identity: **Supriya**
 
----
-
-**B00 — COLD OPEN** *(composer: ask typed, answered)*
-On screen: Claude-style composer shows the typed question, then answers with three output lines (STAR definition / what it fixes / the failure-mode teaser).
-> Hi — Supriya, for Humanitarians AI. Someone just asked me this: how do you actually answer a behavioral interview question well? There's one method that fixes most weak answers in a single pass. It's called STAR — and here's exactly what it does, and where it breaks if you use it wrong.
-
-**B01 — METHOD**
-On screen: four SLATE cards build left to right (S, T, A), the fourth (Result) locks in TEAL.
-> STAR is the structure panels are trained to listen for. Situation sets the scene. Task names your objective. Action is what you did — not "we." Result is the outcome, quantified, plus what you learned. It's built for exactly one kind of question: "tell me about a time..."
-
-**B02 — WHEN TO USE IT**
-On screen: five question-type chips light up TEAL in sequence; "tell me about a time..." anchors beneath.
-> Use it whenever a question asks for a specific memory, not an opinion: conflict, a deadline crunch, an ambiguous task, a failure, a disagreement. If the question can be answered with a belief instead of a memory, STAR isn't the tool — save it for the ones that ask "tell me about a time."
-
-**B03 — THE FAILURE MODE** *(required Pragmatist "when it breaks" beat)*
-On screen: S-T-A bar fills TEAL; the Result slot stays empty and flashes CRIMSON; label reads "all situation, no result."
-> Here's where it breaks. Most candidates nail Situation and Task, then drift — all scene-setting, no ending. Panels call this "all situation, no result." If your story doesn't land on an outcome, STAR wasn't used — it was just narrated.
-
-**B04 — WORKED EXAMPLE: THE WEAK ANSWER**
-On screen: question card, then the quote card types in; CRIMSON strike under "worked out fine."
-> Take the book's own example: "Tell me about a time you disagreed with a teammate." The weak answer: "We disagreed about a chart once but it worked out fine." No task, no action, no result — just a vague memory with a shrug at the end.
-
-**B05 — THE REWRITE: S, T, A**
-On screen: S, T, A cards type in one at a time, TEAL.
-> The STAR rewrite. Situation — on my internship, a teammate wanted to report signups including test accounts. Task — I needed the number accurate for the leadership deck. Action — I pulled both figures and proposed a filter we both agreed on.
-
-**B06 — THE REWRITE: RESULT**
-On screen: R card completes the row; GOLD highlighter sweeps under "~12% inflation"; full row locks TEAL.
-> Result — we shipped the corrected metric, and it became the team's standard definition. Along the way: showing the roughly twelve-percent inflation from test data is what actually won the argument — a number did the persuading, not the disagreement itself.
-
-**B07 — THE STORY BANK**
-On screen: five SLATE story cards appear, each connecting to a TEAL competency tag.
-> One story rarely covers one question, so don't script per-question — build five or six real stories and map each to what it proves: a project you owned, a disagreement, a failure, an ambiguous task, a deadline crunch. A good story bank answers most of a panel from five slots.
-
-**B08 — DELIVERY HABIT**
-On screen: "it went faster" struck through CRIMSON; "3 hours → 20 minutes" types in GOLD beside it.
-> Two habits make any STAR answer land: quantify the result whenever you can — "cut the report from three hours to twenty minutes" beats "it went faster" — and answer what the question is really scoring, not just its surface words.
-
-**B09 — VERDICT RECAP**
-On screen: verdict card, three bare-sentence lines land in sequence.
-> Let's recap. STAR structures the memory; the ending is the point, not the scene. Quantify what you can, and go in with five or six stories mapped to competencies — not one rehearsed line per possible question.
-
-**B10 — YOUR TURN (HANDOFF)**
-On screen: composer types the full suggested prompt.
-> Your turn — take one real story you already have, and paste this in: ask me what happened, then push me to a specific, quantified Result, and don't let me stop at "it worked out." Run it before your next interview, not during it.
->
-> *Prompt typed on screen:* "I have a real work story about a disagreement, a deadline, or a failure. Help me structure it as STAR: ask me what happened, then push me to state a specific, quantified Result — don't let me stop at 'it worked out.'"
-
-**B11 — OUTRO (TITLE RE-READ)**
-On screen: title restates poster-style; @HumanitariansAI handle settles beneath.
-> The STAR Method: how to actually answer a behavioral interview question.
+v1 (506 words, 178.6s measured) is in git history. Same 12 beat ids; every line re-checked against Chapter 9 (see `SOURCES-FACTCHECK.md`, "v2 corrections").
 
 ---
 
-**Total narration word count:** ~530 words. **Estimated runtime:** ~189s (3:09) at the ~2.9 words/sec planning heuristic — real duration is whatever the measured Kokoro audio comes out to once GATE P is signed.
+**B00.** Hi, I am Supriya and this video is about the STAR method: how to actually answer a behavioral interview question. Here's exactly what it does, and where it breaks if you use it wrong.
+
+**B01.** STAR is how interviewers evaluate answers to behavioral and situational questions. Situation sets the scene, briefly. Task names your objective. Action is what you did, and why — not "we." Result is the outcome, quantified where possible, plus what you learned.
+
+**B02.** It fits questions about conflict, time management, problem-solving, and working with people, often phrased as "tell me about a time." Each one asks for a real memory, and STAR gives that memory a shape.
+
+**B03.** Here's where it breaks. The common failure is all Situation, no Result: candidates set up the scene and never say what happened. The Result is the point. If your story doesn't land on an outcome, you haven't used STAR. You've just narrated.
+
+**B04.** Take the book's own example: "Tell me about a time you disagreed with a teammate." The weak answer: "We disagreed about a chart once but it worked out fine." No task, no action, no result. Just a vague memory with a shrug at the end.
+
+**B05.** Situation: "On my internship, a teammate wanted to report signups including test accounts." Task: "I needed the number accurate for the leadership deck." Action: "I pulled both figures, showed the roughly twelve-percent inflation from test data, and proposed a filter we both agreed on."
+
+**B06.** Result: "We shipped the corrected metric; it became the team's standard definition." What's being scored is influence and data judgment. A number did the persuading.
+
+**B07.** Don't script per question. Prepare five or six real stories and map each to what it proves: a project you owned, a disagreement, a failure, an ambiguous task, a deadline crunch. One good story often answers several question types.
+
+**B08.** Two delivery habits. Quantify results where you can: "cut the report time from three hours to twenty minutes" beats "it went faster." And read what the question is really after: "tell me about a conflict" is scoring how you handle disagreement, not whether you won.
+
+**B09.** Let's recap. STAR: Situation, Task, Action, Result. The ending is the point, not the scene. Quantify what you can, and go in with five or six stories mapped to competencies, not one rehearsed answer per question.
+
+**B10.** Your turn. Try this: I have a real work story about a disagreement, a deadline, or a failure. Help me structure it as STAR: ask me what happened, then push me to state a specific, quantified Result. Don't let me stop at "it worked out." It makes Claude interview you instead of writing your story for you, and it won't let you skip the ending. Run it before your next interview, not during it.
+
+**B11.** The STAR Method: how to actually answer a behavioral interview question.
+
+---
+
+Word count 470. Source: `books/data-analyst-interview-prep/chapters/09-behavioral-round.md`.

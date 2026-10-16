@@ -24,3 +24,24 @@ No statistics, company names, or outcomes beyond what Chapter 9 states. The "~12
 
 ## Register check
 Narration was rewritten into the Pragmatist register (method → when to use → when it fails → worked proof → delivery habit) rather than read off the chapter verbatim as prose — per the `hai` skill's "change the voice, not the facts" rule. All quoted lines above are flagged as quotes; everything else is a register rewrite of the same underlying claim.
+
+---
+
+## v2 corrections (2026-10-16)
+
+A re-read of Chapter 9 against the v1 narration found lines that claimed more than the
+book does. The v1 table above marked them "verbatim" or "paraphrase"; these are the corrections.
+
+| Beat | v1 line | Chapter 9 says | v2 |
+|---|---|---|---|
+| B01 | "the structure panels are trained to listen for" | "STAR method evaluates candidates by how they answer behavioral and situational questions" | "how interviewers evaluate answers to behavioral and situational questions" |
+| B01 | "built for exactly one kind of question: 'tell me about a time'" | fits behavioral **and situational** questions | removed |
+| B02 | "If the question can be answered with a belief instead of a memory, STAR isn't the tool" | (no such limit; situational questions are in scope) | removed; v2 lists the book's four question types |
+| B03 | "Panels call this 'all situation, no result.'" | "The common failure: all Situation, no Result." (not attributed to panels) | "The common failure is all Situation, no Result" |
+| B05/B06 | ~12% inflation placed under Result; "a number … won the argument" | ~12% is part of **Action**; "is scoring how you handle disagreement, not whether you won" | 12% moved into Action (narration + card); B06 names the scored competency (influence + data judgment) |
+| B09 (screen) | "for 'tell me about a time' questions only" | behavioral and situational | "only" removed |
+| B08 (screen) | showed B04's weak quote (QuoteCard sample defaults leaked in because `quote` was unset) | — | `quote: ""` set explicitly; shows "it went faster" → "3 hours → 20 minutes" |
+| B10 | prompt paraphrased in narration | (HANDOFF LAW: read verbatim) | prompt read verbatim, then discussed |
+
+Unchanged: no new statistics, companies or outcomes. The ~12% figure remains the book's
+own invented worked example.

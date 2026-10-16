@@ -1,0 +1,15 @@
+{
+ "B00": "L3|2160x3840@24|crop|11.200|type-on|||8b61fb2b17c7953b4f67c28aebde0543b4c1a158",
+ "B01": "L3|2160x3840@24|crop|17.110|illustrate|||1f9cb5c169de7b9b9dd18dd7c635a28ea6d61aed",
+ "B02": "L3|2160x3840@24|crop|13.060|illustrate|||27eda8775f0ebf02e282607e9abd5ca9b19aec56",
+ "B03": "L3|2160x3840@24|crop|14.870|illustrate|||27da3a6b3be3139904621b6e6dc028bf76e40f28",
+ "B04": "L3|2160x3840@24|crop|14.400|illustrate|||20cf5dedd9c9501fdab85369ec5e59c82b0444e8",
+ "B05": "L3|2160x3840@24|crop|18.280|illustrate|||a97e93f9da347d6377602af4eb67bc37128f9cab",
+ "B06": "L3|2160x3840@24|crop|10.200|illustrate|||c8e995d5aeea24edd717ca44cb832017bb4f5146",
+ "B07": "L3|2160x3840@24|crop|15.720|illustrate|||f55eb869acc8fbc3f478069fcf61f8b621ae2006",
+ "B08": "L3|2160x3840@24|crop|16.170|illustrate|||5d97ddade1d52b20c2a4d22d3829f29d8d53a0f4",
+ "B09": "L3|2160x3840@24|crop|14.830|stagger|||afe8e187108f9c9228dba7aa36cc41f9c1f4b2fa",
+ "B10": "L3|2160x3840@24|crop|22.460|type-on|||9f4d7c950bf2bab1a37c0fc7a89507b223cd2fca",
+ "B11": "L3|2160x3840@24|crop|4.310|fade|||468251123cdffb8a5a7e21bd62bf1c5811c92d89",
+ "END": "L3|2160x3840@24|crop|4.500|hold||none|2bad39eb4bd3184ed172360d44352a8fe9dd1a71"
+}

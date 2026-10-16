@@ -1,31 +1,48 @@
-# PEDAGOGY — The STAR Method (hai ai-explainer)
+# PEDAGOGY — The STAR Method (hai ai-explainer) — v2
 
-GATE P: human reviews the narration (on an animated slate, per doctrine) before any audio spend. This file stops at PENDING — no signature has been given, and none should be added by an agent.
+GATE P review of the **v2 narration** (2026-10-16). v1 passed GATE P on 2026-07-24
+(signature in git history). v2 changes every beat, so it needs a fresh signature
+before any audio is generated.
 
-## Act structure
-- B00 cold open: `ClaudeComposerAsk`, ask lands answered, narrator self-introduces as "Supriya, for Humanitarians AI" (per explicit instruction — replaces the generic world-language-hello / persona-name pattern) ✓
-- Body (B01-B08): method → when to use → **required Pragmatist "when it fails" beat** (B03, all-situation-no-result) → worked example (weak → STAR rewrite, S/T/A then R) → story bank → delivery habit. Each body beat carries a `show` block; no beat is a static slide (SHOW-DON'T-TELL) ✓
-- Closing three-beat standard: `ClaudeVerdictArtifact` recap (B09, 3 bare sentences, no double-numbering) → `ClaudeComposerAsk` "Your turn." handoff (B10, prompt read aloud + discussed, HANDOFF LAW) → `ClaudeTitleOutro` title re-read (B11) ✓
-- One accent per beat maintained: TEAL = complete/correct, CRIMSON = missing/wrong, GOLD = highlighter only ✓
+## Why v2 exists
+- PM rules (2026-10-01): exact intro phrase, "Supriya" visible on every beat, real
+  4K bitrate, and a full-length 9:16 that fills every frame.
+- v1 measured 178.6s. With the 9:16's 4.5s endcard that's over the 180s Shorts cap, so
+  v2 targets ~165s (470 words) to keep the vertical full-length (about 4s of margin).
+- A Chapter 9 re-read found over-claims in B01, B02, B03, B06 and the on-screen recap.
+  They're corrected in v2 and logged in `SOURCES-FACTCHECK.md` under "v2 corrections".
 
-## Duration
-12 beats, ~530 narration words, estimated ~189s (3:09) at the 2.9 words/sec planning heuristic. Duration is an output of the content (STAR structure + one worked example + story bank + one delivery habit) sized to land near the requested ~3 minutes without padding or compressing — per `duration-planner` doctrine. Real duration will be whatever Kokoro's measured audio comes out to.
+## Branding / identity
+- B00 opens with the exact phrase "Hi, I am Supriya and this video is about the STAR
+  method: how to actually answer a behavioral interview question." ✓
+- "Supriya, for Humanitarians AI" is gone. "Supriya" is the primary on-screen handle;
+  `@HumanitariansAI` stays as a small secondary label (decided 2026-10-15). ✓
+- The composer header uses a topic label instead of "Irreducibly Human" (Supriya,
+  2026-10-16). ✓
 
-## Evidence discipline
-See `SOURCES-FACTCHECK.md` — every claim traced line-by-line to Chapter 9 of the signed, fact-checked book. No new facts, statistics, or quotes were introduced. The "Your turn" practice prompt (B10) is original exercise text, not a factual claim.
+## Spine check (ai-explainer)
+- B00 cold open (`ClaudeComposerAsk`, ask lands answered) → body B01–B08 → VERDICT (B09)
+  → HANDOFF (B10, `Your turn.`) → title-restate outro (B11). ✓
+- HANDOFF LAW: v1 paraphrased the prompt. v2 reads it **verbatim** and then discusses it:
+  it makes Claude interview you rather than write your story, and it won't let you skip
+  the Result. ✓
+- HAI spine question (when to use AI, and when not to): "Run it before your next
+  interview, not during it." ✓
+- Body stays all-Remotion (Supriya, 2026-10-16: no Manim conversion).
 
-## Persona / brand check
-- Voice: Kokoro `af_bella` throughout ✓
-- Palette: humanitarians tokens only (CREAM/INK/TEAL/CRIMSON/SLATE/GOLD) ✓
-- `channel_title: "@HumanitariansAI"` present in metadata (required by the `hai` skill; drives the first-beat handle overlay at compile time) ✓
-- Register: Pragmatist — method, when to use, **when NOT to / where it fails is present and not skipped** (B03) ✓
-- No fabrication; voice changed, facts did not ✓
+## What changed for the viewer
+- Lost: B02's "belief vs. memory" rule of thumb (it contradicted the book's scope); the
+  v1 opener's "one structure fixes most weak answers in a single pass"; B06's "won the
+  argument" framing.
+- Kept: the four STAR parts, the common failure, the weak answer and its STAR rewrite
+  (now with the ~12% in Action, where the book puts it), the story bank, both delivery
+  habits, and the recap.
 
-## Outstanding before audio spend
-- [x] Human reads `NARRATION-SCRIPT.md` start to finish and confirms tone/pacing.
-- [x] Human confirms the B10 "Your turn" prompt is the one they want the viewer to run.
-- [x] Human signs GATE P below.
+## For your review
+1. [x] The v2 script in `NARRATION-SCRIPT.md` reads naturally aloud (~165s est.).
+2. [x] The fidelity corrections and cuts above are acceptable.
+3. [x] The YOUR TURN prompt and its spoken discussion are what you want.
 
-VERDICT: PASS
+**VERDICT: PASS**
 
-Signed: Supriya Kushwaha (human, author)  Date: 2026-07-24  Evidence: approval given in chat ("Approve Gate P for all three existing video packages").
+Signed: Supriya Kushwaha (human, author)  Date: 2026-10-16  Evidence: "PASS" given in chat on the v2 script as presented.
