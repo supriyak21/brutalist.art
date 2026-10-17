@@ -1,0 +1,6 @@
+# This file is used internally by FFMPEG.
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/banking-data-analyst-interview-prep/banking-sql-running-total-bug/media/videos/scenes/2160p24/partial_movie_files/B09_TheLesson/1545932810_1641213652_223132457.mp4'
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/banking-data-analyst-interview-prep/banking-sql-running-total-bug/media/videos/scenes/2160p24/partial_movie_files/B09_TheLesson/2302614357_1604412794_3691703156.mp4'
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/banking-data-analyst-interview-prep/banking-sql-running-total-bug/media/videos/scenes/2160p24/partial_movie_files/B09_TheLesson/2302614357_2121804495_951616894.mp4'
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/banking-data-analyst-interview-prep/banking-sql-running-total-bug/media/videos/scenes/2160p24/partial_movie_files/B09_TheLesson/2302614357_749437063_1564764178.mp4'
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/banking-data-analyst-interview-prep/banking-sql-running-total-bug/media/videos/scenes/2160p24/partial_movie_files/B09_TheLesson/2302614357_3601673002_2324332997.mp4'

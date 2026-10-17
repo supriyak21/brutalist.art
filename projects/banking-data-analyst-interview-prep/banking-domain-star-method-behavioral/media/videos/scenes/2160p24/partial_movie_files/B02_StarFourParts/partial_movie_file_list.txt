@@ -1,0 +1,4 @@
+# This file is used internally by FFMPEG.
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/banking-data-analyst-interview-prep/banking-domain-star-method-behavioral/media/videos/scenes/2160p24/partial_movie_files/B02_StarFourParts/3438628960_1057797819_223132457.mp4'
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/banking-data-analyst-interview-prep/banking-domain-star-method-behavioral/media/videos/scenes/2160p24/partial_movie_files/B02_StarFourParts/341222362_1832014619_1443506511.mp4'
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/banking-data-analyst-interview-prep/banking-domain-star-method-behavioral/media/videos/scenes/2160p24/partial_movie_files/B02_StarFourParts/341222362_2648641544_2869417460.mp4'

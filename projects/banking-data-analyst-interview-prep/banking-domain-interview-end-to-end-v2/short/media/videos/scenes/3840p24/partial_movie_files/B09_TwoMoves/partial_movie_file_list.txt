@@ -1,0 +1,7 @@
+# This file is used internally by FFMPEG.
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/banking-data-analyst-interview-prep/banking-domain-interview-end-to-end-v2/short/media/videos/scenes/3840p24/partial_movie_files/B09_TwoMoves/775323591_1547544929_223132457.mp4'
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/banking-data-analyst-interview-prep/banking-domain-interview-end-to-end-v2/short/media/videos/scenes/3840p24/partial_movie_files/B09_TwoMoves/3895324699_2717032169_2002146124.mp4'
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/banking-data-analyst-interview-prep/banking-domain-interview-end-to-end-v2/short/media/videos/scenes/3840p24/partial_movie_files/B09_TwoMoves/3895324699_3591852953_3651500141.mp4'
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/banking-data-analyst-interview-prep/banking-domain-interview-end-to-end-v2/short/media/videos/scenes/3840p24/partial_movie_files/B09_TwoMoves/3895324699_107856155_2662540381.mp4'
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/banking-data-analyst-interview-prep/banking-domain-interview-end-to-end-v2/short/media/videos/scenes/3840p24/partial_movie_files/B09_TwoMoves/3895324699_2695074329_2985843467.mp4'
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/banking-data-analyst-interview-prep/banking-domain-interview-end-to-end-v2/short/media/videos/scenes/3840p24/partial_movie_files/B09_TwoMoves/3895324699_851984472_2167847996.mp4'
