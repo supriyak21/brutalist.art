@@ -1,74 +1,37 @@
-# NARRATION-SCRIPT — banking-sql-running-total-bug
+# Narration Script — "The Running-Balance Bug Hiding in a Correct-Looking SQL Query"
 
-**Format:** CLI-explainer, 12-beat required spine · **Skin:** `claude` (cream/ink/terracotta) ·
-**Persona:** none (compliance override — "in for Supriya," no default name, no channel) ·
-**Register:** Teardown · **Voice:** Kokoro `af_heart` · **Estimated runtime:** ~190s (~3:10) ·
-**Source:** `books/banking-data-analyst-interview-prep/chapters/08-sql-i-balances-cohorts-window-functions.md`
-(lines 141–197), `factchecks/MASTER_REPORT.md` (Critical Finding #3).
+cli-explainer · v3 (2026-10-16, branch banking-reels-v3) · 12 beats · 424 words · ~156s estimated at v1's per-beat pace · Voice: Kokoro `af_bella` ("Bella") · Narrator identity: **Supriya**
+
+v1 (453 words, 167.7s) is the baseline commit 516aeb8. Same 12 beat ids and cli-explainer spine. Every number on screen now comes from a real run of `sql/` (see `FACTCHECK.md`, "v3 corrections").
 
 ---
 
-**B00 — INTRO (cold open)**
-> In for Supriya. This query runs clean — and it's wrong for any account with a past.
+**B00** (INTRO). Hi, I am Supriya and this video is about the running-balance bug hiding in a correct-looking SQL query. It runs clean, and it's wrong for any account with a past.
 
-**B01 — PROBLEM (why care)**
-> In a bank's data warehouse, "what's this account's balance today" really means "sum every
-> posting up to today." Get that running total right, and the report is trustworthy. Get one
-> clause out of order, and the query still runs, still returns numbers — and every one of them is
-> wrong for any account with history before the reporting window. No error thrown. No warning
-> logged. Just a wrong balance that looks completely correct.
+**B01** (PROBLEM). In a bank's data warehouse, "what's this account's balance today" really means "sum every posting up to today." Get that running total right, and the report is trustworthy. Get one clause out of order, and the query still runs and still returns numbers, but they're wrong for any account with history before the reporting window. No error. No warning.
 
-**B02 — MECHANISM (the ordering rule)**
-> Here's the rule that explains it. A window function runs after WHERE, GROUP BY, and HAVING — but
-> only inside its own query. Put that WHERE in an earlier CTE instead, and it still runs first,
-> before a SUM() OVER two CTEs downstream ever sees the data. Filter early, and the running total
-> built on top never sees what got filtered out.
+**B02** (PROBLEM (the rule)). Here's the rule behind it. A window function runs after WHERE in the same query. So when the date filter sits in the same CTE as SUM() OVER, the sum only sees the rows that survived the filter. Everything posted before the window is gone before the total starts counting.
 
-**B03 — CLI (cycle 1, the ask)**
-> Ask Claude to review the chapter's own running-balance query before it ships — six months of
-> end-of-month balances, built one CTE at a time.
+**B03** (CLI — cycle 1). So ask Claude to review a running-balance query before it ships: end-of-month balances for the first half of twenty twenty-six, built one CTE at a time.
 
-**B04 — CODE (cycle 1, the buggy query)**
-> Here's the CTE that computes the running balance. Read the WHERE clause — it's sitting right
-> inside running, filtering the ledger down to twenty-twenty-six before the SUM() OVER ever runs.
+**B04** (CODE). Here's the draft. Read the WHERE clause. It sits inside running, the same CTE as SUM() OVER, so the ledger is cut down to twenty twenty-six before the sum runs.
 
-**B05 — OUTPUT (cycle 1, the wrong result)**
-> Run it against an account that's been open since twenty-twenty-five. The true balance carried
-> twelve thousand four hundred dollars into January. This query says January's balance is negative
-> three hundred. It didn't error. It just forgot the account had a past.
+**B05** (OUTPUT). Run it on a Cascade Savings account that carried twelve thousand four hundred dollars into January. The query says January ended at minus three hundred. That's not a balance. It's the net change since January, and nothing warned you.
 
-**B06 — CLI (cycle 2, the required revision)**
-> That's a bug, not a feature. The fix is one clause, moved one CTE downstream: pull the date
-> filter out of running, and put it on last underscore posting underscore per underscore month
-> instead.
+**B06** (CLI — cycle 2 (revision)). That's the bug. The fix moves one clause: take the date filter out of running, and put it on the next CTE, last posting per month.
 
-**B07 — CODE (cycle 2, the fixed query)**
-> Same query, one clause relocated. Running now sees the whole ledger, no WHERE at all. The date
-> filter shows up one CTE later — after the sum is already correct, only narrowing which months
-> get reported.
+**B07** (CODE (fixed)). Running now has no WHERE at all, so the sum sees the whole ledger. The same date filter sits one CTE later, after the balance is already right, and only narrows which months get reported. Nothing else changes.
 
-**B08 — OUTPUT (cycle 2, the corrected result)**
-> Re-run it. January's balance comes back as twelve thousand one hundred dollars — the real prior
-> balance, minus the one withdrawal that actually happened in January. Nothing invented. Nothing
-> lost.
+**B08** (OUTPUT (fixed)). Run it again. January ends at twelve thousand one hundred dollars: the real prior balance, minus the one January withdrawal. Nothing invented, nothing lost.
 
-**B09 — SUMMARY (the lesson)**
-> So the bug was never the window function. It was a WHERE clause living one CTE too early.
-> Compute the running total over the whole ledger first. Narrow down to your reporting window only
-> after the balance is already right.
+**B09** (SUMMARY). So the bug was never the window function. It was a filter applied before the sum. Compute the running total over the whole ledger first, and narrow to your reporting window only after the balance is right.
 
-**B10 — NEXT STEPS (handoff, "Your turn.")**
-> Your move: take this prompt, and run it against your own running-balance query. If the date
-> filter sits inside the CTE that computes the sum, that's your bug — move it downstream, and
-> check it against an account with history older than your reporting window.
+**B10** (NEXT STEPS / HANDOFF). Your turn. Try this: Check my running-balance query: is the date filter in the same CTE as SUM() OVER? If so, move it downstream and test it on an account with history before the window. If the answer is yes, that's your bug, and an account with older history is the test that proves the fix.
 
-**B11 — OUTRO**
-> The running-balance bug hiding in a correct-looking SQL query. In for Supriya — building it with
-> Claude, then taking it apart.
+**B11** (OUTRO). The Running-Balance Bug Hiding in a Correct-Looking SQL Query.
 
 ---
 
-**Word count:** ~470 words across 12 beats. **Pace:** ~2.4–2.5 words/sec at Kokoro's typical rate
-(matching the `af_heart` pace observed in the whole-book-trailer project) → **estimated duration
-~190s (~3:10)**. Actual per-beat durations lock once `generate_audio_kokoro.py` runs (Gate: "hear
-it / lock the clock" — never ship on the word-count estimate).
+On-screen YOUR TURN prompt (identical to the spoken text in B10): Check my running-balance query: is the date filter in the same CTE as SUM() OVER? If so, move it downstream and test it on an account with history before the window.
+
+Word count 424. Source: Ch.8 (`08-sql-i-balances-cohorts-window-functions.md`, worked example + "Notice where the date filter lives").

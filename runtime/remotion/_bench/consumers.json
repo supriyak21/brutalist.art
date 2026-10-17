@@ -37,6 +37,14 @@
   {
    "beat": "B06",
    "video": "correlation-is-not-causation"
+  },
+  {
+   "beat": "B04",
+   "video": "banking-domain-sql-running-total-bug"
+  },
+  {
+   "beat": "B07",
+   "video": "banking-domain-sql-running-total-bug"
   }
  ],
  "ClaudeCodeBeat916": [
@@ -67,6 +75,14 @@
   {
    "beat": "B07",
    "video": "hai-sql-window-functions-tie-bug-short"
+  },
+  {
+   "beat": "B04",
+   "video": "banking-domain-sql-running-total-bug-short"
+  },
+  {
+   "beat": "B07",
+   "video": "banking-domain-sql-running-total-bug-short"
   }
  ],
  "ClaudeComposerAsk": [
@@ -185,6 +201,22 @@
   {
    "beat": "B10",
    "video": "correlation-is-not-causation"
+  },
+  {
+   "beat": "B00",
+   "video": "banking-domain-sql-running-total-bug"
+  },
+  {
+   "beat": "B03",
+   "video": "banking-domain-sql-running-total-bug"
+  },
+  {
+   "beat": "B06",
+   "video": "banking-domain-sql-running-total-bug"
+  },
+  {
+   "beat": "B10",
+   "video": "banking-domain-sql-running-total-bug"
   }
  ],
  "ClaudeComposerAsk916": [
@@ -275,6 +307,22 @@
   {
    "beat": "B10",
    "video": "hai-sql-window-functions-tie-bug-short"
+  },
+  {
+   "beat": "B00",
+   "video": "banking-domain-sql-running-total-bug-short"
+  },
+  {
+   "beat": "B03",
+   "video": "banking-domain-sql-running-total-bug-short"
+  },
+  {
+   "beat": "B06",
+   "video": "banking-domain-sql-running-total-bug-short"
+  },
+  {
+   "beat": "B10",
+   "video": "banking-domain-sql-running-total-bug-short"
   }
  ],
  "ClaudeTitleOutro": [
@@ -341,6 +389,10 @@
   {
    "beat": "B11",
    "video": "hai-sql-window-functions-tie-bug"
+  },
+  {
+   "beat": "B11",
+   "video": "banking-domain-sql-running-total-bug"
   }
  ],
  "ClaudeTitleOutroFilled916": [
@@ -367,6 +419,10 @@
   {
    "beat": "B11",
    "video": "hai-sql-window-functions-tie-bug-short"
+  },
+  {
+   "beat": "B11",
+   "video": "banking-domain-sql-running-total-bug-short"
   }
  ],
  "ClaudeVerdictArtifact": [

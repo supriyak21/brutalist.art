@@ -1,70 +1,34 @@
-# PEDAGOGY — banking-sql-running-total-bug
+# PEDAGOGY — The Running-Balance Bug Hiding in a Correct-Looking SQL Query — v3
 
-**Prepared by:** Claude (agent) · **Date:** 2026-08-10
-**Skill:** `cli-explainer` (`skills/make/cli-explainer/SKILL.md`)
+GATE P review of the **v3 narration** (2026-10-16, branch `banking-reels-v3`). v1 passed GATE P
+earlier (baseline commit 516aeb8). v3 changes every beat, so it needs a fresh signature before
+any audio is generated.
 
-This is **GATE P** — the quality gate `generate_audio_kokoro.py` checks before a single second of
-narration is generated. Per P1 (AI+1 doctrine, this repo's own constitution and this toolkit's
-house law), **an agent never signs its own gate.** Everything below is my checklist against the
-skill's required elements; the `VERDICT` line stays `PENDING` until you sign it.
+## Why v3 exists
+- PM rules: exact intro, "Supriya" on every beat, real 4K bitrate, and a full-length 9:16 that
+  fills every frame. v1 measured 167.7s; v3 targets ~156s (424 words), so the 9:16 stays full-
+  length with its endcard under the 180s cap.
+- Fact-check (2026-10-16): v1 explained the wrong mechanism (a WHERE "in an earlier CTE"; the
+  bug's WHERE is in the same CTE as SUM() OVER), presented hand-typed numbers as query runs, and
+  paraphrased its handoff prompt. All corrected; see `FACTCHECK.md`, "v3 corrections".
+- The receipt is a real SQLite run of the shown MySQL, with DATE_FORMAT → strftime disclosed
+  (Supriya chose option b, 2026-10-16).
 
-## Required-elements checklist
+## Spine check (cli-explainer)
+INTRO B00 → PROBLEM B01–B02 → cycle 1 (CLI B03 → CODE B04 → OUTPUT B05) → revision (CLI B06 →
+CODE B07 → OUTPUT B08) → SUMMARY B09 → HANDOFF B10 (read verbatim, then discussed) → OUTRO B11. ✓
+Both cycles stay in the 9:16 (the revision is the fix).
 
-1. **Required 12-beat spine present** (INTRO → PROBLEM → MECHANISM → CLI→CODE→OUTPUT →
-   CLI→CODE→OUTPUT → SUMMARY → NEXT STEPS → OUTRO), matching the structural reference's own beat
-   count and role sequence exactly.
-   **CHECK: satisfied** — see `beat_sheet.json`, 12 beats B00–B11, roles verified against
-   `SKILL.md`'s required-spine table.
-2. **THE REVISION LAW** — at least one CLI → CODE → better OUTPUT cycle.
-   **CHECK: satisfied** — B06 (CLI/CHANGE) → B07 (CODE, fixed) → B08 (OUTPUT, corrected) is the
-   required revision; B03→B04→B05 is the first (buggy) cycle.
-3. **THE ACTUAL-CODE LAW** — CODE beats show real, runnable SQL, trimmed to teaching lines, never
-   pseudocode.
-   **CHECK: satisfied** — B04 and B07 show the actual `running` CTE from Chapter 8 (buggy and
-   fixed versions respectively), trimmed with `-- unchanged` comments for the other 2 CTEs, not
-   rewritten or simplified beyond removing repeated boilerplate.
-4. **Output beats are never a still — always motion** (Manim/Remotion/d3/screen-capture).
-   **CHECK: satisfied** — B01, B02, B05, B08, B09 are Manim; all other beats are Remotion
-   `ClaudeComposerAsk`/`ClaudeCodeBeat`/`ClaudeTitleOutro`. No PNG-still fallback anywhere in
-   `beat_sheet.json`.
-5. **NO FABRICATION** — every claim traces to the book/fact-check, illustrative data honestly
-   labeled.
-   **CHECK: satisfied** — see `FACTCHECK.md`'s claim-by-claim trace (7 claims, all CONFIRMED) and
-   its "what is new here" section (the one addition — sample account `ACCT-50231` — is disclosed,
-   not presented as real). One caught-and-fixed issue: an earlier draft of B00's narration said
-   "wrong for half your customers," an invented statistic with no source; corrected to "wrong for
-   any account with a past," which matches the book's actual claim (any account with pre-2026
-   history) with no invented fraction.
-6. **HANDOFF LAW** — the NEXT STEPS beat's suggested prompt is read aloud and discussed, not just
-   shown.
-   **CHECK: satisfied** — B10's narration reads the prompt's intent ("check my own running-balance
-   CTE... move it downstream... check it against an account with history older than your reporting
-   window") rather than only displaying it on screen.
-7. **Compliance/persona requirement** — "in for Supriya," no default persona name, no channel
-   branding.
-   **CHECK: satisfied** — B00 and B11 narration use "in for Supriya" only; `metadata.persona` is
-   `"none"`; no `@handle` anywhere, `channel_title` is the book's own title text instead.
-8. **No paid services.**
-   **CHECK: satisfied** — Kokoro (local), Manim (local), Remotion (local Node render). See
-   `FACTCHECK.md`'s "No paid services" section.
+## What changed for the viewer
+- Lost: v1's outro sign-off ("building it with Claude, then taking it apart"), and some
+  repetition in B01 and B06.
+- Gained: the book's own diagnosis in B05 ("not a balance — the net change since January").
 
-## Outstanding for the human reviewer
+## For your review
+1. [x] The v3 script in `NARRATION-SCRIPT.md` reads naturally aloud (~156s est.).
+2. [x] The corrections above are acceptable.
+3. [x] The YOUR TURN prompt and its spoken discussion are what you want.
 
-- [x] Read all 12 narration blocks in `NARRATION-SCRIPT.md` and confirm the Teardown voice reads
-      right to you (spare, no padding, no forbidden phrases).
-- [x] Confirm the illustrative sample data (`ACCT-50231`, the four transactions, the
-      buggy/corrected balances) in `VISUAL-PLAN.md` is clearly enough labeled as illustrative once
-      it's on screen.
-- [x] Confirm the persona/branding choices (no name, `claude` skin, Kokoro `af_heart`, plain
-      `channel_title` mark) still read as sufficient compliance attribution to you.
-- [x] Confirm the 4K (3840×2160) render target is acceptable given the longer render time it
-      implies, or tell me to drop to 1080p instead.
+**VERDICT: PASS**
 
-## VERDICT: PASS
-
-Signed: Supriya Kushwaha (human, author)
-Date: 2026-08-10
-Evidence: Reviewed PLAN.md, beat_sheet.json, FACTCHECK.md, NARRATION-SCRIPT.md, VISUAL-PLAN.md,
-and this checklist in-session; approved narration, illustrative sample data, persona/branding
-choices, and the 4K render target as-is. Verdict communicated directly to the agent in-session;
-transcribed here per that instruction.
+Signed: Supriya Kushwaha (human, author)  Date: 2026-10-16  Evidence: "PASS" given in chat on the v3 script as presented.

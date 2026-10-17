@@ -49,3 +49,28 @@ The "before" (buggy) query is a faithful reconstruction of the pre-fix state as 
 Kokoro (local, free) for narration; Manim (local, free) for the 5 animated data/mechanism beats;
 Remotion (local, free, already-installed `node_modules`) for the 7 composer/code/outro beats. No
 ElevenLabs, no Higgsfield, no paid API calls anywhere in this build.
+
+---
+
+## v3 corrections (2026-10-16)
+
+**The receipt is now real (option b, disclosed).** `sql/cascade.sql` builds the book's Cascade
+Savings schema (Ch.8, verbatim) with one account (50231) opened in 2025. The two queries shown
+on screen are `sql/running_balance_buggy.mysql.sql` and `sql/running_balance_fixed.mysql.sql`,
+which are MySQL as in the book. They are run in SQLite through `sql/make_sqlite.py`, whose only
+change is `DATE_FORMAT(x, fmt)` → `strftime(fmt, x)` (identical output for '%Y-%m-01' / '%Y-%m');
+the script refuses any other difference. Results are in `sql/*.out`, the scenes parse them, and
+the run beats disclose "run in SQLite · DATE_FORMAT → strftime".
+Results: buggy → Jan −300 · Feb −150 · Mar −225; fixed → Jan 12,100 · Feb 12,250 · Mar 12,175.
+The `diff` of the two files is exactly one WHERE clause moved from `running` to `last_posting_per_month`.
+
+| Beat | v1 | Ch.8 / real run | v3 |
+|---|---|---|---|
+| B02, B09 (+ screen) | "Put that WHERE in an earlier CTE … two CTEs downstream" / "not before a WHERE in an earlier CTE" | the WHERE is **inside `running`**, the same CTE as `SUM() OVER` (ch08:197; ch08:116 evaluation order) | "the date filter sits in the same CTE as SUM() OVER"; "a filter applied before the sum" |
+| B05, B08 | hand-typed tables narrated as "Run it" | now a real SQLite run of the shown query | parsed from `sql/*.out`; run disclosed on screen |
+| B05 | — | ch08:197: the result is "really 'net change since January'" | "That's not a balance. It's the net change since January." |
+| B03 | "review the chapter's own running-balance query" + chapter file path on screen | the book's query is already fixed; the buggy draft is reconstructed from ch08:197 | "review a running-balance query before it ships"; no file path |
+| B03 | "six months of end-of-month balances" | the query emits only months with postings | "end-of-month balances for the first half of 2026" |
+| B04 (code) | "-- last_posting_per_month … unchanged" | `last_posting_per_month` gains the WHERE in the fix | both CTEs shown in full; `monthly_balances` (truly unchanged) shown in both |
+| B10 | prompt paraphrased | HANDOFF LAW | read verbatim; on-screen text identical |
+| B00/B11 | "In for Supriya" / book name as folder chip + outro handle | PM rules | exact intro; Supriya chip + handle |
