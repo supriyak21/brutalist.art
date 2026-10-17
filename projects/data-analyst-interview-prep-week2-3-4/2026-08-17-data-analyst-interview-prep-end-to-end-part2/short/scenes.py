@@ -18,7 +18,7 @@ import importlib.util
 config.frame_width = 4.5
 config.frame_height = 8.0
 
-_REEL = Path("/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/data-analyst-interview-prep-end-to-end/hai-sql-window-functions-tie-bug")
+_REEL = Path("/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/data-analyst-interview-prep-week2-3-4/2026-08-17-data-analyst-interview-prep-end-to-end-part2")
 _parent = Path(__file__).resolve().parent.parent / "scenes.py"
 if not _parent.is_file() or not (_parent.parent / "sql").is_dir():
     _parent = _REEL / "scenes.py"

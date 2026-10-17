@@ -26,7 +26,7 @@ import json
 
 # run.sh's Gate A/W pre-flights execute an ISOLATED COPY of scenes.py in a temp dir,
 # so fall back to the reel's real location for the data and the timing.
-_REEL = Path("/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/data-analyst-interview-prep-end-to-end/hai-sql-window-functions-tie-bug")
+_REEL = Path("/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/data-analyst-interview-prep-week2-3-4/2026-08-17-data-analyst-interview-prep-end-to-end-part2")
 HERE = Path(__file__).resolve().parent
 if not (HERE / "sql").is_dir():
     HERE = _REEL

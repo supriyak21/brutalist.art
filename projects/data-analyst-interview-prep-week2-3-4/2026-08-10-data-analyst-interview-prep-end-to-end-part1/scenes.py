@@ -22,7 +22,7 @@ import json
 
 # run.sh's Gate A/W pre-flights execute an ISOLATED COPY of scenes.py in a temp dir,
 # so fall back to the reel's real location for the beat sheet.
-_REEL = Path("/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/data-analyst-interview-prep-end-to-end/hai-interview-end-to-end")
+_REEL = Path("/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/data-analyst-interview-prep-week2-3-4/2026-08-10-data-analyst-interview-prep-end-to-end-part1")
 HERE = Path(__file__).resolve().parent
 if not (HERE / "beat_sheet.json").is_file():
     HERE = _REEL
