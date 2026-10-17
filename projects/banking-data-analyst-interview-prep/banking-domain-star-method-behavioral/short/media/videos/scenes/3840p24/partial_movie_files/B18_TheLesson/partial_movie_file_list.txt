@@ -1,0 +1,7 @@
+# This file is used internally by FFMPEG.
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/banking-data-analyst-interview-prep/banking-domain-star-method-behavioral/short/media/videos/scenes/3840p24/partial_movie_files/B18_TheLesson/2043213065_1745231275_2129676992.mp4'
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/banking-data-analyst-interview-prep/banking-domain-star-method-behavioral/short/media/videos/scenes/3840p24/partial_movie_files/B18_TheLesson/1318313771_1275374269_2261980244.mp4'
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/banking-data-analyst-interview-prep/banking-domain-star-method-behavioral/short/media/videos/scenes/3840p24/partial_movie_files/B18_TheLesson/1318313771_2238322755_1751759341.mp4'
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/banking-data-analyst-interview-prep/banking-domain-star-method-behavioral/short/media/videos/scenes/3840p24/partial_movie_files/B18_TheLesson/1318313771_2628671509_2921974860.mp4'
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/banking-data-analyst-interview-prep/banking-domain-star-method-behavioral/short/media/videos/scenes/3840p24/partial_movie_files/B18_TheLesson/1318313771_1041011410_1375701727.mp4'
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/banking-data-analyst-interview-prep/banking-domain-star-method-behavioral/short/media/videos/scenes/3840p24/partial_movie_files/B18_TheLesson/1318313771_3762934198_3548685517.mp4'

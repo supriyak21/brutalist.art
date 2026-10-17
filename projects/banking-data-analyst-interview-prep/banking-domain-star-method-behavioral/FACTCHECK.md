@@ -60,3 +60,23 @@ Stage 4 (Behavioral), which is the only part of Chapter 14 this video uses.
 
 Kokoro (local, free) for narration; Manim (local, free) for 11 scenes; Remotion (local, free,
 already-installed `node_modules`) for 11 beats. No ElevenLabs, no Higgsfield, no paid API calls.
+
+---
+
+## v3 corrections (2026-10-16)
+
+| Beat | v1 | Book | v3 |
+|---|---|---|---|
+| Title, B00, outro | "The STAR Method Banking Panels *Actually* Score"; "how banking interviewers actually score" | ch12:6, :16: "This book's own framing, not a documented industry rubric"; "not an attributed industry standard" | Title → "What a Banking Panel Listens For in a STAR Answer" (Supriya, 2026-10-16) |
+| B00 vs B_VERDICT | "Banks don't grade a STAR answer differently" vs "A bank panel scores the Result differently" | ch12:3: the method is the same; what changes is "which half of the story a bank panel is straining to hear" | B00: "Same method; a different half of the story"; verdict: what the panel *listens for* in the Action and Result |
+| B05 | "three things the generic rubric doesn't name", stated as fact | ch12:6: "pedagogical synthesis… not a published, cited standard" | opens "This is the book's own framing, not a published rubric" |
+| B_VERDICT | "or the story doesn't score"; "correct answers, no credit" | ch14:29: STAR without a named escalation still scores 2; Daniel's other stages scored 2 | "Name them." (no absolute) |
+| B17 | "Scored against the book's own rubric: a one" | ch14:29 rubric gives "STAR shape, but no named escalation" a 2; Daniel's self-score sheet (ch14:86) records 1 with "no named escalation or outcome" (the book is internally inconsistent) | "He scores that stage a one: STAR shape, but no named escalation or outcome" (his self-score, not a rubric claim) |
+| B14 | "A realistic banking loop runs five stages back to back" | ch14:18: "Not every loop runs all five in one day, and not every bank labels them this way" | "can run five stages, though not every bank runs all five in a day" |
+| B_VERDICT | "in the Result" | ch12:10: "in the Action and Result" | "in the Action and the Result" |
+| B11 | dropped "a teammate had built"; escalation recipient missing; "a dbt test now catches it automatically" | ch12:55-58: a teammate's dashboard; flagged "to my teammate and our shared lead"; a plausible-range check | "a teammate's dashboard"; "flag your teammate and lead that day"; "a dbt range check" |
+| B12 (screen) | "checked as a habit" | ch12:60: "a check worth running" | screen text follows the book |
+| B05/B06 (screen) | "Examiner comfort" (dropped "audit"); "Survive an audit…" | ch12:14 "comfort under audit or examiner scrutiny"; ch12:34 "Working through" | screen text follows the book |
+| B18 (screen) | invented bar proportions; omitted the final 48 hours | ch14:91 | bars labelled illustrative; final-48-hours block shown |
+| B10/B15/B16 (screen) | doubled quote marks (“"…"”) | — | single quotation marks |
+| B_YOURTURN | prompt paraphrased | HANDOFF LAW | read verbatim; on-screen text identical |
