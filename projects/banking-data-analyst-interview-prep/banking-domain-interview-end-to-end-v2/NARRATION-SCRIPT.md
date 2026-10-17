@@ -1,79 +1,37 @@
-# NARRATION-SCRIPT — banking-domain-interview-end-to-end-v2
+# Narration Script — "Banking Domain Data Analyst Interview Prep — the SQL Banks Actually Ask"
 
-**Format:** CLI-explainer, 12-beat required spine · **Skin:** `claude` (cream/ink/terracotta) ·
-**Persona:** none — direct author attribution, visible on-screen handle "Supriya" (not "in for X")
-· **Register:** Teardown · **Voice:** Kokoro `af_bella` · **Estimated runtime:** ~210s (~3:30) ·
-**Source:** `books/banking-data-analyst-interview-prep/book.md`,
-`chapters/08-sql-i-balances-cohorts-window-functions.md`,
-`chapters/09-sql-ii-charge-off-waterfalls-vintage-curves.md`.
+cli-explainer · v3 (2026-10-16, branch banking-reels-v3) · 12 beats · 405 words · ~158s estimated at v1's per-beat pace · Voice: Kokoro `af_bella` ("Bella") · Narrator identity: **Supriya**
+
+v2 (491 words, 191.8s; shortened 9:16 at 153.7s) is the baseline commit 516aeb8. Same 12 beat ids. Every number on screen now comes from a real run of `sql/` (see `FACTCHECK.md`, "v3 corrections").
 
 ---
 
-**B00 — INTRO (cold open)**
-> Hi, I'm Supriya. You already know SQL. You already know Python. That's not what fails banking
-> interviews.
+**B00** (INTRO). Hi, I am Supriya and this video is about the SQL that banking interviews actually ask. You already know SQL. That's not what trips people up.
 
-**B01 — PROBLEM (the second language)**
-> A general analytics interview tests joins, cohorts, dashboards — skills you already have. A
-> banking one adds a second language on top: regulators like the OCC and the CFPB, ratios like
-> CET1 and LCR, and an instinct for the question every bank case eventually asks — is this number
-> regulatory-reportable, and could it be fraud. Miss that layer, and a technically perfect answer
-> still reads as "never worked in banking."
+**B01** (PROBLEM). A general analytics interview tests joins, cohorts, and dashboards: skills you already have. A banking one adds a second language on top: regulators like the OCC and the CFPB, ratios like CET1 and LCR, and the habit of asking whether a number is regulatory-reportable, or could be fraud.
 
-**B02 — MECHANISM (the six-part map)**
-> This book maps that layer in six parts: the regulatory landscape, the risk and governance rules
-> that generate it, the modern data stack it lives in, forty-plus worked SQL and Python problems on
-> real banking patterns, the behavioral and case rounds that test judgment, and a one-page day-of
-> cheat sheet.
+**B02** (PROBLEM (the book's map)). This book maps that layer in six parts: the banking landscape, regulation and risk, the modern data stack, technical prep with forty-plus SQL problems and Python for banking, the behavioral and case rounds, and a day-of cheat sheet.
 
-**B03 — CLI (cycle 1, the ask)**
-> Take one worked problem from the book: chapter eight's running balance — six months of
-> end-of-month balances, built one CTE at a time.
+**B03** (CLI — cycle 1). Take one worked problem from chapter eight: end-of-month balances for the first half of twenty twenty-six, built one CTE at a time.
 
-**B04 — CODE (cycle 1, the correct query)**
-> Here's the shape. A running CTE computes the cumulative balance over the whole ledger — no WHERE
-> clause at all. One CTE later, last posting per month narrows down to the reporting window and
-> picks each month's last posting. Sum first. Filter after. Get that order backwards, and the
-> balance comes out silently wrong.
+**B04** (CODE). Here's the shape. Running computes the cumulative balance over the whole ledger, with no WHERE clause at all. One CTE later, the date filter narrows to the reporting window and keeps each month's last posting. Sum first. Filter after.
 
-**B05 — OUTPUT (cycle 1, the correct result)**
-> Run it: this account carried twelve thousand four hundred dollars into January, from a deposit
-> made the year before. End-of-month balances land at twelve-one, twelve-two-fifty, twelve-one-
-> seventy-five — the true balance, because the running total saw the whole ledger first.
+**B05** (OUTPUT). Run it on a Cascade Savings account that carried twelve thousand four hundred dollars into January. The month-end balances on screen are the true ones, because the sum saw the whole ledger first.
 
-**B06 — CLI (cycle 2, the required revision)**
-> That's one query. Banking interviews stack a second constraint on top: does it still hold up when
-> you need to preserve a cohort — not just a balance, a specific group of accounts tracked over
-> time.
+**B06** (CLI — cycle 2). That's one shape. Chapter nine adds a harder one, on a different dataset: a card issuer's monthly snapshots, where the job is to keep one cohort intact.
 
-**B07 — CODE (cycle 2, the cohort-preserving query)**
-> Same discipline, harder shape. Chapter nine: isolate the January cohort first, compute months-on-
-> book by diffing the snapshot against each account's origination month, then group by cohort and
-> bucket together. A plain group-by-calendar-month loses the cohort entirely. This query carries it
-> through every join.
+**B07** (CODE). Isolate the January twenty twenty-five cohort first. Compute months on book by diffing each snapshot against the origination month. Then group by months on book and bucket. A calendar-month group-by would lose the cohort.
 
-**B08 — OUTPUT (cycle 2, the cohort result)**
-> Run it against the January cohort: by month three, most accounts are still current. By month
-> nine, a real slice has slid to ninety-plus days past due, or charged off. And every percentage
-> still adds back to that cohort's own account count — never to whatever population happens to
-> exist that calendar month.
+**B08** (OUTPUT). Run it on a Harborline sample cohort. At month three, ninety-two percent are current. By month nine, four percent are ninety-plus days past due and three percent charged off. Each column adds back to five hundred, because this sample has one snapshot per account per month.
 
-**B09 — SUMMARY (the lesson)**
-> Two moves, same discipline: get the SQL evaluation order right, and never lose the cohort. That's
-> chapters eight and nine. The rest of the book applies the same discipline to regulatory metrics,
-> the modern data stack, and the behavioral and case rounds banks actually run.
+**B09** (SUMMARY). Two moves: get the SQL evaluation order right, and never lose the cohort. That's chapters eight and nine. The rest of the book covers regulatory metrics, the data stack, and the behavioral and case rounds.
 
-**B10 — NEXT STEPS (handoff, "Your turn.")**
-> Your move: take a query you already wrote for a banking-style problem, and run it past Claude
-> with this exact question — is the filter sitting in the wrong CTE, and does it survive a cohort
-> constraint. Both bugs are invisible until you ask.
+**B10** (NEXT STEPS / HANDOFF). Your turn. Try this: Check my banking SQL for two bugs: is any date filter applied before a running SUM() OVER, and does every row stay tied to its cohort? Both bugs run without an error, so the only way to find them is to ask.
 
-**B11 — OUTRO**
-> Banking Domain Data Analyst Interview Prep — the SQL banks actually ask. Built with Claude.
-> I'm Supriya.
+**B11** (OUTRO). Banking Domain Data Analyst Interview Prep: the SQL banks actually ask.
 
 ---
 
-**Word count:** ~490 words across 12 beats. **Pace:** ~2.4 words/sec at Kokoro's typical `af_bella`
-rate → **estimated duration ~205–210s (~3:25–3:30)**. Actual per-beat durations lock once
-`generate_audio_kokoro.py` runs — never ship on the word-count estimate.
+On-screen YOUR TURN prompt (identical to the spoken text in B10): Check my banking SQL for two bugs: is any date filter applied before a running SUM() OVER, and does every row stay tied to its cohort?
+
+Word count 405. Sources: `book.md`; Ch.8 worked example; Ch.9 worked example (Harborline).

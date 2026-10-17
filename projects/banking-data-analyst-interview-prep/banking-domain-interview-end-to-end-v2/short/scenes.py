@@ -1,269 +1,197 @@
-"""scenes.py — portrait (9:16) Manim scenes for banking-domain-interview-end-to-end-v2/short.
-4 Manim beats survive the Shorts cap-plan: B01, B02, B05, B09 (B08 was dropped along with the
-revision cycle B06-B08). These are NOT copies of the parent's landscape scenes — the portrait
-frame's coordinate system is much narrower in x (frame_width=4.5, safe ±1.95) while y is
-UNCHANGED (frame_height=8.0, safe ±3.4), per manim_layout_audit.py --portrait.
+"""scenes.py — portrait (9:16) Manim scenes for banking-domain-interview-end-to-end-v2/short — v3.
+Full-length short (no beats cut — v2's short dropped B06–B08): all 5 Manim beats re-laid-out for
+portrait — B01, B02, B05, B08, B09. Portrait frame: frame_width=4.5 (Gate B safe ±1.95),
+frame_height=8.0 (safe ±3.4); every layout is restacked vertically.
 
-CRITICAL: `manim -r 2160,3840` (CLI resolution flag alone) does NOT recalculate
-config.frame_width/frame_height to match a portrait pixel aspect ratio — confirmed by direct
-diagnostic render (a radius-1 Circle rendered as a true circle, but a Text.to_edge(LEFT) landed
-almost entirely off-frame, and the effective px/unit scale matched frame_width=14.222 /
-frame_height=8.0, the 16:9 DEFAULTS, not a portrait shape). That silently compressed every scene
-below into a small fraction of the real canvas despite passing Gate B (manim_layout_audit.py's
---portrait mode manually overrides these same two config values in its OWN audit process, so
-per-scene geometry checks passed clean while the ACTUAL CLI render used a different, wrong
-coordinate space). The two lines below force the real renderer to match what Gate B already
-validated against — remove them and this whole file silently underfills again.
-
-IMPORTANT LESSON (v2 of this file): Gate B (manim_layout_audit.py) checks overlaps and
-safe-area *crossing* but never checks overall canvas-fill percentage — that's Gate V
-(final_frame_check.py) only, run on the COMPILED master, not per-scene. A scene can pass
-Gate B clean while still badly underfilling the frame. Every layout below is built with
-next_to() CHAINS ONLY (never independent absolute y-positions competing for the same space)
-so elements can never silently overlap, and uses generous buffs/large type deliberately
-spread across nearly the full ±3.4 safe height, not just fit-within-bounds.
-Same palette/helpers as the parent scenes.py.
+DATA + TIMING come from the landscape ../scenes.py (imported, not copied): the same balances and
+cohort mix parsed from ../sql/*.out, the same measured audio durations and narration cues.
+Scene classes must be plain Scene subclasses named B0X_Name.
 """
 from manim import *
-import numpy as np
+from pathlib import Path
+import importlib.util
 
-# See module docstring — without these two lines, `manim -r 2160,3840` renders
-# with the 16:9-default coordinate space (frame_width=14.222, frame_height=8.0)
-# instead of the portrait one Gate B validates against.
 config.frame_width = 4.5
 config.frame_height = 8.0
 
-CREAM = "#FAF9F5"; INK = "#3D3929"; TERRACOTTA = "#D97757"
-TEAL = "#1F6F5C"; CRIMSON = "#BF3339"; SEC = "#6B6357"
+_REEL = Path("/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/banking-data-analyst-interview-prep/banking-domain-interview-end-to-end-v2")
+_parent = Path(__file__).resolve().parent.parent / "scenes.py"
+if not _parent.is_file() or not (_parent.parent / "sql").is_dir():
+    _parent = _REEL / "scenes.py"
+_spec = importlib.util.spec_from_file_location("landscape_scenes", _parent)
+L = importlib.util.module_from_spec(_spec)
+_spec.loader.exec_module(L)
+
+CREAM, INK, TERRACOTTA, TEAL, CRIMSON, SEC, RULE, MONO = L.CREAM, L.INK, L.TERRACOTTA, L.TEAL, L.CRIMSON, L.SEC, L.RULE, L.MONO
+BALANCES, CARRIED, ACCOUNT, BUCKETS, VINTAGE, MOBS, TOTALS, COHORT_N = L.BALANCES, L.CARRIED, L.ACCOUNT, L.BUCKETS, L.VINTAGE, L.MOBS, L.TOTALS, L.COHORT_N
+mon, money = L.mon, L.money
+SAFE_X = 1.95
 
 
-def checkmark(color=TEAL, size=0.32):
-    mark = VMobject(color=color, stroke_width=7)
-    mark.set_points_as_corners([
-        np.array([-0.5, 0.05, 0]) * size,
-        np.array([-0.1, -0.45, 0]) * size,
-        np.array([0.55, 0.5, 0]) * size,
-    ])
-    return mark
+def handle(scene):
+    h = Text("Supriya", color=SEC, font_size=18, weight="BOLD").set_opacity(0.8)
+    h.move_to([SAFE_X - 0.05, -3.22, 0], aligned_edge=RIGHT)
+    scene.add(h)
+    return h
 
 
-def wrap(text, n):
-    words, lines, cur = text.split(), [], ""
-    for w in words:
-        if len(cur) + len(w) + 1 <= n:
-            cur = (cur + " " + w).strip()
-        else:
-            lines.append(cur); cur = w
-    if cur:
-        lines.append(cur)
-    return "\n".join(lines)
+class Clock(L.Clock):
+    def __init__(self, scene, bid):
+        self.s, self.bid, self.t = scene, bid, 0.0
+        self.DUR = L.dur(bid)
+        scene.camera.background_color = CREAM
+        handle(scene)
 
 
-def pad(scene, elapsed, target):
-    scene.wait(max(0.4, target - elapsed - 0.2))
+def fit(m, w):
+    if m.width > w:
+        m.scale_to_fit_width(w)
+    return m
+
+
+def chip(label, color, size=20, fill=0.12, w=None):
+    t = Text(label, color=color, weight="BOLD", font_size=size)
+    box = RoundedRectangle(corner_radius=0.2, width=w or t.width + 0.4, height=t.height + 0.3,
+                           stroke_color=color, stroke_width=3, fill_color=color, fill_opacity=fill)
+    if w:
+        fit(t, w - 0.25)
+    return VGroup(box, t.move_to(box))
+
+
+def lines(texts, size, color=INK, bold=True, buff=0.08):
+    return VGroup(*[Text(t, color=color, font_size=size, weight="BOLD" if bold else "NORMAL") for t in texts]).arrange(DOWN, buff=buff)
+
+
+def disclosure():
+    return fit(Text("real run: sql/ · SQLite (MySQL-only functions swapped)", font=MONO, color=SEC, font_size=13), 3.8).move_to([0, -2.85, 0])
 
 
 class B01_TheSecondLanguage(Scene):
-    """PROBLEM beat, portrait — full-height stack, next_to chain throughout."""
-    DUR = 26.69
-
     def construct(self):
-        self.camera.background_color = CREAM
-        elapsed = 0.0
-
-        head = Text(wrap("You already know this.", 14), color=INK, weight="BOLD",
-                     font_size=32, line_spacing=1.1).to_edge(UP, buff=0.75)
-        self.play(Write(head), run_time=1.1); elapsed += 1.1
-
-        sql = RoundedRectangle(corner_radius=0.1, width=1.6, height=0.72, color=TEAL,
-                                stroke_width=4.5, fill_color=CREAM, fill_opacity=1)
-        py = RoundedRectangle(corner_radius=0.1, width=1.6, height=0.72, color=TEAL,
-                               stroke_width=4.5, fill_color=CREAM, fill_opacity=1)
-        sql_txt = Text("SQL", color=INK, weight="BOLD", font_size=28)
-        py_txt = Text("Python", color=INK, weight="BOLD", font_size=25)
-        sql_grp = VGroup(sql, sql_txt); py_grp = VGroup(py, py_txt)
-        boxes = VGroup(sql_grp, py_grp).arrange(RIGHT, buff=0.25).next_to(head, DOWN, buff=0.4)
-        sql_txt.move_to(sql.get_center()); py_txt.move_to(py.get_center())
-        self.play(FadeIn(sql, shift=RIGHT * 0.3), FadeIn(py, shift=LEFT * 0.3), run_time=0.8)
-        self.play(FadeIn(sql_txt), FadeIn(py_txt), run_time=0.4)
-        elapsed += 1.2
-
-        lock = Text("solid", color=SEC, font_size=22, slant="ITALIC").next_to(
-            boxes, DOWN, buff=0.28)
-        self.play(FadeIn(lock, shift=UP * 0.1), run_time=0.6); elapsed += 0.6
-
-        chip_labels = ["OCC", "CFPB", "CET1", "LCR", "charge-off"]
-        def make_chip(label):
-            chip = RoundedRectangle(corner_radius=0.26, width=len(label) * 0.155 + 0.5, height=0.6,
-                                     color=TERRACOTTA, stroke_width=3, fill_color=TERRACOTTA,
-                                     fill_opacity=0.0)
-            ctxt = Text(label, color=TERRACOTTA, weight="BOLD", font_size=21)
-            ctxt.move_to(chip.get_center())
-            return VGroup(chip, ctxt)
-
-        row1 = VGroup(*[make_chip(l) for l in chip_labels[:3]]).arrange(RIGHT, buff=0.16)
-        row2 = VGroup(*[make_chip(l) for l in chip_labels[3:]]).arrange(RIGHT, buff=0.16)
-        chips = VGroup(row1, row2).arrange(DOWN, buff=0.18).next_to(lock, DOWN, buff=0.3)
-        self.play(LaggedStart(*[FadeIn(c, shift=UP * 0.15) for c in (*row1, *row2)],
-                              lag_ratio=0.15, run_time=1.6)); elapsed += 1.6
-        self.play(*[c[0].animate.set_fill(opacity=0.14) for c in (*row1, *row2)], run_time=0.5)
-        elapsed += 0.5
-
-        layer_label = Text(wrap("the layer banking adds", 20), color=TERRACOTTA, weight="BOLD",
-                            font_size=24, line_spacing=1.1).next_to(chips, DOWN, buff=0.24)
-        self.play(FadeIn(layer_label, shift=UP * 0.1), run_time=0.7); elapsed += 0.7
-
-        closer = Text(wrap("Miss it, and “technically perfect” still "
-                            "reads as “never worked in banking.”", 30),
-                      color=INK, weight="BOLD", font_size=19, line_spacing=1.1,
-                      ).next_to(layer_label, DOWN, buff=0.1)
-        self.play(Write(closer), run_time=1.8); elapsed += 1.8
-
-        pad(self, elapsed, self.DUR)
+        c = Clock(self, "B01")
+        head = Text("You already have this.", color=INK, weight="BOLD", font_size=28).move_to([0, 3.05, 0])
+        c.run(FadeIn(head), rt=0.5)
+        base = VGroup(*[chip(s, TEAL, 20, 0.0) for s in ["joins", "cohorts", "dashboards"]]).arrange(RIGHT, buff=0.15)
+        fit(base, 3.8).move_to([0, 2.35, 0])
+        c.until("skills you already have")
+        c.run(LaggedStart(*[FadeIn(b, shift=UP * 0.1) for b in base], lag_ratio=0.25), rt=0.8)
+        layer = Text("+ the layer banking adds", color=TERRACOTTA, weight="BOLD", font_size=22).move_to([0, 1.55, 0])
+        regs = VGroup(*[chip(s, TERRACOTTA, 24) for s in ["OCC", "CFPB"]]).arrange(RIGHT, buff=0.2).move_to([0, 0.8, 0])
+        regl = Text("regulators", color=SEC, font_size=16).next_to(regs, DOWN, buff=0.1)
+        ratios = VGroup(*[chip(s, TERRACOTTA, 24) for s in ["CET1", "LCR"]]).arrange(RIGHT, buff=0.2).move_to([0, -0.3, 0])
+        ratl = Text("ratios", color=SEC, font_size=16).next_to(ratios, DOWN, buff=0.1)
+        c.until("second language")
+        c.run(FadeIn(layer), rt=0.4)
+        c.until("regulators like")
+        c.run(FadeIn(regs, shift=DOWN * 0.2), FadeIn(regl), rt=0.5)
+        c.until("ratios like")
+        c.run(FadeIn(ratios, shift=DOWN * 0.2), FadeIn(ratl), rt=0.5)
+        qs = VGroup(chip("regulatory-reportable?", INK, 20, 0.06, w=3.6), chip("could it be fraud?", INK, 20, 0.06, w=3.6)).arrange(DOWN, buff=0.2).move_to([0, -1.95, 0])
+        c.until("regulatory-reportable")
+        c.run(FadeIn(qs[0], shift=UP * 0.1), FadeIn(qs[1], shift=UP * 0.1), rt=0.5)
+        c.pad()
 
 
 class B02_SixPartMap(Scene):
-    """MECHANISM beat, portrait — the six-part map as a vertical chain, full-width boxes."""
-    DUR = 19.41
-
-    PARTS = [
-        ("I", "Landscape"), ("II", "Regulation & Risk"), ("III", "Data Stack"),
-        ("IV", "Technical Prep"), ("V", "Behavioral & Case"), ("VI", "Day-Of"),
-    ]
-
     def construct(self):
-        self.camera.background_color = CREAM
-        elapsed = 0.0
-
-        head = Text("Six parts.", color=INK, weight="BOLD", font_size=40).to_edge(UP, buff=0.65)
-        self.play(Write(head), run_time=0.9); elapsed += 0.9
-
-        rows = VGroup()
-        for numeral, label in self.PARTS:
-            box = RoundedRectangle(corner_radius=0.1, width=3.75, height=0.66,
-                                    color=TEAL, stroke_width=3.5, fill_color=CREAM, fill_opacity=1)
-            num = Text(numeral, color=TERRACOTTA, weight="BOLD", font_size=25)
-            lbl = Text(label, color=INK, font_size=25)
-            row_txt = VGroup(num, lbl).arrange(RIGHT, buff=0.25)
-            row_txt.move_to(box.get_center())
-            rows.add(VGroup(box, row_txt))
-        rows.arrange(DOWN, buff=0.17).next_to(head, DOWN, buff=0.5)
-
-        arrows = VGroup(*[
-            Arrow(rows[i].get_bottom(), rows[i + 1].get_top(), buff=0.03,
-                  color=SEC, stroke_width=3, max_tip_length_to_length_ratio=0.5)
-            for i in range(len(rows) - 1)
-        ])
-
-        for i, r in enumerate(rows):
-            self.play(FadeIn(r, shift=RIGHT * 0.15), run_time=0.45)
-            elapsed += 0.45
-            if i > 0:
-                self.play(Create(arrows[i - 1]), run_time=0.12)
-                elapsed += 0.12
-
-        self.play(Indicate(rows, color=TERRACOTTA, scale_factor=1.02), run_time=0.8)
-        elapsed += 0.8
-
-        tag = Text(wrap("one gap, mapped end to end", 20), color=SEC, font_size=24,
-                    slant="ITALIC").next_to(rows, DOWN, buff=0.3)
-        self.play(FadeIn(tag, shift=UP * 0.1), run_time=0.6); elapsed += 0.6
-
-        pad(self, elapsed, self.DUR)
+        c = Clock(self, "B02")
+        head = Text("Six parts", color=INK, weight="BOLD", font_size=32).move_to([0, 3.05, 0])
+        c.run(FadeIn(head), rt=0.5)
+        boxes = VGroup()
+        for num, label, _ in L.PARTS:
+            box = RoundedRectangle(corner_radius=0.1, width=3.8, height=0.68, color=TEAL, stroke_width=3,
+                                   fill_color="#FFFFFF", fill_opacity=1)
+            n = Text(num, color=TERRACOTTA, weight="BOLD", font_size=22).move_to(box.get_left() + RIGHT * 0.4)
+            lb = fit(Text(label.replace("\n", " "), color=INK, font_size=20), 2.9).move_to(box).align_to(box, LEFT).shift(RIGHT * 0.8)
+            boxes.add(VGroup(box, n, lb))
+        boxes.arrange(DOWN, buff=0.14).move_to([0, 0.3, 0])
+        sub = fit(chip("Part IV: 40+ SQL problems · Python for banking", TERRACOTTA, 17, w=3.8), 3.8).move_to([0, -2.45, 0])
+        for k, ((_, _, word), b) in enumerate(zip(L.PARTS[:4], boxes[:4])):
+            c.until(word)
+            c.run(FadeIn(b, shift=LEFT * 0.15), *([FadeIn(sub)] if k == 3 else []), rt=0.4)
+        c.until(L.PARTS[4][2])
+        c.run(FadeIn(boxes[4], shift=LEFT * 0.15), FadeIn(boxes[5], shift=LEFT * 0.15), rt=0.5)
+        c.pad()
 
 
 class B05_CorrectBalance(Scene):
-    """OUTPUT beat, portrait — the correct running-balance result, full next_to chain."""
-    DUR = 17.3
-
     def construct(self):
-        self.camera.background_color = CREAM
-        elapsed = 0.0
+        c = Clock(self, "B05")
+        head = lines(["Cascade Savings", f"account {ACCOUNT}"], 24).move_to([0, 2.9, 0])
+        c.run(FadeIn(head), FadeIn(disclosure()), rt=0.5)
+        carried = fit(Text(f"carried into January: {money(CARRIED)}", color=TEAL, font_size=18), 3.8).move_to([0, 2.05, 0])
+        c.until("twelve thousand")
+        c.run(FadeIn(carried), rt=0.4)
+        hdr = VGroup(Text("Month", color=SEC, font_size=18).move_to([-1.0, 1.35, 0]), Text("EOM balance", color=SEC, font_size=18).move_to([0.95, 1.35, 0]))
+        rule = Line([-1.9, 1.12, 0], [1.9, 1.12, 0], color=RULE, stroke_width=2)
+        body = VGroup(*[VGroup(Text(mon(m), color=INK, font_size=22).move_to([-1.0, 0.7 - k * 0.62, 0]),
+                               Text(money(v), font=MONO, color=TEAL, font_size=24, weight="BOLD").move_to([0.95, 0.7 - k * 0.62, 0]))
+                        for k, (m, v) in enumerate(BALANCES)])
+        c.until("month-end balances")
+        c.run(FadeIn(hdr), Create(rule), LaggedStart(*[FadeIn(r, shift=UP * 0.1) for r in body], lag_ratio=0.3), rt=1.0)
+        c.until("true ones")
+        c.run(FadeIn(chip("Sum first. Filter after.", TEAL, 22, 0.08).move_to([0, -1.75, 0]), scale=0.95), rt=0.4)
+        c.pad()
 
-        title = Text(wrap("ACCT-50231 — end-of-month balance", 18), color=INK, weight="BOLD",
-                      font_size=28, line_spacing=1.15).to_edge(UP, buff=0.7)
-        self.play(Write(title), run_time=1.1); elapsed += 1.1
 
-        month_hdr = Text("Month", color=SEC, font_size=24, weight="BOLD")
-        bal_hdr = Text("Balance", color=SEC, font_size=24, weight="BOLD")
-        header = VGroup(month_hdr, bal_hdr).next_to(title, DOWN, buff=0.4)
-        month_hdr.move_to([-1.15, header.get_y(), 0])
-        bal_hdr.move_to([1.05, header.get_y(), 0])
-        rule = Line([-1.85, 0, 0], [1.85, 0, 0], color=SEC, stroke_width=2.5).next_to(
-            header, DOWN, buff=0.15)
-        self.play(FadeIn(header), run_time=0.4); elapsed += 0.4
-        self.play(Create(rule), run_time=0.4); elapsed += 0.4
-
-        rows_data = [("Jan 2026", "$12,100"), ("Feb 2026", "$12,250"), ("Mar 2026", "$12,175")]
-        rows = VGroup()
-        prev = rule
-        for month, value in rows_data:
-            m = Text(month, color=INK, font_size=24)
-            v = Text(value, color=TEAL, weight="BOLD", font_size=26)
-            row = VGroup(m, v).next_to(prev, DOWN, buff=0.32)
-            m.move_to([-1.15, row.get_y(), 0]); v.move_to([1.05, row.get_y(), 0])
-            rows.add(row); prev = row
-        self.play(LaggedStart(*[FadeIn(r, shift=UP * 0.12) for r in rows],
-                              lag_ratio=0.6, run_time=1.8)); elapsed += 1.8
-
-        note = Text(wrap("Jan's balance still carries the Nov 2025 deposit", 28),
-                     color=SEC, font_size=19, slant="ITALIC",
-                     line_spacing=1.1).next_to(rows, DOWN, buff=0.3)
-        self.play(FadeIn(note, shift=UP * 0.1), run_time=0.7); elapsed += 0.7
-
-        badge = RoundedRectangle(corner_radius=0.12, width=3.75, height=0.85, color=TEAL,
-                                  stroke_width=3, fill_color=TEAL, fill_opacity=0.12).next_to(
-                                      note, DOWN, buff=0.25)
-        badge_txt = Text(wrap("SAW THE WHOLE LEDGER FIRST", 16), color=TEAL, weight="BOLD",
-                          font_size=20, line_spacing=1.1).move_to(badge.get_center())
-        self.play(FadeIn(badge), FadeIn(badge_txt), run_time=0.5); elapsed += 0.5
-        self.play(Indicate(VGroup(badge, badge_txt), color=TEAL, scale_factor=1.04), run_time=0.8)
-        elapsed += 0.8
-
-        pad(self, elapsed, self.DUR)
+class B08_VintageCurve(Scene):
+    def construct(self):
+        c = Clock(self, "B08")
+        head = lines(["Harborline Card Co.", "Jan 2025 sample cohort"], 22).move_to([0, 2.95, 0])
+        c.run(FadeIn(head), FadeIn(disclosure()), rt=0.5)
+        colors = [interpolate_color(ManimColor(TEAL), ManimColor(CRIMSON), i / (len(BUCKETS) - 1)) for i in range(len(BUCKETS))]
+        bar_h, bar_w, base_y = 3.2, 1.05, -1.3
+        xs = [-1.35, 0.0, 1.35]
+        cols, labels, notes = VGroup(), VGroup(), VGroup()
+        for x, m in zip(xs, MOBS):
+            segs, y = VGroup(), base_y
+            for b, col in zip(BUCKETS, colors):
+                n, _ = VINTAGE[m].get(b, (0, 0.0))
+                if n == 0:
+                    continue
+                h = bar_h * n / COHORT_N
+                segs.add(Rectangle(width=bar_w, height=h, stroke_width=1, stroke_color=CREAM, fill_color=col,
+                                   fill_opacity=0.95).move_to([x, y + h / 2, 0]))
+                y += h
+            cols.add(segs)
+            labels.add(Text(f"month {m}", color=INK, weight="BOLD", font_size=18).move_to([x, base_y - 0.25, 0]))
+            cur = VINTAGE[m]["current"][1]
+            p90, pco = (VINTAGE[m].get(b, (0, 0.0))[1] for b in ("90+", "charge_off"))
+            notes.add(VGroup(*[Text(s, color=SEC, font_size=13) for s in (f"{cur:g}% cur", f"{p90:g}% 90+", f"{pco:g}% c-o")]
+                             ).arrange(DOWN, buff=0.04).move_to([x, base_y + bar_h + 0.38, 0]))
+        c.until("month three")
+        c.run(GrowFromEdge(cols[0], DOWN), FadeIn(labels[0]), FadeIn(notes[0]), rt=0.6)
+        c.run(GrowFromEdge(cols[1], DOWN), FadeIn(labels[1]), FadeIn(notes[1]), rt=0.6)
+        c.until("month nine")
+        c.run(GrowFromEdge(cols[2], DOWN), FadeIn(labels[2]), FadeIn(notes[2]), rt=0.6)
+        legend = VGroup(*[VGroup(Square(side_length=0.18, fill_color=col, fill_opacity=0.95, stroke_width=0),
+                                 Text(b, color=SEC, font_size=13)).arrange(RIGHT, buff=0.06) for b, col in zip(BUCKETS, colors)]
+                        ).arrange(RIGHT, buff=0.14)
+        fit(legend, 3.8).move_to([0, base_y - 0.65, 0])
+        c.run(FadeIn(legend), rt=0.4)
+        c.until("each column adds back")
+        ns = Text(f"each column: n = {COHORT_N}", color=TEAL, font_size=20, weight="BOLD").move_to([0, base_y - 1.1, 0])
+        c.run(FadeIn(ns), rt=0.5)
+        c.pad()
 
 
 class B09_TwoMoves(Scene):
-    """SUMMARY beat, portrait — checklist + a single-column chip stack, full next_to chain."""
-    DUR = 17.69
-
     def construct(self):
-        self.camera.background_color = CREAM
-        elapsed = 0.0
-
-        head = Text("Two moves.", color=INK, weight="BOLD", font_size=46)
-        head.to_edge(UP, buff=0.7).to_edge(LEFT, buff=0.35)
-        rule = Rectangle(width=1.75, height=0.08, color=TERRACOTTA, fill_color=TERRACOTTA,
-                          fill_opacity=1, stroke_width=0).next_to(head, DOWN, buff=0.28, aligned_edge=LEFT)
-        self.play(Write(head), run_time=0.8); elapsed += 0.8
-        self.play(GrowFromEdge(rule, LEFT), run_time=0.35); elapsed += 0.35
-
-        items = ["Get the SQL order right", "Never lose the cohort"]
+        c = Clock(self, "B09")
+        head = Text("Two moves", color=INK, weight="BOLD", font_size=34).move_to([0, 2.95, 0])
+        bar = Line(head.get_corner(DL) + DOWN * 0.1, head.get_corner(DR) + DOWN * 0.1, color=TERRACOTTA, stroke_width=5)
+        c.run(FadeIn(head), Create(bar), rt=0.5)
         rows = VGroup()
-        for it in items:
-            check = checkmark(size=0.4)
-            txt = Text(wrap(it, 15), color=INK, font_size=28, line_spacing=1.1)
-            row = VGroup(check, txt).arrange(RIGHT, buff=0.28, aligned_edge=UP)
-            rows.add(row)
-        rows.arrange(DOWN, aligned_edge=LEFT, buff=0.36).next_to(rule, DOWN, buff=0.4, aligned_edge=LEFT)
-        self.play(LaggedStart(*[FadeIn(r, shift=RIGHT * 0.2) for r in rows],
-                              lag_ratio=0.6, run_time=1.6)); elapsed += 1.6
-
-        rest_label = Text(wrap("the rest of the book →", 18), color=SEC, font_size=23,
-                           slant="ITALIC").next_to(rows, DOWN, buff=0.34, aligned_edge=LEFT)
-        self.play(FadeIn(rest_label, shift=UP * 0.1), run_time=0.6); elapsed += 0.6
-
-        def make_chip(label):
-            chip = RoundedRectangle(corner_radius=0.2, width=3.6, height=0.52,
-                                     color=TEAL, stroke_width=2.5, fill_color=CREAM, fill_opacity=1)
-            ctxt = Text(label, color=INK, font_size=21)
-            ctxt.move_to(chip.get_center())
-            return VGroup(chip, ctxt)
-
-        chips = VGroup(*[make_chip(l) for l in
-                         ["Regulation", "Data Stack", "Behavioral & Case", "Day-Of"]])
-        chips.arrange(DOWN, buff=0.08, aligned_edge=LEFT).next_to(rest_label, DOWN, buff=0.08, aligned_edge=LEFT)
-        self.play(LaggedStart(*[FadeIn(c, shift=UP * 0.12) for c in chips],
-                              lag_ratio=0.2, run_time=1.2)); elapsed += 1.2
-
-        pad(self, elapsed, self.DUR)
+        for ls in (["Get the SQL", "evaluation order right"], ["Never lose", "the cohort"]):
+            t = VGroup(*[Text(x, color=INK, font_size=24) for x in ls]).arrange(DOWN, buff=0.05, aligned_edge=LEFT)
+            rows.add(VGroup(L.checkmark(size=0.3).next_to(t, LEFT, buff=0.18).align_to(t, UP), t))
+        rows.arrange(DOWN, aligned_edge=LEFT, buff=0.45).move_to([0.0, 1.2, 0])
+        for r, w in zip(rows, ["evaluation order", "never lose the cohort"]):
+            c.until(w)
+            c.run(Create(r[0]), FadeIn(r[1], shift=RIGHT * 0.1), rt=0.5)
+        rest = Text("the rest of the book →", color=SEC, font_size=20, slant="ITALIC").move_to([0, -0.4, 0])
+        chips = VGroup(*[chip(s, TEAL, 20, 0.0, w=3.4) for s in ["regulatory metrics", "data stack", "behavioral & case rounds"]]
+                       ).arrange(DOWN, buff=0.15).move_to([0, -1.6, 0])
+        c.until("the rest of the book")
+        c.run(FadeIn(rest), LaggedStart(*[FadeIn(x, shift=UP * 0.1) for x in chips], lag_ratio=0.25), rt=0.9)
+        c.pad()

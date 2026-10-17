@@ -83,6 +83,10 @@
   {
    "beat": "B07",
    "video": "banking-domain-sql-running-total-bug-short"
+  },
+  {
+   "beat": "B07",
+   "video": "banking-domain-interview-end-to-end-v2-short"
   }
  ],
  "ClaudeComposerAsk": [
@@ -323,6 +327,10 @@
   {
    "beat": "B10",
    "video": "banking-domain-sql-running-total-bug-short"
+  },
+  {
+   "beat": "B06",
+   "video": "banking-domain-interview-end-to-end-v2-short"
   }
  ],
  "ClaudeTitleOutro": [
