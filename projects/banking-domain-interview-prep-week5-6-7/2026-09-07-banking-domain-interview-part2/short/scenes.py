@@ -14,7 +14,7 @@ import importlib.util
 config.frame_width = 4.5
 config.frame_height = 8.0
 
-_REEL = Path("/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/banking-data-analyst-interview-prep/banking-domain-sql-running-total-bug")
+_REEL = Path("/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/banking-domain-interview-prep-week5-6-7/2026-09-07-banking-domain-interview-part2")
 _parent = Path(__file__).resolve().parent.parent / "scenes.py"
 if not _parent.is_file() or not (_parent.parent / "sql").is_dir():
     _parent = _REEL / "scenes.py"

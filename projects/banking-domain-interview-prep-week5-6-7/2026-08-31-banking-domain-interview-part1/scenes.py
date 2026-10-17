@@ -19,7 +19,7 @@ import json, re
 from collections import defaultdict
 import numpy as np
 
-_REEL = Path("/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/banking-data-analyst-interview-prep/banking-domain-interview-end-to-end-v2")
+_REEL = Path("/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/banking-domain-interview-prep-week5-6-7/2026-08-31-banking-domain-interview-part1")
 HERE = Path(__file__).resolve().parent
 if not (HERE / "sql").is_dir():
     HERE = _REEL

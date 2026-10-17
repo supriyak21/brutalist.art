@@ -18,7 +18,7 @@ from pathlib import Path
 import json
 import numpy as np
 
-_REEL = Path("/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/banking-data-analyst-interview-prep/banking-domain-star-method-behavioral")
+_REEL = Path("/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/banking-domain-interview-prep-week5-6-7/2026-09-14-banking-domain-interview-part3")
 HERE = Path(__file__).resolve().parent
 if not (HERE / "beat_sheet.json").is_file():
     HERE = _REEL

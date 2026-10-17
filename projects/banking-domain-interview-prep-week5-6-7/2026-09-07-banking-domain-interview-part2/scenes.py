@@ -21,7 +21,7 @@ from pathlib import Path
 import json, re
 import numpy as np
 
-_REEL = Path("/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/banking-data-analyst-interview-prep/banking-domain-sql-running-total-bug")
+_REEL = Path("/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/banking-domain-interview-prep-week5-6-7/2026-09-07-banking-domain-interview-part2")
 HERE = Path(__file__).resolve().parent
 if not (HERE / "sql").is_dir():
     HERE = _REEL
