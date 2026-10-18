@@ -1,0 +1,12 @@
+# This file is used internally by FFMPEG.
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/claude-code-explained/media/videos/scenes/2160p24/partial_movie_files/B05_FillBefore_After/1545932810_1929520167_2445575313.mp4'
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/claude-code-explained/media/videos/scenes/2160p24/partial_movie_files/B05_FillBefore_After/2302614357_2998958303_4286098330.mp4'
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/claude-code-explained/media/videos/scenes/2160p24/partial_movie_files/B05_FillBefore_After/2302614357_4216590116_3770108735.mp4'
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/claude-code-explained/media/videos/scenes/2160p24/partial_movie_files/B05_FillBefore_After/2302614357_4189728552_2185807420.mp4'
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/claude-code-explained/media/videos/scenes/2160p24/partial_movie_files/B05_FillBefore_After/2302614357_1213543988_3079320113.mp4'
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/claude-code-explained/media/videos/scenes/2160p24/partial_movie_files/B05_FillBefore_After/2302614357_162376164_1912855651.mp4'
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/claude-code-explained/media/videos/scenes/2160p24/partial_movie_files/B05_FillBefore_After/2302614357_750746450_571336530.mp4'
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/claude-code-explained/media/videos/scenes/2160p24/partial_movie_files/B05_FillBefore_After/2302614357_2286412759_805092579.mp4'
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/claude-code-explained/media/videos/scenes/2160p24/partial_movie_files/B05_FillBefore_After/2302614357_2460850671_1017012899.mp4'
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/claude-code-explained/media/videos/scenes/2160p24/partial_movie_files/B05_FillBefore_After/2302614357_1191146615_1839693932.mp4'
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/claude-code-explained/media/videos/scenes/2160p24/partial_movie_files/B05_FillBefore_After/2302614357_205083755_514123721.mp4'

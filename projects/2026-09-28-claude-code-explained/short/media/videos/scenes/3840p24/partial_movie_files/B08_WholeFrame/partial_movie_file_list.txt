@@ -1,0 +1,12 @@
+# This file is used internally by FFMPEG.
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/claude-code-explained/short/media/videos/scenes/3840p24/partial_movie_files/B08_WholeFrame/775323591_4289163696_2355222256.mp4'
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/claude-code-explained/short/media/videos/scenes/3840p24/partial_movie_files/B08_WholeFrame/3895324699_1338053090_1398354931.mp4'
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/claude-code-explained/short/media/videos/scenes/3840p24/partial_movie_files/B08_WholeFrame/3895324699_4006316875_2620695991.mp4'
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/claude-code-explained/short/media/videos/scenes/3840p24/partial_movie_files/B08_WholeFrame/3895324699_447877571_2996151391.mp4'
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/claude-code-explained/short/media/videos/scenes/3840p24/partial_movie_files/B08_WholeFrame/3895324699_931842827_3341951710.mp4'
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/claude-code-explained/short/media/videos/scenes/3840p24/partial_movie_files/B08_WholeFrame/3895324699_2565496027_1527552076.mp4'
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/claude-code-explained/short/media/videos/scenes/3840p24/partial_movie_files/B08_WholeFrame/3895324699_3159081378_2268120193.mp4'
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/claude-code-explained/short/media/videos/scenes/3840p24/partial_movie_files/B08_WholeFrame/3895324699_2710421336_3346204646.mp4'
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/claude-code-explained/short/media/videos/scenes/3840p24/partial_movie_files/B08_WholeFrame/3895324699_263846592_2042112098.mp4'
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/claude-code-explained/short/media/videos/scenes/3840p24/partial_movie_files/B08_WholeFrame/3895324699_2606259700_2073133159.mp4'
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/claude-code-explained/short/media/videos/scenes/3840p24/partial_movie_files/B08_WholeFrame/3895324699_1750868649_3961071613.mp4'

@@ -1,0 +1,12 @@
+# This file is used internally by FFMPEG.
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/claude-code-explained/media/videos/scenes/2160p24/partial_movie_files/B09_FourMoves/1545932810_2442710100_2445575313.mp4'
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/claude-code-explained/media/videos/scenes/2160p24/partial_movie_files/B09_FourMoves/2302614357_804442464_2234534230.mp4'
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/claude-code-explained/media/videos/scenes/2160p24/partial_movie_files/B09_FourMoves/2302614357_1699255414_1672554332.mp4'
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/claude-code-explained/media/videos/scenes/2160p24/partial_movie_files/B09_FourMoves/2302614357_804442464_3210887841.mp4'
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/claude-code-explained/media/videos/scenes/2160p24/partial_movie_files/B09_FourMoves/2302614357_136768786_3357173913.mp4'
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/claude-code-explained/media/videos/scenes/2160p24/partial_movie_files/B09_FourMoves/2302614357_804442464_3306699356.mp4'
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/claude-code-explained/media/videos/scenes/2160p24/partial_movie_files/B09_FourMoves/2302614357_2562052081_281522711.mp4'
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/claude-code-explained/media/videos/scenes/2160p24/partial_movie_files/B09_FourMoves/2302614357_804442464_42599305.mp4'
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/claude-code-explained/media/videos/scenes/2160p24/partial_movie_files/B09_FourMoves/2302614357_1653087253_1102242102.mp4'
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/claude-code-explained/media/videos/scenes/2160p24/partial_movie_files/B09_FourMoves/2302614357_1724962952_2173614294.mp4'
+file 'file:/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/claude-code-explained/media/videos/scenes/2160p24/partial_movie_files/B09_FourMoves/2302614357_705249770_2854038882.mp4'
