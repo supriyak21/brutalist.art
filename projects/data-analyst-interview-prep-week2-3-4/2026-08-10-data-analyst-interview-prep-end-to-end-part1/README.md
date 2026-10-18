@@ -13,7 +13,7 @@ Final masters are committed in this folder and also on Google Drive: https://dri
 Verify: `shasum -a 256 <file>` and compare to the hash above.
 
 ## Contents
-beat_sheet.json, scenes.py, PEDAGOGY.md, FACTCHECK.md, NARRATION-SCRIPT.md.
+beat_sheet.json, scenes.py, PEDAGOGY.md, FACTCHECK.md, NARRATION-SCRIPT.md, FRICTIONAL.md.
 
 ## Built with
 brutalist.art (deep-explainer skill, Claude-hai persona, Kokoro af_bella)
