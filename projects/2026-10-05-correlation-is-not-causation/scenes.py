@@ -26,7 +26,7 @@ import numpy as np
 # The reel folder holds the data (sql/*.out) and the timing (beat_sheet.json). Normally
 # that is this file's own folder; run.sh's Gate A/W pre-flights execute an ISOLATED COPY
 # of scenes.py in a temp dir, so fall back to the reel's real location for those.
-_REEL = Path("/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/correlation-is-not-causation")
+_REEL = Path("/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/2026-10-05-correlation-is-not-causation")
 HERE = Path(__file__).resolve().parent
 if not (HERE / "sql").is_dir():
     HERE = _REEL

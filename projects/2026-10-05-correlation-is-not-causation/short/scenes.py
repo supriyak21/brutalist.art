@@ -22,7 +22,7 @@ config.frame_height = 8.0
 
 # Import the landscape module for data/timing. run.sh's Gate A/W pre-flights run an
 # ISOLATED COPY of this file in a temp dir, so fall back to the reel's real location.
-_REEL = Path("/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/correlation-is-not-causation")
+_REEL = Path("/Users/supriyakushwaha/Documents/ai1-cli/brutalist.art/projects/2026-10-05-correlation-is-not-causation")
 _parent = Path(__file__).resolve().parent.parent / "scenes.py"
 if not _parent.is_file() or not (_parent.parent / "sql").is_dir():
     _parent = _REEL / "scenes.py"
