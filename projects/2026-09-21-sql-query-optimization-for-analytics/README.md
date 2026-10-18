@@ -1,3 +1,27 @@
+# Week 8: SQL Query Optimization for Analytics
+
+**Date:** 2026-09-21
+
+## Videos
+Final masters are committed in this folder and also on Google Drive: https://drive.google.com/drive/folders/1hc5iSRgrSYF35AxXHg4GGKxZyQFdrHN7
+
+| File | SHA-256 |
+|---|---|
+| 2026-09-21-sql-query-optimization-for-analytics.mp4 (16:9) | 0eb71b8a390d289cdefdf6fb78119001ae4aa790d13ba2e80bd54589a758a277 |
+| 2026-09-21-sql-query-optimization-for-analytics-vertical.mp4 (9:16) | 9313f8682224dd2af29b7a79d51fa522909affc2a8bc2d2bb7564bbf3c5ee5f2 |
+
+Verify: `shasum -a 256 <file>` and compare to the hash above.
+
+## Contents
+beat_sheet.json, a 400k-row SQLite fixture (demo/), PEDAGOGY.md, FACTCHECK.md, NARRATION-GATE-P.md (rev 3 signed), FRICTIONAL.md.
+
+## Built with
+brutalist.art (ai-explainer skill, Claude-hai persona, Kokoro af_bella)
+
+---
+
+## Full reel documentation
+
 # SQL, Read Fewer Rows.
 
 **Fellow:** Supriya Kushwaha · AI+1 Humanitarians AI fellow
