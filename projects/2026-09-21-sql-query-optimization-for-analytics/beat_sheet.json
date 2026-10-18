@@ -1,8 +1,8 @@
 {
   "metadata": {
     "title": "SQL, Read Fewer Rows.",
-    "slug": "2026-09-16-sql-query-optimization-for-analytics",
-    "topic": "SQL · QUERY PLANS · ANALYTICS",
+    "slug": "2026-09-21-sql-query-optimization-for-analytics",
+    "topic": "Irreducibly Human",
     "skill": "ai-explainer",
     "fellow": "Supriya Kushwaha",
     "fellow_folder": "fellows/supriya-k",
@@ -27,9 +27,9 @@
       "ui": "system sans",
       "mono": "SF Mono"
     },
-    "greeting": "Hi, Supriya",
-    "greeting_note": "HAI word budget is shortest forms only (Hi · Ola · Hej · Ciao) — 'Hi' chosen so the greeting and the mandatory verbatim intro line agree. Wagwan mod-10 rule not applicable: Wagwan is Bear's alone.",
-    "folder_chip": "@HumanitariansAI",
+    "greeting": "Hi, I am Supriya",
+    "greeting_note": "v2 (2026-10-17): greeting matches the exact intro line; Supriya chip on every beat, @HumanitariansAI small on the outro (hai convention, same as the data-analyst reels).",
+    "folder_chip": "Supriya",
     "aspect_ratio": "16:9",
     "resolution": "3840x2160",
     "resolution_note": "remotion_scenes.py renders --scale=2; compile.py needs --height 2160.",
@@ -69,19 +69,47 @@
       "scope": "Authorises audio + render. Does NOT cover LOGO LAW (PEDAGOGY open item 1) or post-render QC sign-off (open item 3). Voided by any later narration_text change."
     },
     "build": {
-      "at": "2026-09-16T12:35:54",
+      "at": "2026-10-17T17:41:26",
       "cut": "master",
       "filled": 10,
       "of": 10,
       "slates": [],
-      "skin_warnings": []
+      "skin_warnings": [
+        "B09: palette=claude but the outro is 'ClaudeTitleOutroFilled' — OUTRO LAW wants ClaudeTitleOutro"
+      ]
+    },
+    "narration_revision": "rev 3 — signed GATE P 2026-10-17 (Supriya Kushwaha)",
+    "topic_label": "SQL · QUERY PLANS · ANALYTICS",
+    "topic_note": "metadata.topic carries the fixed claude-hai kicker for Gate L; the on-screen topic label stays \"SQL · QUERY PLANS · ANALYTICS\" (composer props), as Supriya confirmed for the other hai reels.",
+    "portrait_overrides": {
+      "B00": {
+        "scale": 1.0,
+        "output": [],
+        "_why": "no room under the portrait composer card; figures are spoken here and shown in B01/B03/B04"
+      },
+      "B07": {
+        "scale": 1.15
+      },
+      "B01": {
+        "handleTop": true
+      },
+      "B04": {
+        "handleTop": true
+      },
+      "B05": {
+        "_drop": [
+          "scale",
+          "shiftY"
+        ]
+      },
+      "_note": "Apply to short/beat_sheet.json after any ./art shorts regeneration; also blank short channel_title."
     }
   },
   "beats": [
     {
       "beat_id": "B00",
       "act": "ASK",
-      "narration_text": "Hi, I am Supriya, and this video is about SQL query optimization for analytics. Two queries. Identical output — the same four thousand four hundred fifty-nine rows, byte for byte. One of them reads eleven thousand rows to get there. The other reads four hundred thousand. Nothing in the SQL tells you which is which. The query plan does.",
+      "narration_text": "Hi, I am Supriya and this video is about SQL query optimization for analytics. Two queries, identical output: the same four thousand four hundred fifty-nine rows. One reads eleven thousand rows to get there. The other reads four hundred thousand. The SQL won't tell you which. The query plan will.",
       "content_type": "title",
       "shot": {
         "type": "GRAPHIC",
@@ -116,45 +144,43 @@
         "remotion": {
           "pattern": "ClaudeComposerAsk",
           "props": {
-            "greeting": "Hi, Supriya",
+            "greeting": "Hi, I am Supriya",
             "topic": "SQL · QUERY PLANS · ANALYTICS",
             "segment": "Read Fewer Rows",
             "command": "I have a 400,000-row postings table with an index on posted_at. Two queries return identical results — one filters with strftime('%Y-%m', posted_at) = '2026-01', the other with posted_at >= '2026-01-01' AND posted_at < '2026-02-01'. Run EXPLAIN QUERY PLAN on both and tell me which one can use the index, and why.",
             "runningText": "reading the plan…",
-            "folderLabel": "@HumanitariansAI",
-            "modelLabel": "Fable 5",
+            "folderLabel": "Supriya",
+            "modelLabel": "Claude",
             "effortLabel": "High",
             "output": [
               "A → SCAN postings — reads all 400,000 rows",
               "B → SEARCH postings USING INDEX idx_postings_posted_at — reads 11,369",
               "identical answer: 4,459 rows out · 35× fewer rows read"
-            ]
+            ],
+            "scale": 1.3
           },
           "rendered": {
             "out": "media/B00.mp4",
-            "at": "2026-09-16T16:10:00Z",
-            "artifact_mtime_utc": "2026-09-16T18:49:59Z",
-            "scale": 2,
-            "render_px": "3840x2160"
+            "at": ""
           }
         }
       },
       "estimated_duration_s": 23,
       "audio_file": "mp3/beat-B00.mp3",
-      "actual_duration_s": 22.04,
+      "actual_duration_s": 19.9,
       "engine": "kokoro",
       "voice": "af_bella",
       "build": {
         "status": "VIDEO",
         "src": "media/B00.mp4",
-        "filled_by": "remotion:ClaudeComposerAsk",
-        "at": "2026-09-16T12:35:54"
+        "filled_by": "media",
+        "at": "2026-10-17T17:41:26"
       }
     },
     {
       "beat_id": "B01",
       "act": "SETUP",
-      "narration_text": "Here is the shape of every analytics query. Four hundred thousand postings. You want one month — eleven thousand rows survive the filter, and grouping by account leaves four thousand four hundred fifty-nine. The answer is tiny. Optimization is the argument about how many of those four hundred thousand the database touches to find it.",
+      "narration_text": "Here is the shape of a typical analytics query. Four hundred thousand postings. You want one month: eleven thousand rows survive the filter, and grouping by account leaves four thousand four hundred fifty-nine. Optimization is about how many of the four hundred thousand the database has to touch.",
       "content_type": "data",
       "shot": {
         "type": "GRAPHIC",
@@ -205,31 +231,37 @@
                 }
               ],
               "script": "isotype scale declared in the persistent bottom-left scaleNote (was occluded by the counter card in the library component — _qc/REPORT.md #3). Counter percentages are the real selectivity (2.84% → 1.11%). See FACTCHECK.md row 6.",
-              "scaleNote": "ISOTYPE: 1 DOT = 1,000 ROWS"
-            }
+              "scaleNote": "ISOTYPE: 1 DOT = 1,000 ROWS",
+              "panelCounts": [
+                "400,000 rows",
+                "11,369 rows",
+                "4,459 groups"
+              ]
+            },
+            "handle": "Supriya"
           },
           "rendered": {
             "out": "media/B01.mp4",
-            "at": "2026-09-16T17:05:00Z"
+            "at": ""
           }
         }
       },
       "estimated_duration_s": 22,
       "audio_file": "mp3/beat-B01.mp3",
-      "actual_duration_s": 20.57,
+      "actual_duration_s": 18.37,
       "engine": "kokoro",
       "voice": "af_bella",
       "build": {
         "status": "VIDEO",
         "src": "media/B01.mp4",
-        "filled_by": "remotion:SqlAttritionChain",
-        "at": "2026-09-16T12:35:54"
+        "filled_by": "media",
+        "at": "2026-10-17T17:41:26"
       }
     },
     {
       "beat_id": "B02",
       "act": "ASK",
-      "narration_text": "So stop guessing and ask the database. EXPLAIN QUERY PLAN costs nothing to run, and it does not run your query — it just tells you what the engine intends to do.",
+      "narration_text": "So ask the database. EXPLAIN QUERY PLAN costs almost nothing, and it doesn't run your query. It just tells you what the engine intends to do.",
       "content_type": "title",
       "shot": {
         "type": "GRAPHIC",
@@ -252,40 +284,38 @@
         "remotion": {
           "pattern": "ClaudeComposerAsk",
           "props": {
-            "greeting": "Watch, Supriya",
+            "greeting": "The ask,",
             "topic": "SQL · QUERY PLANS · ANALYTICS",
             "segment": "Read Fewer Rows",
             "command": "Run EXPLAIN QUERY PLAN on both queries against demo/postings.db and show me the two plans side by side, unedited.",
             "runningText": "explaining…",
-            "folderLabel": "@HumanitariansAI",
-            "modelLabel": "Fable 5",
-            "effortLabel": "High"
+            "folderLabel": "Supriya",
+            "modelLabel": "Claude",
+            "effortLabel": "High",
+            "scale": 1.5
           },
           "rendered": {
             "out": "media/B02.mp4",
-            "at": "2026-09-16T16:10:00Z",
-            "artifact_mtime_utc": "2026-09-16T18:52:58Z",
-            "scale": 2,
-            "render_px": "3840x2160"
+            "at": ""
           }
         }
       },
       "estimated_duration_s": 14,
       "audio_file": "mp3/beat-B02.mp3",
-      "actual_duration_s": 10.35,
+      "actual_duration_s": 9.19,
       "engine": "kokoro",
       "voice": "af_bella",
       "build": {
         "status": "VIDEO",
         "src": "media/B02.mp4",
-        "filled_by": "remotion:ClaudeComposerAsk",
-        "at": "2026-09-16T12:35:54"
+        "filled_by": "media",
+        "at": "2026-10-17T17:41:26"
       }
     },
     {
       "beat_id": "B03",
       "act": "EVIDENCE",
-      "narration_text": "There it is, from a real terminal. Query A: SCAN postings — scan means every row, all four hundred thousand. Query B: SEARCH postings USING INDEX, with the date range in the parentheses. Search means the index walked to January and stopped. Same answer, and the plan said so before either query ran.",
+      "narration_text": "There it is. Query A: SCAN postings. Scan means every row, all four hundred thousand. Query B: SEARCH postings USING INDEX, with the date range in the parentheses. Search means the index walked to January and stopped. Same answer, and the plan said so before either query ran.",
       "content_type": "mechanism",
       "shot": {
         "type": "GRAPHIC",
@@ -335,33 +365,31 @@
               "tone": "good"
             },
             "sparkLine": "SCAN means every row.",
-            "citation": "Captured from SQLite 3.45.3 — demo/RESULTS.md"
+            "citation": "Captured from SQLite 3.45.3 — demo/RESULTS.md",
+            "handle": "Supriya"
           },
           "rendered": {
             "out": "media/B03.mp4",
-            "at": "2026-09-16T16:10:00Z",
-            "artifact_mtime_utc": "2026-09-16T18:54:18Z",
-            "scale": 2,
-            "render_px": "3840x2160"
+            "at": ""
           }
         }
       },
       "estimated_duration_s": 21,
       "audio_file": "mp3/beat-B03.mp3",
-      "actual_duration_s": 20.14,
+      "actual_duration_s": 19.05,
       "engine": "kokoro",
       "voice": "af_bella",
       "build": {
         "status": "VIDEO",
         "src": "media/B03.mp4",
-        "filled_by": "remotion:SqlPlanBeat",
-        "at": "2026-09-16T12:35:54"
+        "filled_by": "media",
+        "at": "2026-10-17T17:41:26"
       }
     },
     {
       "beat_id": "B04",
       "act": "MAGNITUDE",
-      "narration_text": "On a log scale the gap stops being an opinion. Four hundred thousand rows read, against eleven thousand three hundred sixty-nine — thirty-five times fewer. And the answer itself is only four thousand four hundred fifty-nine rows, so Plan B is near the floor. Plan A is two decades away.",
+      "narration_text": "On a log scale, four hundred thousand rows read against eleven thousand three hundred sixty-nine is thirty-five times fewer. The answer itself is four thousand four hundred fifty-nine rows, so Plan B is near the floor. Plan A is two decades away.",
       "content_type": "data",
       "shot": {
         "type": "GRAPHIC",
@@ -429,24 +457,25 @@
                 }
               ],
               "script": "log axis: 400,000 / 11,369 = 35.2×; 400,000 / 4,459 = 89.7× ≈ 1.95 decades. Labels render ABOVE each row with a width budget (the library component pushed them off the left edge — _qc/REPORT.md #2)."
-            }
+            },
+            "handle": "Supriya"
           },
           "rendered": {
             "out": "media/B04.mp4",
-            "at": "2026-09-16T17:05:00Z"
+            "at": ""
           }
         }
       },
       "estimated_duration_s": 20,
       "audio_file": "mp3/beat-B04.mp3",
-      "actual_duration_s": 18.41,
+      "actual_duration_s": 15.87,
       "engine": "kokoro",
       "voice": "af_bella",
       "build": {
         "status": "VIDEO",
         "src": "media/B04.mp4",
-        "filled_by": "remotion:SqlScaleComparison",
-        "at": "2026-09-16T12:35:54"
+        "filled_by": "media",
+        "at": "2026-10-17T17:41:26"
       }
     },
     {
@@ -477,14 +506,14 @@
           "props": {
             "sparkLine": "Commit before the reveal.",
             "question": "Both filter the same indexed column. What does A's WHERE clause do that costs it the index?",
-            "commit": "commit — the answer is one beat away"
+            "commit": "commit — the answer is one beat away",
+            "handle": "Supriya",
+            "scale": 1.2,
+            "shiftY": 0.17
           },
           "rendered": {
             "out": "media/B05.mp4",
-            "at": "2026-09-16T16:10:00Z",
-            "artifact_mtime_utc": "2026-09-16T18:56:21Z",
-            "scale": 2,
-            "render_px": "3840x2160"
+            "at": ""
           }
         }
       },
@@ -496,14 +525,14 @@
       "build": {
         "status": "VIDEO",
         "src": "media/B05.mp4",
-        "filled_by": "remotion:SqlPredictCard",
-        "at": "2026-09-16T12:35:54"
+        "filled_by": "media",
+        "at": "2026-10-17T17:41:26"
       }
     },
     {
       "beat_id": "B06",
       "act": "INSIGHT",
-      "narration_text": "The function. Query A wraps posted_at in strftime, so the database no longer has a column to look up — it has an expression, and the only way to evaluate it is to visit every row. Query B leaves the column bare and compares it to constants. That is the insight: an index works on the column, not on a function of the column.",
+      "narration_text": "The function. Query A wraps the posted-at column in strftime, so the database has an expression instead of a column, and evaluating it means visiting every row. Query B leaves the column bare. That is the insight: a plain index works on the column, not on a function of the column.",
       "content_type": "mechanism",
       "shot": {
         "type": "GRAPHIC",
@@ -550,8 +579,7 @@
                   "path": "down",
                   "notes": [
                     "column wrapped in a function",
-                    "index unusable",
-                    "~60 ms"
+                    "index unusable"
                   ]
                 },
                 {
@@ -561,36 +589,36 @@
                   "path": "up",
                   "notes": [
                     "bare column, range predicate",
-                    "index seek",
-                    "~15 ms"
+                    "index seek"
                   ]
                 }
               ],
-              "script": "endpoint badges carry the track label + outcome; reveal moved to p=0.55 and the composition registered at the measured audio length so they are reachable (the library gated them at p≥0.82, unreachable after truncation — _qc/REPORT.md #1). Timings are machine-specific supporting evidence; rows read is the structural claim."
-            }
+              "script": "endpoint badges carry the track label + outcome; reveal moved to p=0.55 and the composition registered at the measured audio length so they are reachable (the library gated them at p≥0.82, unreachable after truncation — _qc/REPORT.md #1). v2: the ~15/~60 ms notes were removed from screen (FACTCHECK C2) — timings are machine-specific; rows read is the structural claim."
+            },
+            "handle": "Supriya"
           },
           "rendered": {
             "out": "media/B06.mp4",
-            "at": "2026-09-16T17:40:00Z"
+            "at": ""
           }
         }
       },
       "estimated_duration_s": 25,
       "audio_file": "mp3/beat-B06.mp3",
-      "actual_duration_s": 21.33,
+      "actual_duration_s": 19.03,
       "engine": "kokoro",
       "voice": "af_bella",
       "build": {
         "status": "VIDEO",
         "src": "media/B06.mp4",
-        "filled_by": "remotion:SqlDivergentFates",
-        "at": "2026-09-16T12:35:54"
+        "filled_by": "media",
+        "at": "2026-10-17T17:41:26"
       }
     },
     {
       "beat_id": "B07",
       "act": "VERDICT",
-      "narration_text": "Let's recap with Claude. One takeaway you can use today: before you optimize an analytics query, run EXPLAIN and look for the word SCAN. If it shows up on a table you thought was indexed, check your WHERE clause for a function wrapped around the indexed column — strftime, CAST, UPPER — and rewrite it as a bare range. That one move took four hundred thousand rows down to eleven thousand.",
+      "narration_text": "Let's recap. Before you tune a query, run EXPLAIN and look for the word SCAN. If it shows up on a table you thought was indexed, check your WHERE clause for a function wrapped around the indexed column, like strftime, CAST or UPPER, and compare the bare column instead. That one move took four hundred thousand rows down to eleven thousand.",
       "content_type": "mechanism",
       "shot": {
         "type": "GRAPHIC",
@@ -620,24 +648,23 @@
             "artifactTitle": "SQL, Read Fewer Rows — one page",
             "artifactHeading": "The takeaway",
             "artifactLines": [
-              "EXPLAIN is free and does not run your query — read the plan before you tune anything.",
+              "EXPLAIN costs almost nothing and does not run your query — read the plan before you tune anything.",
               "SCAN means every row. SEARCH … USING INDEX means the engine got to skip rows.",
-              "A function around an indexed column (strftime, CAST, UPPER) makes the index unusable.",
-              "Rewrite the predicate as a bare range: 400,000 rows read became 11,369 — same 4,459 rows out."
-            ]
+              "A function around an indexed column (strftime, CAST, UPPER) makes a plain index unusable.",
+              "Compare the bare column instead: 400,000 rows read became 11,369 — same 4,459 rows out."
+            ],
+            "handle": "Supriya",
+            "scale": 1.3
           },
           "rendered": {
             "out": "media/B07.mp4",
-            "at": "2026-09-16T16:10:00Z",
-            "artifact_mtime_utc": "2026-09-16T18:59:43Z",
-            "scale": 2,
-            "render_px": "3840x2160"
+            "at": ""
           }
         }
       },
       "estimated_duration_s": 28,
       "audio_file": "mp3/beat-B07.mp3",
-      "actual_duration_s": 23.66,
+      "actual_duration_s": 21.25,
       "engine": "kokoro",
       "voice": "af_bella",
       "lead_silence_s": 0.5,
@@ -645,14 +672,14 @@
       "build": {
         "status": "VIDEO",
         "src": "media/B07.mp4",
-        "filled_by": "remotion:ClaudeVerdictArtifact",
-        "at": "2026-09-16T12:35:54"
+        "filled_by": "media",
+        "at": "2026-10-17T17:41:26"
       }
     },
     {
       "beat_id": "B08",
       "act": "HANDOFF",
-      "narration_text": "I'm learning to optimize analytics SQL. Here is the schema for one of my tables and the slowest query I run against it. Walk me through its EXPLAIN plan step by step, tell me which steps read every row, find any predicate that a function or a cast has made unusable by the index, and give me the smallest rewrite that turns a SCAN into a SEARCH. Ask for the smallest rewrite, not a rewritten query — you want to see which single change moved the plan. Run it on your slowest dashboard query tonight.",
+      "narration_text": "I'm learning to optimize analytics SQL. Here is the schema for one of my tables and the slowest query I run against it. Walk me through its EXPLAIN plan step by step, tell me which steps read every row, find any predicate that a function or a cast has made unusable by the index, and give me the smallest rewrite that turns a SCAN into a SEARCH. Run it on your slowest dashboard query tonight.",
       "content_type": "title",
       "shot": {
         "type": "GRAPHIC",
@@ -688,29 +715,27 @@
             "segment": "Read Fewer Rows",
             "command": "I'm learning to optimize analytics SQL. Here is the schema for one of my tables and the slowest query I run against it. Walk me through its EXPLAIN plan step by step, tell me which steps read every row, find any predicate that a function or a cast has made unusable by the index, and give me the smallest rewrite that turns a SCAN into a SEARCH.",
             "runningText": "paste this into Claude…",
-            "folderLabel": "@HumanitariansAI",
-            "modelLabel": "Fable 5",
-            "effortLabel": "High"
+            "folderLabel": "Supriya",
+            "modelLabel": "Claude",
+            "effortLabel": "High",
+            "scale": 1.4
           },
           "rendered": {
             "out": "media/B08.mp4",
-            "at": "2026-09-16T16:10:00Z",
-            "artifact_mtime_utc": "2026-09-16T19:01:30Z",
-            "scale": 2,
-            "render_px": "3840x2160"
+            "at": ""
           }
         }
       },
       "estimated_duration_s": 37,
       "audio_file": "mp3/beat-B08.mp3",
-      "actual_duration_s": 28.2,
+      "actual_duration_s": 23.57,
       "engine": "kokoro",
       "voice": "af_bella",
       "build": {
         "status": "VIDEO",
         "src": "media/B08.mp4",
-        "filled_by": "remotion:ClaudeComposerAsk",
-        "at": "2026-09-16T12:35:54"
+        "filled_by": "media",
+        "at": "2026-10-17T17:41:26"
       }
     },
     {
@@ -733,18 +758,16 @@
           }
         ],
         "remotion": {
-          "pattern": "ClaudeTitleOutro",
+          "pattern": "ClaudeTitleOutroFilled",
           "props": {
             "title": "SQL, Read Fewer Rows.",
-            "handle": "@HumanitariansAI",
-            "subline": "fellows research · read the plan first"
+            "handle": "Supriya",
+            "subline": "@HumanitariansAI · SQL Query Optimization for Analytics",
+            "scale": 1.5
           },
           "rendered": {
             "out": "media/B09.mp4",
-            "at": "2026-09-16T16:10:00Z",
-            "artifact_mtime_utc": "2026-09-16T19:01:52Z",
-            "scale": 2,
-            "render_px": "3840x2160"
+            "at": ""
           }
         }
       },
@@ -756,8 +779,8 @@
       "build": {
         "status": "VIDEO",
         "src": "media/B09.mp4",
-        "filled_by": "remotion:ClaudeTitleOutro",
-        "at": "2026-09-16T12:35:54"
+        "filled_by": "media",
+        "at": "2026-10-17T17:41:26"
       }
     }
   ]

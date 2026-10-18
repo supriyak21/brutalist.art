@@ -174,3 +174,16 @@ PASSED. Two open items survive it deliberately and are NOT covered by it:
 This signature authorises **audio generation and rendering**. It does not
 authorise calling the master finished, and it does not authorise publishing —
 there is no publishing machinery in this toolkit.
+
+---
+
+## Rev 3 addendum (2026-10-17, v2 rebuild)
+
+The pedagogical shape above is unchanged: same one insight, same ten beats in the
+same order, same predict → reveal device, same single takeaway. What changed is the
+narration (rev 3: tightened from 180.57s to fit a full-length 9:16, plus the accuracy
+fixes C1–C6 in `FACTCHECK.md`).
+
+The rev 3 narration was signed at GATE P in `NARRATION-GATE-P.md`:
+**VERDICT: PASS — Supriya Kushwaha (human, author), 2026-10-17, rev 3.**
+The rev 2 signature above applies to rev 2 only.

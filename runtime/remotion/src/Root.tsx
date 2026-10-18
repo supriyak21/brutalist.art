@@ -1116,7 +1116,7 @@ export const RemotionRoot: React.FC = () => {
       <Composition
         id="SqlPlanBeat"
         component={SqlPlanBeat}
-        durationInFrames={630}
+        durationInFrames={572}
         fps={30}
         width={1920}
         height={1080}
@@ -1145,7 +1145,7 @@ export const RemotionRoot: React.FC = () => {
       <Composition
         id="SqlPredictCard"
         component={SqlPredictCard}
-        durationInFrames={390}
+        durationInFrames={303}
         fps={30}
         width={1920}
         height={1080}
@@ -1164,7 +1164,7 @@ export const RemotionRoot: React.FC = () => {
       <Composition
         id="SqlAttritionChain"
         component={SqlAttritionChain}
-        durationInFrames={620}
+        durationInFrames={551}
         fps={30}
         width={1920}
         height={1080}
@@ -1186,7 +1186,7 @@ export const RemotionRoot: React.FC = () => {
       <Composition
         id="SqlScaleComparison"
         component={SqlScaleComparison}
-        durationInFrames={555}
+        durationInFrames={476}
         fps={30}
         width={1920}
         height={1080}
@@ -1208,7 +1208,7 @@ export const RemotionRoot: React.FC = () => {
       <Composition
         id="SqlDivergentFates"
         component={SqlDivergentFates}
-        durationInFrames={640}
+        durationInFrames={571}
         fps={30}
         width={1920}
         height={1080}
@@ -1246,7 +1246,7 @@ export const RemotionRoot: React.FC = () => {
       <Composition
         id="SqlAttritionChain916"
         component={SqlAttritionChain916}
-        durationInFrames={620}
+        durationInFrames={551}
         fps={30}
         width={1080}
         height={1920}
@@ -1268,7 +1268,7 @@ export const RemotionRoot: React.FC = () => {
       <Composition
         id="SqlPlanBeat916"
         component={SqlPlanBeat916}
-        durationInFrames={610}
+        durationInFrames={572}
         fps={30}
         width={1080}
         height={1920}
@@ -1293,7 +1293,7 @@ export const RemotionRoot: React.FC = () => {
       <Composition
         id="SqlScaleComparison916"
         component={SqlScaleComparison916}
-        durationInFrames={555}
+        durationInFrames={476}
         fps={30}
         width={1080}
         height={1920}
@@ -1315,7 +1315,7 @@ export const RemotionRoot: React.FC = () => {
       <Composition
         id="SqlPredictCard916"
         component={SqlPredictCard916}
-        durationInFrames={305}
+        durationInFrames={303}
         fps={30}
         width={1080}
         height={1920}
@@ -1329,7 +1329,7 @@ export const RemotionRoot: React.FC = () => {
       <Composition
         id="SqlDivergentFates916"
         component={SqlDivergentFates916}
-        durationInFrames={640}
+        durationInFrames={571}
         fps={30}
         width={1080}
         height={1920}

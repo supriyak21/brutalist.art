@@ -258,3 +258,26 @@ Then, and only then, render via
 Neither scene renders the `@HumanitariansAI` logo bug (LOGO LAW). Nor do the three
 library patterns this reel uses. See `TEMPLATE-MISSES.md` #3 — the right fix is a
 shared `<BrandBug channel="hai" />` overlay, not five copies of the same div.
+
+## v2 changes (2026-10-17)
+
+These copies are kept byte-identical to `runtime/remotion/src/scenes/` (verified after the
+rebuild). New opt-in props — every one is a no-op when omitted:
+
+| Composition | New props |
+|---|---|
+| all ten `Sql*` | `handle` — lower-right author chip (library `HandleChip`, same size/position as QuoteCard etc.) |
+| `SqlAttritionChain`, `SqlAttritionChain916` | `data.panelCounts` — exact figure per panel; `handleTop` (916 only) |
+| `SqlScaleComparison916` | `handleTop` — chip top-right (bottom-right holds the axis title) |
+| `SqlPredictCard` | `scale`, `shiftY` — grow/centre the question block |
+
+Layout changes: `SqlPlanBeat` / `SqlPlanBeat916` size the plan text to the largest mono size that
+fits the card width (longest line) and height, and centre it — no clipping possible.
+`SqlAttritionChain` counter, `SqlDivergentFates` badges and all four portrait headers now sit
+inside the 5% title-safe inset (Gate V).
+
+Registered lengths in `Root.tsx` now match the rev 3 audio (30 fps): AttritionChain 551f ·
+PlanBeat 572f · ScaleComparison 476f · PredictCard 303f · DivergentFates 571f (landscape and
+916 alike). The figures in the tables above are the Sep 16 values.
+
+The `vertical/` folder named above no longer exists — the 9:16 is built in `short/`.

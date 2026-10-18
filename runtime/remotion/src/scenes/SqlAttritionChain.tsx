@@ -33,9 +33,12 @@
 import React from 'react';
 import {AbsoluteFill, useCurrentFrame, useVideoConfig} from 'remotion';
 import {z} from 'zod';
+import { HandleChip } from './ClaudeCodeBeat';
 import {clamp, lerp, remap, easeOutCubic, seeded, BG, INK, ACCENT, MUTE, FONT, sc} from './sqlDeckKit';
 
 export const sqlAttritionChainSchema = z.object({
+  /** Lower-right author handle chip (e.g. "Supriya"). Omitted → no chip. */
+  handle: z.string().optional(),
   data: z.object({
     title: z.string().default(''),
     /** Short. Keep under ~40 chars — it is width-capped so it cannot collide. */
@@ -45,12 +48,15 @@ export const sqlAttritionChainSchema = z.object({
     total: z.number().default(400),
     startLabel: z.string().default('start'),
     stages: z.array(z.object({label: z.string(), survival: z.number()})).default([]),
+    /** Optional exact figure per panel (start + each stage), e.g. "11,369 rows". When set,
+     *  dots use the top ~64% of each panel and the figure settles in the band beneath. */
+    panelCounts: z.array(z.string()).optional(),
     script: z.string().optional(),
   }),
 });
 export type SqlAttritionChainProps = z.infer<typeof sqlAttritionChainSchema>;
 
-export const SqlAttritionChain: React.FC<SqlAttritionChainProps> = ({data}) => {
+export const SqlAttritionChain: React.FC<SqlAttritionChainProps> = ({handle, data}) => {
   const frame = useCurrentFrame();
   const {width: W, height: H, durationInFrames} = useVideoConfig();
   const p = clamp(frame / Math.max(1, durationInFrames - 1), 0, 1);
@@ -59,13 +65,18 @@ export const SqlAttritionChain: React.FC<SqlAttritionChainProps> = ({data}) => {
   const total = data.total;
   const stages = data.stages;
   const cols = stages.length + 1;
-  const padX = 70 * S, padTop = 96 * S;
+  // v2: counter moved inside the 5% title-safe inset (Gate V edge-bleed); panels drop
+  // 14*S so their labels stay clear of it.
+  const counterTop = Math.max(20 * S, H * 0.05 + 4 * S);
+  const padX = 70 * S, padTop = 96 * S + (counterTop - 20 * S);
   // FIX #3: extra bottom padding reserves a clean band for the scale note.
   const padBot = 150 * S + (data.scaleNote ? 34 * S : 0);
   const laneW = (W - padX * 2) / cols;
   const panelW = laneW * 0.78;
   const panelTop = padTop + 10 * S;
   const panelH = H - panelTop - padBot;
+  const labels = data.panelCounts;
+  const dotsH = labels ? panelH * 0.64 : panelH;
 
   const counts = [total];
   for (const s of stages) counts.push(Math.round(counts[counts.length - 1] * s.survival));
@@ -74,10 +85,10 @@ export const SqlAttritionChain: React.FC<SqlAttritionChainProps> = ({data}) => {
 
   const gridPos = (i: number, count: number, c: number) => {
     const n = Math.max(1, count);
-    const cc = Math.max(3, Math.ceil(Math.sqrt(n * (panelW / panelH))));
+    const cc = Math.max(3, Math.ceil(Math.sqrt(n * (panelW / dotsH))));
     const rr = Math.max(1, Math.ceil(n / cc));
     const ipx = 16 * S, ipy = 18 * S;
-    const uw = panelW - ipx * 2, uh = panelH - ipy * 2;
+    const uw = panelW - ipx * 2, uh = dotsH - ipy * 2;
     const gc = i % cc, gr = Math.floor(i / cc);
     const x = colX(c) - panelW / 2 + ipx + (cc === 1 ? uw / 2 : (gc / (cc - 1)) * uw);
     const y = panelTop + ipy + (rr === 1 ? uh / 2 : (gr / Math.max(1, rr - 1)) * uh);
@@ -90,9 +101,9 @@ export const SqlAttritionChain: React.FC<SqlAttritionChainProps> = ({data}) => {
 
   const dotR = (() => {
     const n = Math.max(1, counts[0]);
-    const cc = Math.max(3, Math.ceil(Math.sqrt(n * (panelW / panelH))));
+    const cc = Math.max(3, Math.ceil(Math.sqrt(n * (panelW / dotsH))));
     const rr = Math.max(1, Math.ceil(n / cc));
-    const uw = panelW - 32 * S, uh = panelH - 36 * S;
+    const uw = panelW - 32 * S, uh = dotsH - 36 * S;
     const pitch = Math.min(cc > 1 ? uw / (cc - 1) : uw, rr > 1 ? uh / (rr - 1) : uh);
     return clamp(pitch * 0.34, 1.3 * S, 6 * S);
   })();
@@ -180,11 +191,21 @@ export const SqlAttritionChain: React.FC<SqlAttritionChainProps> = ({data}) => {
           </g>
         ))}
         {dots}
+        {labels ? labels.slice(0, cols).map((lab, c) => {
+          // start figure shows with the intro; each stage's figure once that stage settles
+          const at = c === 0 ? 0.02 : ranges[c - 1].b - 0.02;
+          const op = clamp(remap(p, at, at + 0.05, 0, 1), 0, 1);
+          return (
+            <text key={`lab${c}`} x={colX(c)} y={panelTop + dotsH + (panelH - dotsH) * 0.58}
+              textAnchor="middle" dominantBaseline="middle" fontFamily={FONT} fontSize={30 * S}
+              fontWeight={800} fill={c === cols - 1 ? ACCENT : INK} opacity={op}>{lab}</text>
+          );
+        }) : null}
       </svg>
 
       {/* counter — unchanged position, now guaranteed collision-free */}
       <div style={{
-        position: 'absolute', left: counterLeft, top: 20 * S,
+        position: 'absolute', left: counterLeft, top: counterTop,
         width: counterW, height: 58 * S, borderRadius: 6 * S,
         background: '#fff', border: `${2 * S}px solid ${ACCENT}`,
         display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
@@ -209,6 +230,8 @@ export const SqlAttritionChain: React.FC<SqlAttritionChainProps> = ({data}) => {
           {data.scaleNote}
         </div>
       ) : null}
+      <HandleChip handle={handle} fontSize={H * (H > W ? 0.016 : 0.024)} right={W * 0.07}
+        bottom={H * (H > W ? 0.06 : 0.055)} opacity={0.9} />
     </AbsoluteFill>
   );
 };

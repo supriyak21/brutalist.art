@@ -30,9 +30,12 @@
 import React from 'react';
 import {AbsoluteFill, useCurrentFrame, useVideoConfig} from 'remotion';
 import {z} from 'zod';
+import { HandleChip } from './ClaudeCodeBeat';
 import {clamp, lerp, remap, easeOutCubic, BG, INK, ACCENT, MUTE, FONT, sc} from './sqlDeckKit';
 
 export const sqlScaleComparisonSchema = z.object({
+  /** Lower-right author handle chip (e.g. "Supriya"). Omitted → no chip. */
+  handle: z.string().optional(),
   data: z.object({
     slideMeta: z.string().default(''),
     axis: z.object({min: z.number(), max: z.number(), unit: z.string()}),
@@ -52,7 +55,7 @@ export type SqlScaleComparisonProps = z.infer<typeof sqlScaleComparisonSchema>;
 const fmtInt = (v: number) =>
   Number.isInteger(v) ? v.toLocaleString('en-US') : String(Math.round(v * 100) / 100);
 
-export const SqlScaleComparison: React.FC<SqlScaleComparisonProps> = ({data}) => {
+export const SqlScaleComparison: React.FC<SqlScaleComparisonProps> = ({handle, data}) => {
   const frame = useCurrentFrame();
   const {width: W, height: H, durationInFrames} = useVideoConfig();
   const p = clamp(frame / Math.max(1, durationInFrames - 1), 0, 1);
@@ -157,6 +160,8 @@ export const SqlScaleComparison: React.FC<SqlScaleComparisonProps> = ({data}) =>
           );
         })}
       </svg>
+      <HandleChip handle={handle} fontSize={H * (H > W ? 0.016 : 0.024)} right={W * 0.07}
+        bottom={H * (H > W ? 0.06 : 0.055)} opacity={0.9} />
     </AbsoluteFill>
   );
 };

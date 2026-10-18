@@ -140,3 +140,21 @@ voice approval for `af_bella` is on record.
 Still outstanding, and explicitly **outside** this factcheck's scope: LOGO LAW
 (`PEDAGOGY.md` open item 1 — blocks the master, not the render) and the
 post-render frame QC (open item 3 — Q1/Q2 in `SHOTLIST.md`).
+
+## Rev 3 corrections (2026-10-17, v2 rebuild)
+
+Audit by re-running `demo/build_demo.py` (2026-10-17): 400,000 rows, 11,369 in January,
+4,459 groups from both queries, `same result set: True` for all three pairs. Every
+EXECUTED figure above still reproduces. Changes, approved by Supriya 2026-10-17:
+
+| # | Where | Rev 2 | Evidence | Rev 3 |
+|---|---|---|---|---|
+| C1 | B07 voice + card line 4 | "rewrite it as a bare range" | `demo/queries.sql`: pair CAST rewrites to `branch_id = 42`, pair UPPER to `account_ref = 'AC-04242'` — equalities. Only the strftime rewrite is a range. | "compare the bare column instead" |
+| C2 | B06 screen | "~15 ms" / "~60 ms" on the two branches | Real (pair 1 medians 14.64 / 60.18 ms) but machine-specific; row 13b of this file says timings are "never on screen, never spoken" | removed from screen |
+| C3 | B06 voice | "an index works on the column, not on a function of the column" | L3: expression indexes are a real exception | "a **plain** index works on the column…" |
+| C4 | B02 voice, B07 card line 1 | "costs nothing to run"; "EXPLAIN is free" | `EXPLAIN QUERY PLAN` does not execute the query, but SQLite still parses and plans it | "costs almost nothing" |
+| C5 | B00 voice | "the same 4,459 rows, byte for byte" | `build_demo.py:211` compares `sorted(fetchall())` — row values, not bytes | "byte for byte" dropped |
+| C6 | B01 voice | "the shape of every analytics query" | overgeneralization | "a typical analytics query" |
+
+L1, L3 and L5 remain stated limitations; C3 narrows the spoken claim so it no longer
+contradicts L3.

@@ -18,9 +18,12 @@
 import React from 'react';
 import {AbsoluteFill, useCurrentFrame, useVideoConfig} from 'remotion';
 import {z} from 'zod';
+import { HandleChip } from './ClaudeCodeBeat';
 import {clamp, remap, easeOutCubic, BG, INK, ACCENT, MUTE, scW, wrapText} from './sqlDeckKit';
 
 export const sqlPredictCard916Schema = z.object({
+  /** Lower-right author handle chip (e.g. "Supriya"). Omitted → no chip. */
+  handle: z.string().optional(),
   sparkLine: z.string().default('Commit before the reveal.'),
   question: z.string(),
   commit: z.string().default('commit — the answer is one beat away'),
@@ -38,7 +41,7 @@ const Spark: React.FC<{size: number}> = ({size}) => (
   </svg>
 );
 
-export const SqlPredictCard916: React.FC<SqlPredictCard916Props> = ({sparkLine, question, commit}) => {
+export const SqlPredictCard916: React.FC<SqlPredictCard916Props> = ({handle, sparkLine, question, commit}) => {
   const frame = useCurrentFrame();
   const {width: W, height: H, durationInFrames} = useVideoConfig();
   const p = clamp(frame / Math.max(1, durationInFrames - 1), 0, 1);
@@ -105,6 +108,8 @@ export const SqlPredictCard916: React.FC<SqlPredictCard916Props> = ({sparkLine, 
       }}>
         {commit}
       </div>
+      <HandleChip handle={handle} fontSize={H * (H > W ? 0.016 : 0.024)} right={W * 0.07}
+        bottom={H * (H > W ? 0.06 : 0.055)} opacity={0.9} />
     </AbsoluteFill>
   );
 };

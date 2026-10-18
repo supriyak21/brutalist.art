@@ -28,6 +28,7 @@ import {
   AbsoluteFill, useCurrentFrame, useVideoConfig, spring, interpolate,
 } from 'remotion';
 import { z } from 'zod';
+import { HandleChip } from './ClaudeCodeBeat';
 import { CLAUDE, CLAUDE_FONT } from '../tokens/claude';
 import { SAFE } from '../tokens/layout';
 
@@ -40,6 +41,8 @@ const planSchema = z.object({
 });
 
 export const sqlPlanBeatSchema = z.object({
+  /** Lower-right author handle chip (e.g. "Supriya"). Omitted → no chip. */
+  handle: z.string().optional(),
   title: z.string().default('demo/explain_a.txt  →  demo/explain_b.txt'),
   /** Language chip. The reason this scene exists — ClaudeCodeBeat pins 'python'. */
   lang: z.string().default('sql'),
@@ -145,6 +148,7 @@ const PlanCard: React.FC<{
         margin: 0, padding: '20px 24px', flex: 1,
         fontFamily: MONO, fontSize, lineHeight: 1.6,
         textAlign: 'left', overflow: 'hidden',
+        display: 'flex', flexDirection: 'column', justifyContent: 'center',
       }}>
         {lines.map((line, i) => {
           const start = REVEAL_START + i * LINE_STRIDE;
@@ -209,10 +213,12 @@ const PlanCard: React.FC<{
 };
 
 export const SqlPlanBeat: React.FC<SqlPlanBeatProps> = ({
+  handle,
   title, lang, left, right, sparkLine, citation, highlightLeft, highlightRight,
 }) => {
   const frame = useCurrentFrame();
-  const { fps, durationInFrames, height } = useVideoConfig();
+  const { fps, durationInFrames, height, width } = useVideoConfig();
+  const W = width, H = height;
   const p = clamp(frame / Math.max(1, durationInFrames - 1), 0, 1);
 
   // ONE accent at a time: A holds it through the first half, then hands to B.
@@ -220,7 +226,15 @@ export const SqlPlanBeat: React.FC<SqlPlanBeatProps> = ({
   const accentB = clamp(interpolate(p, [0.54, 0.64], [0, 1]), 0, 1);
 
   const sparkIn = spring({ frame: frame - 8, fps, config: { damping: 28, stiffness: 140, mass: 0.8 } });
-  const fontSize = height * 0.0205;      // two columns → slightly tighter than ClaudeCodeBeat
+  // FILL-THE-CANVAS without the clipping risk: the plan body uses the largest mono size
+  // that fits BOTH the card's inner width (longest captured line, ~0.61em per glyph) and
+  // its inner height, capped at 1.5× the original basis. Lines are `whiteSpace: pre` +
+  // `overflow: hidden`, so a width overrun would clip silently — this bound prevents it.
+  const cardInnerW = (SAFE.w - 30) / 2 - 48 - 2;
+  const cardInnerH = (SAFE.h - 46 - 104) - 46 - 50 - 40;
+  const maxChars = Math.max(...[left.code, right.code].flatMap((c) => c.split('\n')).map((l) => l.length), 1);
+  const maxLines = Math.max(left.code.split('\n').length, right.code.split('\n').length, 1);
+  const fontSize = Math.min(height * 0.0205 * 1.5, cardInnerW / (maxChars * 0.61), cardInnerH / (maxLines * 1.6));
 
   return (
     <AbsoluteFill style={{ background: CLAUDE.PAGE }}>
@@ -277,6 +291,8 @@ export const SqlPlanBeat: React.FC<SqlPlanBeatProps> = ({
           {citation}
         </div>
       ) : null}
+      <HandleChip handle={handle} fontSize={H * (H > W ? 0.016 : 0.024)} right={W * 0.07}
+        bottom={H * (H > W ? 0.06 : 0.055)} opacity={0.9} />
     </AbsoluteFill>
   );
 };

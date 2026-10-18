@@ -21,6 +21,7 @@
 import React from 'react';
 import {AbsoluteFill, useCurrentFrame, useVideoConfig} from 'remotion';
 import {z} from 'zod';
+import { HandleChip } from './ClaudeCodeBeat';
 import {clamp, lerp, remap, easeOutCubic, cubicPoint, BG, INK, ACCENT, MUTE, WARN, FONT, scW, wrapText, Pt} from './sqlDeckKit';
 
 const trackSchema = z.object({
@@ -32,6 +33,8 @@ const trackSchema = z.object({
 });
 
 export const sqlDivergentFates916Schema = z.object({
+  /** Lower-right author handle chip (e.g. "Supriya"). Omitted → no chip. */
+  handle: z.string().optional(),
   data: z.object({
     slideMeta: z.string().default(''),
     startLabel: z.string().default('start'),
@@ -42,7 +45,7 @@ export const sqlDivergentFates916Schema = z.object({
 });
 export type SqlDivergentFates916Props = z.infer<typeof sqlDivergentFates916Schema>;
 
-export const SqlDivergentFates916: React.FC<SqlDivergentFates916Props> = ({data}) => {
+export const SqlDivergentFates916: React.FC<SqlDivergentFates916Props> = ({handle, data}) => {
   const frame = useCurrentFrame();
   const {width: W, height: H, durationInFrames} = useVideoConfig();
   const p = clamp(frame / Math.max(1, durationInFrames - 1), 0, 1);
@@ -53,8 +56,8 @@ export const SqlDivergentFates916: React.FC<SqlDivergentFates916Props> = ({data}
 
   // Vertical trunk, then a downward fork.
   const cx = W * 0.5;
-  const yStart = 250 * S;
-  const ySplit = 430 * S;
+  const yStart = 294 * S;
+  const ySplit = 474 * S;
   // 'up' = the good track levels off HIGH; 'down' = the bad track keeps falling.
   const xEnd = (t: z.infer<typeof trackSchema>) => (t.path === 'up' ? W * 0.72 : W * 0.28);
   const yEnd = (t: z.infer<typeof trackSchema>) => (t.path === 'up' ? 700 * S : 1180 * S);
@@ -112,7 +115,7 @@ export const SqlDivergentFates916: React.FC<SqlDivergentFates916Props> = ({data}
   return (
     <AbsoluteFill style={{backgroundColor: BG, fontFamily: FONT}}>
       <div style={{
-        position: 'absolute', left: 56 * S, top: 56 * S, maxWidth: W - 112 * S,
+        position: 'absolute', left: 56 * S, top: 100 * S, maxWidth: W - 112 * S,
         fontSize: 21 * S, letterSpacing: '.14em', color: MUTE, fontWeight: 600,
       }}>
         {wrapText(data.slideMeta, 40).map((ln, i) => <div key={i}>{ln}</div>)}
@@ -204,6 +207,8 @@ export const SqlDivergentFates916: React.FC<SqlDivergentFates916Props> = ({data}
           );
         })}
       </svg>
+      <HandleChip handle={handle} fontSize={H * (H > W ? 0.016 : 0.024)} right={W * 0.07}
+        bottom={H * (H > W ? 0.06 : 0.055)} opacity={0.9} />
     </AbsoluteFill>
   );
 };

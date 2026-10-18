@@ -17,6 +17,7 @@
 import React from 'react';
 import {AbsoluteFill, useCurrentFrame, useVideoConfig, spring, interpolate} from 'remotion';
 import {z} from 'zod';
+import { HandleChip } from './ClaudeCodeBeat';
 import {clamp, remap, BG, INK, ACCENT, MUTE, WARN, scW} from './sqlDeckKit';
 
 const planSchema = z.object({
@@ -27,6 +28,8 @@ const planSchema = z.object({
 });
 
 export const sqlPlanBeat916Schema = z.object({
+  /** Lower-right author handle chip (e.g. "Supriya"). Omitted → no chip. */
+  handle: z.string().optional(),
   title: z.string().default(''),
   lang: z.string().default('sql'),
   left: planSchema,      // rendered TOP in portrait
@@ -60,13 +63,13 @@ const Spark: React.FC<{size: number}> = ({size}) => (
 const PlanCard: React.FC<{
   plan: z.infer<typeof planSchema>; needle: string; accentOn: number; lang: string;
   frame: number; fps: number; delay: number; S: number; top: number; height: number; W: number;
-}> = ({plan, needle, accentOn, lang, frame, fps, delay, S, top, height, W}) => {
+  fontSize: number;
+}> = ({plan, needle, accentOn, lang, frame, fps, delay, S, top, height, W, fontSize}) => {
   const cardIn = spring({frame: frame - delay, fps, config: {damping: 28, stiffness: 140, mass: 0.8}});
   const lines = plan.code.split('\n');
   const REVEAL = 12 + delay;
   const STRIDE = 2;
   const toneColor = plan.tone === 'warn' ? WARN : INK;
-  const fontSize = 25 * S;
   const verdictAt = REVEAL + lines.length * STRIDE + 6;
   const verdictIn = clamp(interpolate(frame, [verdictAt, verdictAt + 10], [0, 1]), 0, 1);
 
@@ -99,6 +102,7 @@ const PlanCard: React.FC<{
       <pre style={{
         margin: 0, padding: `${20 * S}px ${24 * S}px`, flex: 1,
         fontFamily: MONO, fontSize, lineHeight: 1.55, textAlign: 'left', overflow: 'hidden',
+        display: 'flex', flexDirection: 'column', justifyContent: 'center',
       }}>
         {lines.map((line, i) => {
           const start = REVEAL + i * STRIDE;
@@ -139,6 +143,7 @@ const PlanCard: React.FC<{
 };
 
 export const SqlPlanBeat916: React.FC<SqlPlanBeat916Props> = ({
+  handle,
   title, lang, left, right, sparkLine, citation, highlightLeft, highlightRight,
 }) => {
   const frame = useCurrentFrame();
@@ -151,24 +156,33 @@ export const SqlPlanBeat916: React.FC<SqlPlanBeat916Props> = ({
   const sparkIn = spring({frame: frame - 8, fps, config: {damping: 28, stiffness: 140, mass: 0.8}});
 
   // TOP AND BOTTOM: card A above, card B below.
-  const topY = 156 * S;
+  const topY = 192 * S;
   const gap = 34 * S;
   const bottomReserve = 250 * S;           // spark line + citation band
   const cardH = (H - topY - bottomReserve - gap) / 2;
+  // v2: one shared mono size for both cards — the largest that fits the inner width
+  // (longest captured line, ~0.61em/glyph; `pre` + overflow hidden would clip silently)
+  // and inner height, capped at 1.5x the original 25*S. Body is centred vertically.
+  const innerW = W - 104 * S - 48 * S - 2;
+  const innerH = cardH - 52 * S - 56 * S - 40 * S;
+  const allLines = [left.code, right.code].flatMap((c) => c.split('\n'));
+  const maxChars = Math.max(...allLines.map((l) => l.length), 1);
+  const maxLines = Math.max(left.code.split('\n').length, right.code.split('\n').length, 1);
+  const planFont = Math.min(25 * S * 1.5, innerW / (maxChars * 0.61), innerH / (maxLines * 1.55));
 
   return (
     <AbsoluteFill style={{background: BG}}>
       <div style={{
-        position: 'absolute', left: 52 * S, top: 64 * S, right: 52 * S,
+        position: 'absolute', left: 52 * S, top: 100 * S, right: 52 * S,
         fontFamily: MONO, fontSize: 21 * S, color: MUTE, letterSpacing: '0.03em',
         whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis',
         opacity: clamp(interpolate(frame, [0, 12], [0, 1]), 0, 1),
       }}>{title}</div>
 
       <PlanCard plan={left} needle={highlightLeft} accentOn={accentA} lang={lang}
-        frame={frame} fps={fps} delay={0} S={S} top={topY} height={cardH} W={W} />
+        frame={frame} fps={fps} delay={0} S={S} top={topY} height={cardH} W={W} fontSize={planFont} />
       <PlanCard plan={right} needle={highlightRight} accentOn={accentB} lang={lang}
-        frame={frame} fps={fps} delay={10} S={S} top={topY + cardH + gap} height={cardH} W={W} />
+        frame={frame} fps={fps} delay={10} S={S} top={topY + cardH + gap} height={cardH} W={W} fontSize={planFont} />
 
       <div style={{
         position: 'absolute', left: 52 * S, right: 52 * S, bottom: 108 * S,
@@ -187,6 +201,8 @@ export const SqlPlanBeat916: React.FC<SqlPlanBeat916Props> = ({
           opacity: clamp(interpolate(frame, [20, 34], [0, 1]), 0, 1),
         }}>{citation}</div>
       ) : null}
+      <HandleChip handle={handle} fontSize={H * (H > W ? 0.016 : 0.024)} right={W * 0.07}
+        bottom={H * (H > W ? 0.06 : 0.055)} opacity={0.9} />
     </AbsoluteFill>
   );
 };

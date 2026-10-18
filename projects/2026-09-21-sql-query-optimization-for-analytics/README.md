@@ -5,7 +5,36 @@
 **Skill:** `ai-explainer` (Brutalist, free-only edition)
 **Channel:** `claude-hai` → `@HumanitariansAI` · playlist `Fellows Research`
 **Voice:** Kokoro `af_bella` ("Bella") — this fellow's series voice
-**Status:** **SCAFFOLD.** GATE P unsigned. No audio, no video, nothing rendered.
+**Status:** **v2 MASTERS DELIVERED (2026-10-17).** See "v2 rebuild" below. The sections after it describe the original Sep 16 build and are kept as history.
+
+## v2 rebuild (2026-10-17)
+
+Moved into `brutalist.art/projects/` from `humanitarians-youtube/fellows/supriya-k/` and
+rebuilt to the PM requirements. Baseline commit `fb0c727` holds the Sep 16 state.
+
+| | v1 (Sep 16) | v2 (Oct 17) |
+|---|---|---|
+| 16:9 master | 0.43 Mbps · 180.57s | `2026-09-21-sql-query-optimization-for-analytics.mp4` — 3840×2160 · **1.06 Mbps** · 162.1s |
+| 9:16 master | 0.39 Mbps · 180.57s | `2026-09-21-sql-query-optimization-for-analytics-vertical.mp4` — 2160×3840 · **0.96 Mbps** · 166.6s (all 10 beats + endcard) |
+| Intro | "Hi, I am Supriya**,** and…" | exact: "Hi, I am Supriya and this video is about…" |
+| Branding | `@HumanitariansAI` chips; Supriya only in greetings | "Supriya" chip on every beat; `@HumanitariansAI` small on outro + endcard |
+| Gate V (clean cuts) | 2 accepted MAJORs (B03, B05) | **0 BLOCKER · 0 MAJOR** on both masters |
+
+- **Bitrate:** encoded at `--vbitrate 25M`. The encoder saturates on this near-static content
+  (60M → 1.17 Mbps), so ~1 Mbps is the honest ceiling without padding.
+- **Narration rev 3** (GATE P signed by Supriya 2026-10-17, `NARRATION-GATE-P.md`): tightened
+  180.57s → 162.1s with no beat cut; accuracy fixes C1–C6 in `FACTCHECK.md` ("compare the bare
+  column", "a plain index", "costs almost nothing", no "byte for byte", no on-screen ms timings).
+- **Visual fixes:** B01 per-panel figures (400,000 / 11,369 / 4,459); B03 plan text auto-fit and
+  centred (cannot clip); B05 question scaled and centred; B01/B06 and all portrait headers moved
+  inside the 5% title-safe inset; "Claude" model label; filled outro.
+- **9:16** is built in `short/` by `./art shorts`; the old `vertical/` build folder was deleted
+  after the new cut was verified (Supriya, 2026-10-17). Portrait-only prop changes are recorded
+  in `beat_sheet.json` → `metadata.portrait_overrides`.
+- **CRF masters kept:** `_crf16-master.mp4`, `short/_crf16-short-master.mp4`.
+- **Listen check still open:** Kokoro's reading of "strftime" (B03, B06, B07) and "posted-at
+  column" (B06) has not been machine-verified — the local transcriber is broken by a NumPy
+  version conflict.
 
 ## The one insight
 

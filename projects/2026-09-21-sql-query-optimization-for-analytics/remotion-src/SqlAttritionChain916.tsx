@@ -19,9 +19,14 @@
 import React from 'react';
 import {AbsoluteFill, useCurrentFrame, useVideoConfig} from 'remotion';
 import {z} from 'zod';
+import { HandleChip } from './ClaudeCodeBeat';
 import {clamp, lerp, remap, easeOutCubic, seeded, BG, INK, ACCENT, MUTE, FONT, scW} from './sqlDeckKit';
 
 export const sqlAttritionChain916Schema = z.object({
+  /** Lower-right author handle chip (e.g. "Supriya"). Omitted → no chip. */
+  handle: z.string().optional(),
+  /** Put the handle chip top-right instead of bottom-right. Omitted → bottom. */
+  handleTop: z.boolean().optional(),
   data: z.object({
     title: z.string().default(''),
     slideMeta: z.string().default(''),
@@ -29,12 +34,15 @@ export const sqlAttritionChain916Schema = z.object({
     total: z.number().default(400),
     startLabel: z.string().default('start'),
     stages: z.array(z.object({label: z.string(), survival: z.number()})).default([]),
+    /** Optional exact figure per panel (start + each stage), right-aligned on the
+     *  panel's label row; each fades in once its stage settles. */
+    panelCounts: z.array(z.string()).optional(),
     script: z.string().optional(),
   }),
 });
 export type SqlAttritionChain916Props = z.infer<typeof sqlAttritionChain916Schema>;
 
-export const SqlAttritionChain916: React.FC<SqlAttritionChain916Props> = ({data}) => {
+export const SqlAttritionChain916: React.FC<SqlAttritionChain916Props> = ({handle, handleTop, data}) => {
   const frame = useCurrentFrame();
   const {width: W, height: H, durationInFrames} = useVideoConfig();
   const p = clamp(frame / Math.max(1, durationInFrames - 1), 0, 1);
@@ -46,7 +54,7 @@ export const SqlAttritionChain916: React.FC<SqlAttritionChain916Props> = ({data}
 
   const padX = 56 * S;
   const panelW = W - padX * 2;
-  const headTop = 200 * S;                    // below slideMeta + counter
+  const headTop = 244 * S;                    // below slideMeta + counter
   const scaleBand = data.scaleNote ? 96 * S : 40 * S;
   const labelH = 44 * S;
   const gapY = 30 * S;
@@ -144,7 +152,7 @@ export const SqlAttritionChain916: React.FC<SqlAttritionChain916Props> = ({data}
   return (
     <AbsoluteFill style={{backgroundColor: BG, fontFamily: FONT}}>
       <div style={{
-        position: 'absolute', left: padX, top: 56 * S, maxWidth: W - padX * 2,
+        position: 'absolute', left: padX, top: 100 * S, maxWidth: W - padX * 2,
         fontSize: 21 * S, letterSpacing: '.16em', color: MUTE, fontWeight: 600,
         whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis',
       }}>{data.slideMeta}</div>
@@ -158,13 +166,20 @@ export const SqlAttritionChain916: React.FC<SqlAttritionChain916Props> = ({data}
               fill={r <= stageIdx ? INK : MUTE} fillOpacity={r <= stageIdx + 1 ? 1 : 0.35}>
               {(r === 0 ? data.startLabel : stages[r - 1].label).toUpperCase()}
             </text>
+            {data.panelCounts && data.panelCounts[r] ? (
+              <text x={padX + panelW} y={rowTop(r) - 14 * S} textAnchor="end" fontFamily={FONT}
+                fontSize={30 * S} fontWeight={800} fill={r === rows - 1 ? ACCENT : INK}
+                opacity={clamp(remap(p, r === 0 ? 0.02 : ranges[r - 1].b - 0.02, (r === 0 ? 0.02 : ranges[r - 1].b - 0.02) + 0.05, 0, 1), 0, 1)}>
+                {data.panelCounts[r]}
+              </text>
+            ) : null}
           </g>
         ))}
         {dots}
       </svg>
 
       <div style={{
-        position: 'absolute', left: counterLeft, top: 92 * S, width: counterW, height: counterH,
+        position: 'absolute', left: counterLeft, top: 136 * S, width: counterW, height: counterH,
         borderRadius: 8 * S, background: '#fff', border: `${3 * S}px solid ${ACCENT}`,
         display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
       }}>
@@ -183,6 +198,10 @@ export const SqlAttritionChain916: React.FC<SqlAttritionChain916Props> = ({data}
           opacity: clamp(remap(p, 0.02, 0.10, 0, 1), 0, 1),
         }}>{data.scaleNote}</div>
       ) : null}
+      {/* handleTop: chip top-right, inside the 5% title-safe inset, where this layout's
+          bottom-right corner is occupied by content. */}
+      <HandleChip handle={handle} fontSize={H * (H > W ? 0.016 : 0.024)} right={W * 0.07}
+        bottom={handleTop ? H - H * 0.05 - 10 * S - H * (H > W ? 0.016 : 0.024) * 1.9 : H * (H > W ? 0.06 : 0.055)} opacity={0.9} />
     </AbsoluteFill>
   );
 };

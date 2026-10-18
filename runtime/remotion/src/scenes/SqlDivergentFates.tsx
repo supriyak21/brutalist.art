@@ -35,6 +35,7 @@
 import React from 'react';
 import {AbsoluteFill, useCurrentFrame, useVideoConfig} from 'remotion';
 import {z} from 'zod';
+import { HandleChip } from './ClaudeCodeBeat';
 import {clamp, lerp, remap, easeOutCubic, cubicPoint, BG, INK, ACCENT, MUTE, WARN, GOOD, FONT, sc, Pt} from './sqlDeckKit';
 
 const trackSchema = z.object({
@@ -46,6 +47,8 @@ const trackSchema = z.object({
 });
 
 export const sqlDivergentFatesSchema = z.object({
+  /** Lower-right author handle chip (e.g. "Supriya"). Omitted → no chip. */
+  handle: z.string().optional(),
   data: z.object({
     slideMeta: z.string().default(''),
     startLabel: z.string().default('start'),
@@ -70,7 +73,7 @@ const wrap = (text: string, maxChars: number): string[] => {
   return lines;
 };
 
-export const SqlDivergentFates: React.FC<SqlDivergentFatesProps> = ({data}) => {
+export const SqlDivergentFates: React.FC<SqlDivergentFatesProps> = ({handle, data}) => {
   const frame = useCurrentFrame();
   const {width: W, height: H, durationInFrames} = useVideoConfig();
   const p = clamp(frame / Math.max(1, durationInFrames - 1), 0, 1);
@@ -130,7 +133,8 @@ export const SqlDivergentFates: React.FC<SqlDivergentFatesProps> = ({data}) => {
 
   // FIX 3: generous badge box, sized to what is actually left of the frame.
   const badgeX = x1 + 22 * S;
-  const badgeW = W - badgeX - 50 * S;
+  // v2: right edge held inside the 5% title-safe inset (Gate V edge-bleed).
+  const badgeW = W - badgeX - Math.max(50 * S, W * 0.05 + 8 * S);
   const labelChars = Math.floor(badgeW / (16 * S * 0.62));
   const outcomeChars = Math.floor(badgeW / (14 * S * 0.62));
 
@@ -218,6 +222,8 @@ export const SqlDivergentFates: React.FC<SqlDivergentFatesProps> = ({data}) => {
           );
         })}
       </svg>
+      <HandleChip handle={handle} fontSize={H * (H > W ? 0.016 : 0.024)} right={W * 0.07}
+        bottom={H * (H > W ? 0.06 : 0.055)} opacity={0.9} />
     </AbsoluteFill>
   );
 };

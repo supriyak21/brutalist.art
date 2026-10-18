@@ -19,9 +19,14 @@
 import React from 'react';
 import {AbsoluteFill, useCurrentFrame, useVideoConfig} from 'remotion';
 import {z} from 'zod';
+import { HandleChip } from './ClaudeCodeBeat';
 import {clamp, lerp, remap, easeOutCubic, BG, INK, ACCENT, MUTE, FONT, scW, wrapText} from './sqlDeckKit';
 
 export const sqlScaleComparison916Schema = z.object({
+  /** Lower-right author handle chip (e.g. "Supriya"). Omitted → no chip. */
+  handle: z.string().optional(),
+  /** Put the handle chip top-right instead of bottom-right. Omitted → bottom. */
+  handleTop: z.boolean().optional(),
   data: z.object({
     slideMeta: z.string().default(''),
     axis: z.object({min: z.number(), max: z.number(), unit: z.string()}),
@@ -38,14 +43,14 @@ export type SqlScaleComparison916Props = z.infer<typeof sqlScaleComparison916Sch
 const fmtInt = (v: number) =>
   Number.isInteger(v) ? v.toLocaleString('en-US') : String(Math.round(v * 100) / 100);
 
-export const SqlScaleComparison916: React.FC<SqlScaleComparison916Props> = ({data}) => {
+export const SqlScaleComparison916: React.FC<SqlScaleComparison916Props> = ({handle, handleTop, data}) => {
   const frame = useCurrentFrame();
   const {width: W, height: H, durationInFrames} = useVideoConfig();
   const p = clamp(frame / Math.max(1, durationInFrames - 1), 0, 1);
   const S = scW(W);
 
   const ax = data.axis, items = data.items;
-  const x0 = 70 * S, x1 = W - 70 * S;
+  const x0 = 100 * S, x1 = W - 110 * S;   // v2: end tick labels stay inside the 5% side inset
   const yAxis = H - 250 * S;
   const lg = (v: number) => Math.log10(v);
   const xOf = (v: number) => remap(lg(v), lg(ax.min), lg(ax.max), x0, x1);
@@ -60,7 +65,7 @@ export const SqlScaleComparison916: React.FC<SqlScaleComparison916Props> = ({dat
   const bx0 = xOf(data.band.from), bx1 = xOf(data.band.to);
 
   const rows = items.length;
-  const rowTop = 300 * S;
+  const rowTop = 344 * S;
   const bandH = (yAxis - rowTop - 60 * S) / rows;
   const yOf = (i: number) => rowTop + i * bandH + bandH * 0.62;
 
@@ -69,7 +74,7 @@ export const SqlScaleComparison916: React.FC<SqlScaleComparison916Props> = ({dat
   return (
     <AbsoluteFill style={{backgroundColor: BG, fontFamily: FONT}}>
       <div style={{
-        position: 'absolute', left: 56 * S, top: 56 * S, maxWidth: W - 112 * S,
+        position: 'absolute', left: 56 * S, top: 100 * S, maxWidth: W - 112 * S,
         fontSize: 21 * S, letterSpacing: '.14em', color: MUTE, fontWeight: 600,
       }}>
         {wrapText(data.slideMeta, 40).map((ln, i) => <div key={i}>{ln}</div>)}
@@ -134,6 +139,10 @@ export const SqlScaleComparison916: React.FC<SqlScaleComparison916Props> = ({dat
           );
         })}
       </svg>
+      {/* handleTop: chip top-right, inside the 5% title-safe inset, where this layout's
+          bottom-right corner is occupied by content. */}
+      <HandleChip handle={handle} fontSize={H * (H > W ? 0.016 : 0.024)} right={W * 0.07}
+        bottom={handleTop ? H - H * 0.05 - 10 * S - H * (H > W ? 0.016 : 0.024) * 1.9 : H * (H > W ? 0.06 : 0.055)} opacity={0.9} />
     </AbsoluteFill>
   );
 };
