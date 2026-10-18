@@ -101,3 +101,12 @@ known confounder, not unmeasured ones. Narration says "the hard cases went to su
    Gate B clean. Gate V on the clean master 0 BLOCKER/MAJOR (run.sh's Gate V on the `-slate` cut
    false-flags every portrait frame — known). Outro scale **1.3** (1.2 underfilled 47% < 55%; 1.4
    bleeds). Endcard redrawn natively 2160×3840 and enlarged to pass the fill check.
+
+---
+
+**2026-10-17 — masters renamed to the folder's week date.** The folder became
+`2026-10-05-correlation-is-not-causation/` (week 10), and the masters were renamed to match:
+`2026-10-05-correlation-is-not-causation.mp4` and `…-vertical.mp4` (content unchanged, same
+checksums). The `2026-10-14` names above are the original record. `final_filenames` in
+`beat_sheet.json`, `short/beat_sheet.json` and `todo.json` now carry the new names. The
+slug-named duplicates, the `mp4/` copies and the three slate cuts were removed.

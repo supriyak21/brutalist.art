@@ -34,8 +34,8 @@
     "no_paid_services": true,
     "note": "CLI-explainer, required 12-beat spine. Branding (PM): exact intro 'Hi, I am Supriya and this video is about …'; no 'in for X'; visible 'Supriya' on every beat — composer folderLabel, ClaudeCodeBeat `handle` chip, Manim corner handle, full-size outro handle, 9:16 endcard via shorts.py --handle Supriya.",
     "final_filenames": {
-      "16:9": "2026-10-14-correlation-is-not-causation.mp4",
-      "9:16": "2026-10-14-correlation-is-not-causation-vertical.mp4"
+      "16:9": "2026-10-05-correlation-is-not-causation.mp4",
+      "9:16": "2026-10-05-correlation-is-not-causation-vertical.mp4"
     },
     "shorts_length_flag": "Approved 2026-10-14: NO shortened 9:16 — the revision cycle is the punchline. ./art shorts must report 'under the cap → full reformat, no beats cut'. If measured audio exceeds ~170s, STOP and re-tighten — never drop a beat.",
     "total_estimated_duration_seconds": 150.75,
